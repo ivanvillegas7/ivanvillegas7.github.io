@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iván Villegas-Pérez — Astroparticle Physicist</title>
+  <meta name="description" content="M.Sc. physicist working on indirect dark matter searches with Imaging Atmospheric Cherenkov Telescopes. PhD candidate in astroparticle physics." />
+  <link rel="icon" href="public/favicon.ico" />
+
+  <!-- Computer Modern fonts -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css" />
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+
+  <style>
+    /* ============================
+       CSS CUSTOM PROPERTIES
+    ============================ */
+    :root {
+      --radius: 0.625rem;
+      --background: oklch(0.974 0.006 85);
+      --foreground: oklch(0.18 0 0);
+      --card: oklch(0.985 0.004 85);
+      --secondary: oklch(0.93 0.008 85);
+      --muted-foreground: oklch(0.42 0.005 85);
+      --accent: oklch(0.88 0.012 85);
+      --border: oklch(0.86 0.01 85);
+      --font-serif: "Computer Modern Serif", "Latin Modern Roman", Georgia, serif;
+      --font-sans: "Computer Modern Sans", "Latin Modern Sans", system-ui, sans-serif;
+      --font-mono: "Computer Modern Typewriter", "Latin Modern Mono", ui-monospace, monospace;
+    }
+    .dark {
+      --background: oklch(0.165 0.008 85);
+      --foreground: oklch(0.94 0.012 85);
+      --card: oklch(0.205 0.008 85);
+      --secondary: oklch(0.235 0.01 85);
+      --muted-foreground: oklch(0.72 0.012 85);
+      --accent: oklch(0.28 0.01 85);
+      --border: oklch(0.94 0.012 85 / 14%);
+    }
+
+    /* ============================
+       RESET & BASE
+    ============================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+      font-family: var(--font-serif);
+      font-feature-settings: "kern", "liga", "onum";
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      transition: background-color 0.2s, color 0.2s;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.35;
+      background-image: radial-gradient(oklch(0.18 0 0 / 0.04) 1px, transparent 1px);
+      background-size: 3px 3px;
+      mix-blend-mode: multiply;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-serif); letter-spacing: -0.01em; }
+    button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
+
+    /* ============================
+       LAYOUT UTILITIES
+    ============================ */
+    .container { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
+    @media (min-width: 768px) { .container { padding: 0 2.5rem; } }
+    .border-b { border-bottom: 1px solid var(--border); }
+    .border-t { border-top: 1px solid var(--border); }
+
+    /* ============================
+       NAV
+    ============================ */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--border);
+      background-color: color-mix(in oklch, var(--background) 85%, transparent);
+      backdrop-filter: blur(8px);
+    }
+    .nav-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      max-width: 72rem;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) { .nav-inner { padding: 1.25rem 2.5rem; } }
+    .nav-brand {
+      font-family: var(--font-serif);
+      font-size: 1.125rem;
+      letter-spacing: -0.01em;
+      color: var(--foreground);
+    }
+    .nav-brand em { font-style: italic; }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.25rem 1rem;
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+    .nav-links a, .nav-links button.nav-link {
+      transition: color 0.15s;
+      background: none;
+      border: none;
+      font: inherit;
+      color: inherit;
+    }
+    .nav-links a:hover, .nav-links button.nav-link:hover,
+    .nav-links a.active { color: var(--foreground); }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      border: 1px solid color-mix(in oklch, var(--foreground) 80%, transparent);
+      border-radius: 2px;
+      padding: 0.375rem 0.75rem;
+      font-size: 0.875rem;
+      color: var(--foreground);
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-btn:hover { background: var(--foreground); color: var(--background); }
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.125rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      background: color-mix(in oklch, var(--secondary) 50%, transparent);
+      padding: 0.125rem;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .lang-btn {
+      border-radius: 2px;
+      padding: 0.25rem 0.5rem;
+      transition: background 0.15s, color 0.15s;
+      color: var(--muted-foreground);
+    }
+    .lang-btn.active { background: var(--foreground); color: var(--background); }
+    .theme-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: color-mix(in oklch, var(--foreground) 80%, transparent);
+      transition: background 0.15s, color 0.15s;
+      font-size: 1rem;
+    }
+    .theme-btn:hover { background: var(--foreground); color: var(--background); }
+
+    /* ============================
+       PAGES
+    ============================ */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ============================
+       HERO
+    ============================ */
+    .hero-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      background: var(--background);
+    }
+    @media (min-width: 768px) { .hero-img-wrap { aspect-ratio: 16/6; } }
+    .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      max-width: 72rem;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .hero-left {
+      padding: 4rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    @media (min-width: 768px) {
+      .hero-left {
+        padding: 6rem 2.5rem;
+        border-bottom: none;
+        border-right: 1px solid var(--border);
+      }
+    }
+    .hero-right {
+      padding: 4rem 1.5rem;
+      background: color-mix(in oklch, var(--secondary) 50%, transparent);
+    }
+    @media (min-width: 768px) { .hero-right { padding: 6rem 2.5rem; } }
+    .kicker {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--muted-foreground);
+    }
+    .hero-h1 {
+      margin-top: 1.5rem;
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--foreground);
+    }
+    .hero-h1 em { font-style: italic; }
+    .hero-lede {
+      margin-top: 2rem;
+      font-family: var(--font-serif);
+      font-size: 1.125rem;
+      line-height: 1.75;
+      color: color-mix(in oklch, var(--foreground) 85%, transparent);
+      max-width: 28rem;
+    }
+    .hero-actions {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 2px;
+      background: var(--foreground);
+      padding: 0.625rem 1.25rem;
+      font-size: 0.875rem;
+      color: var(--background);
+      transition: opacity 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid color-mix(in oklch, var(--foreground) 80%, transparent);
+      border-radius: 2px;
+      padding: 0.625rem 1.25rem;
+      font-size: 0.875rem;
+      color: var(--foreground);
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-outline:hover { background: var(--foreground); color: var(--background); }
+    .abstract-label { margin-bottom: 1.5rem; }
+    .abstract-body {
+      font-family: var(--font-serif);
+      font-size: 0.9375rem;
+      line-height: 1.75;
+      color: color-mix(in oklch, var(--foreground) 85%, transparent);
+    }
+    .abstract-body p + p { margin-top: 1.25rem; }
+    .abstract-quote {
+      border-left: 2px solid color-mix(in oklch, var(--foreground) 70%, transparent);
+      padding-left: 1rem;
+      font-style: italic;
+      color: var(--foreground) !important;
+    }
+    .hero-stats {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+    .stat-label {
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted-foreground);
+    }
+    .stat-list {
+      margin-top: 0.75rem;
+      list-style: none;
+    }
+    .stat-list li {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-style: normal;
+      color: var(--foreground);
+    }
+    .stat-list li + li { margin-top: 0.375rem; }
+    .stat-item { margin-top: 1.25rem; }
+    .stat-value {
+      margin-top: 0.25rem;
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-style: normal;
+      color: var(--foreground);
+    }
+
+    /* ============================
+       SECTION HEADING
+    ============================ */
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 3rem;
+    }
+    .section-heading h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      color: var(--foreground);
+    }
+    .section-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--muted-foreground);
+    }
+
+    /* ============================
+       SECTIONS
+    ============================ */
+    .section { padding: 6rem 0; }
+    .section-alt {
+      border-top: 1px solid var(--border);
+      background: color-mix(in oklch, var(--secondary) 30%, transparent);
+    }
+    .section-contact { background: color-mix(in oklch, var(--secondary) 40%, transparent); }
+
+    /* ============================
+       PROJECT LIST
+    ============================ */
+    .project-list { list-style: none; }
+    .project-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border);
+    }
+    @media (min-width: 768px) { .project-item { grid-template-columns: 2fr 10fr; } }
+    .project-meta { color: var(--muted-foreground); }
+    .project-year { font-family: var(--font-mono); font-size: 0.75rem; }
+    .project-nature {
+      margin-top: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: color-mix(in oklch, var(--foreground) 70%, transparent);
+    }
+    .project-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      line-height: 1.3;
+      color: var(--foreground);
+    }
+    .project-title-link {
+      text-decoration: underline;
+      text-decoration-color: color-mix(in oklch, var(--foreground) 20%, transparent);
+      text-underline-offset: 6px;
+      transition: text-decoration-color 0.15s;
+      cursor: pointer;
+    }
+    .project-title-link:hover { text-decoration-color: var(--foreground); }
+    .project-context {
+      margin-top: 0.25rem;
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--muted-foreground);
+    }
+    .project-abstract {
+      margin-top: 1rem;
+      font-size: 0.9375rem;
+      line-height: 1.75;
+      color: color-mix(in oklch, var(--foreground) 85%, transparent);
+      max-width: 42rem;
+    }
+    .project-people {
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      max-width: 42rem;
+    }
+    .project-people em { font-style: italic; }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+      align-items: center;
+    }
+    .tag {
+      border: 1px solid var(--border);
+      background: var(--secondary);
+      border-radius: 2px;
+      padding: 0.125rem 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted-foreground);
+    }
+    .project-links {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+    .link-primary {
+      color: var(--foreground);
+      text-decoration: underline;
+      text-decoration-color: color-mix(in oklch, var(--foreground) 30%, transparent);
+      text-underline-offset: 4px;
+      transition: text-decoration-color 0.15s;
+      cursor: pointer;
+    }
+    .link-primary:hover { text-decoration-color: var(--foreground); }
+    .link-muted {
+      color: var(--muted-foreground);
+      text-decoration: underline;
+      text-decoration-color: color-mix(in oklch, var(--muted-foreground) 30%, transparent);
+      text-underline-offset: 4px;
+      transition: color 0.15s;
+    }
+    .link-muted:hover { color: var(--foreground); }
+    .view-all {
+      margin-top: 2.5rem;
+      text-align: center;
+    }
+
+    /* ============================
+       TALKS LIST
+    ============================ */
+    .talks-list { list-style: none; }
+    .talk-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+    }
+    @media (min-width: 768px) { .talk-item { grid-template-columns: 2fr 10fr; } }
+
+    /* ============================
+       NEWS
+    ============================ */
+    .news-list { list-style: none; }
+    .news-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border);
+    }
+    @media (min-width: 768px) { .news-item { grid-template-columns: 2fr 10fr; } }
+    .news-date { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted-foreground); }
+    .news-kind {
+      margin-top: 0.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: color-mix(in oklch, var(--foreground) 70%, transparent);
+    }
+    .news-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      text-decoration: underline;
+      text-decoration-color: color-mix(in oklch, var(--foreground) 20%, transparent);
+      text-underline-offset: 4px;
+      transition: text-decoration-color 0.15s;
+    }
+    .news-title:hover { text-decoration-color: var(--foreground); }
+    .news-summary {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: color-mix(in oklch, var(--foreground) 80%, transparent);
+      max-width: 42rem;
+    }
+
+    /* ============================
+       CONTACT / SOCIALS
+    ============================ */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    @media (min-width: 768px) { .contact-grid { grid-template-columns: 2fr 3fr; } }
+    .contact-blurb {
+      font-family: var(--font-serif);
+      font-size: 1.125rem;
+      line-height: 1.75;
+      color: color-mix(in oklch, var(--foreground) 85%, transparent);
+    }
+    .contact-note { margin-top: 1.5rem; font-family: var(--font-serif); font-style: italic; color: var(--muted-foreground); }
+    .socials-list { list-style: none; }
+    .social-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .social-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--muted-foreground);
+    }
+    .social-handle {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      text-decoration: underline;
+      text-decoration-color: color-mix(in oklch, var(--foreground) 30%, transparent);
+      text-underline-offset: 4px;
+      transition: text-decoration-color 0.15s;
+    }
+    .social-handle:hover { text-decoration-color: var(--foreground); }
+
+    /* ============================
+       PAGE HEADER (inner pages)
+    ============================ */
+    .page-header {
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 0;
+    }
+    @media (min-width: 768px) { .page-header { padding: 7rem 0; } }
+    .page-h1 {
+      margin-top: 1.5rem;
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      max-width: 48rem;
+    }
+    .page-h1 em { font-style: italic; }
+    .page-lede {
+      margin-top: 1.5rem;
+      font-family: var(--font-serif);
+      font-size: 1.125rem;
+      line-height: 1.75;
+      max-width: 42rem;
+      color: color-mix(in oklch, var(--foreground) 85%, transparent);
+    }
+
+    /* ============================
+       EDUCATION
+    ============================ */
+    .degree-block {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+    }
+    .degree-block:first-child { border-top: none; padding-top: 1rem; }
+    .degree-meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted-foreground);
+      margin-top: 0.75rem;
+    }
+    .degree-h2 {
+      margin-top: 1rem;
+      font-family: var(--font-serif);
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      line-height: 1.2;
+    }
+    .degree-institution {
+      margin-top: 0.5rem;
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--muted-foreground);
+    }
+    .degree-spec {
+      margin-top: 0.75rem;
+      font-family: var(--font-serif);
+      font-size: 0.9688rem;
+      line-height: 1.65;
+      max-width: 42rem;
+      color: color-mix(in oklch, var(--foreground) 85%, transparent);
+    }
+    .degree-thesis {
+      margin-top: 0.75rem;
+      font-family: var(--font-serif);
+      font-size: 0.9375rem;
+      max-width: 42rem;
+      color: color-mix(in oklch, var(--foreground) 85%, transparent);
+    }
+    .course-group { margin-top: 2rem; }
+    .course-group-label {
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--muted-foreground);
+    }
+    .course-list { list-style: none; }
+    .course-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.5rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .course-name {
+      font-family: var(--font-serif);
+      font-size: 0.9688rem;
+    }
+    .course-code {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted-foreground);
+      margin-right: 0.5rem;
+    }
+    .course-year {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      font-style: italic;
+      color: var(--muted-foreground);
+      margin-left: 0.5rem;
+    }
+    .course-ects {
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--muted-foreground);
+    }
+    .starred-note {
+      margin-top: 0.75rem;
+      font-size: 0.78rem;
+      font-style: italic;
+      color: var(--muted-foreground);
+    }
+
+    /* ============================
+       CONFERENCES
+    ============================ */
+    .conf-section { padding: 4rem 0; }
+    .conf-h2 {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+      font-family: var(--font-serif);
+      font-size: 1.875rem;
+    }
+    .conf-list { list-style: none; }
+    .conf-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+    }
+    @media (min-width: 768px) { .conf-item { grid-template-columns: 2fr 10fr; } }
+    .conf-name {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    .conf-location {
+      margin-top: 0.25rem;
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--muted-foreground);
+    }
+    .conf-contribution {
+      margin-top: 0.75rem;
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      line-height: 1.65;
+      color: color-mix(in oklch, var(--foreground) 90%, transparent);
+      max-width: 42rem;
+    }
+    .conf-summary {
+      margin-top: 0.75rem;
+      font-size: 0.9063rem;
+      line-height: 1.65;
+      color: color-mix(in oklch, var(--foreground) 80%, transparent);
+      max-width: 42rem;
+    }
+    .conf-actions {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+
+    /* ============================
+       INSTITUTION BADGES
+    ============================ */
+    .inst-badges { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+    .inst-badge { display: inline-flex; align-items: center; transition: opacity 0.15s; height: 1.75rem; }
+    .inst-badge:hover { opacity: 0.75; }
+    .inst-badge img { height: 100%; width: auto; object-fit: contain; }
+    .inst-badge .dark-only { display: none; }
+    .dark .inst-badge .light-only { display: none; }
+    .dark .inst-badge .dark-only { display: block; }
+
+    /* ============================
+       FOOTER
+    ============================ */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      margin-top: 8rem;
+    }
+    .footer-inner {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+    @media (min-width: 768px) {
+      .footer-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2.5rem 2.5rem;
+      }
+    }
+    .footer-updated { font-family: var(--font-mono); font-size: 0.75rem; }
+
+    /* ============================
+       INSTITUTION LOGOS (inline base64-linked)
+    ============================ */
+    /* We'll reference images directly from assets folder */
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#" onclick="navigate('home')"><em>Iván</em> Villegas-Pérez</a>
+    <nav class="nav-links">
+      <button class="nav-link" onclick="navigate('home')" id="nav-home">About</button>
+      <button class="nav-link" onclick="navigate('projects')" id="nav-projects">Projects</button>
+      <button class="nav-link" onclick="navigate('education')" id="nav-education">Education</button>
+      <button class="nav-link" onclick="navigate('conferences')" id="nav-conferences">Conferences</button>
+      <a href="#news" onclick="navigate('home')">News</a>
+      <a href="#contact" onclick="navigate('home')">Contact</a>
+      <div style="display:flex;gap:0.5rem;">
+        <a class="nav-btn" href="public/cv.pdf" download>CV ↓</a>
+        <a class="nav-btn" href="public/cva.pdf" download>CVA ↓</a>
+      </div>
+      <div class="lang-switcher">
+        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+      </div>
+      <button class="theme-btn" onclick="cycleTheme()" id="theme-btn" title="Toggle theme">☀</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ===========================
+     PAGE: HOME
+=========================== -->
+<div id="page-home" class="page active">
+  <!-- Hero image -->
+  <section style="border-bottom: 1px solid var(--border);">
+    <div class="hero-img-wrap">
+      <img src="assets/hero-telescopes.jpg" alt="MAGIC telescopes at night under the Milky Way" />
+    </div>
+    <div class="hero-grid">
+      <div class="hero-left">
+        <p class="kicker" data-en="M.Sc. · Astroparticle Physics" data-es="Máster · Física de astropartículas">M.Sc. · Astroparticle Physics</p>
+        <h1 class="hero-h1">
+          <span data-en="Searching for" data-es="En busca de la">Searching for</span>
+          <em> <span data-en="dark matter" data-es="materia oscura">dark matter</span></em>
+          <span data-en=" in the γ-ray sky." data-es=" en el cielo de rayos γ."> in the γ-ray sky.</span>
+        </h1>
+        <p class="hero-lede" data-en="I'm a physicist whose recent work — within the MAGIC Collaboration — focused on Bayesian modelling of dark matter density profiles, J-factor computations and statistical analyses for indirect detection with Imaging Atmospheric Cherenkov Telescopes."
+           data-es="Soy físico y mi trabajo reciente — dentro de la Colaboración MAGIC — se ha centrado en el modelado bayesiano de perfiles de densidad de materia oscura, el cálculo de J-factors y los análisis estadísticos para la detección indirecta con telescopios Cherenkov atmosféricos de imagen.">
+          I'm a physicist whose recent work — within the MAGIC Collaboration — focused on Bayesian modelling of dark matter density profiles, J-factor computations and statistical analyses for indirect detection with Imaging Atmospheric Cherenkov Telescopes.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="public/cv.pdf" download>
+            <span data-en="Download CV" data-es="Descargar CV">Download CV</span> <span>↓</span>
+          </a>
+          <button class="btn-outline" onclick="navigate('projects')">
+            <span data-en="View projects →" data-es="Ver proyectos →">View projects →</span>
+          </button>
+        </div>
+      </div>
+      <div class="hero-right">
+        <p class="kicker abstract-label" data-en="Abstract" data-es="Resumen">Abstract</p>
+        <div class="abstract-body">
+          <p data-en="The nature of dark matter remains one of the most pressing questions in fundamental physics. If the dark sector couples to the Standard Model, self-annihilation in dense astrophysical regions should produce a flux of very-high-energy γ-rays observable from the ground."
+             data-es="La naturaleza de la materia oscura sigue siendo una de las preguntas más urgentes de la física fundamental. Si el sector oscuro se acopla al Modelo Estándar, la autoaniquilación en regiones astrofísicas densas debería producir un flujo de rayos γ de muy alta energía observable desde tierra.">
+            The nature of dark matter remains one of the most pressing questions in fundamental physics. If the dark sector couples to the Standard Model, self-annihilation in dense astrophysical regions should produce a flux of very-high-energy γ-rays observable from the ground.
+          </p>
+          <p data-en="My work develops a hierarchical Bayesian framework for the mass distribution of dwarf spheroidal galaxies, propagating the resulting uncertainties into the J-factor and, ultimately, into limits on the velocity-averaged annihilation cross-section ⟨σv⟩ derived from MAGIC observations."
+             data-es="Mi trabajo desarrolla un marco bayesiano jerárquico para la distribución de masa de galaxias enanas esferoidales, propagando las incertidumbres resultantes al J-factor y, finalmente, a los límites sobre la sección eficaz de aniquilación promediada en velocidad ⟨σv⟩ derivados de las observaciones de MAGIC.">
+            My work develops a hierarchical Bayesian framework for the mass distribution of dwarf spheroidal galaxies, propagating the resulting uncertainties into the J-factor and, ultimately, into limits on the velocity-averaged annihilation cross-section ⟨σv⟩ derived from MAGIC observations.
+          </p>
+          <p class="abstract-quote" data-en="Currently seeking a PhD position in dark matter phenomenology, γ-ray astrophysics, cosmology, astrophysics, particle physics, CMB, AGNs, galaxy formation and evolution, black holes, gravitational lensing, large-scale structure, quasars or extragalactic surveys — starting Autumn 2026."
+             data-es="Actualmente busco una posición predoctoral en fenomenología de la materia oscura, astrofísica de rayos γ, cosmología, astrofísica, física de partículas, CMB, AGNs, formación y evolución de galaxias, agujeros negros, lentes gravitacionales, estructura a gran escala, cuásares o catálogos extragalácticos — a partir del otoño de 2026.">
+            Currently seeking a PhD position in dark matter phenomenology, γ-ray astrophysics, cosmology, astrophysics, particle physics, CMB, AGNs, galaxy formation and evolution, black holes, gravitational lensing, large-scale structure, quasars or extragalactic surveys — starting Autumn 2026.
+          </p>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <p class="stat-label" data-en="Fields of interest" data-es="Campos de interés">Fields of interest</p>
+            <ul class="stat-list">
+              <li data-en="Astroparticle physics" data-es="Física de astropartículas">Astroparticle physics</li>
+              <li data-en="Cosmology" data-es="Cosmología">Cosmology</li>
+              <li data-en="Particle physics" data-es="Física de partículas">Particle physics</li>
+              <li data-en="Exoplanets" data-es="Exoplanetas">Exoplanets</li>
+            </ul>
+          </div>
+          <dl>
+            <div class="stat-item">
+              <dt class="stat-label" data-en="Status" data-es="Estado">Status</dt>
+              <dd class="stat-value" data-en="Open to PhDs" data-es="Abierto a doctorados">Open to PhDs</dd>
+            </div>
+            <div class="stat-item">
+              <dt class="stat-label" data-en="Based in" data-es="Ubicado en">Based in</dt>
+              <dd class="stat-value" data-en="Spain" data-es="España">Spain</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected Projects -->
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <h2 data-en="Selected projects" data-es="Proyectos destacados">Selected projects</h2>
+        <span class="section-kicker">§ I</span>
+      </div>
+      <ol class="project-list" id="home-projects"></ol>
+      <div class="view-all">
+        <button class="link-primary" onclick="navigate('projects')" data-en="All main projects →" data-es="Todos los proyectos →">All main projects →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected Talks -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-heading">
+        <h2 data-en="Selected talks" data-es="Charlas destacadas">Selected talks</h2>
+        <span class="section-kicker">§ II</span>
+      </div>
+      <ul class="talks-list" id="home-talks"></ul>
+      <div class="view-all" style="margin-top:2rem;">
+        <button class="link-primary" onclick="navigate('conferences')" data-en="All conferences →" data-es="Todos los congresos →">All conferences →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- News -->
+  <section class="section" id="news">
+    <div class="container">
+      <div class="section-heading">
+        <h2 data-en="Latest news" data-es="Últimas novedades">Latest news</h2>
+        <span class="section-kicker">§ IV</span>
+      </div>
+      <p style="margin-bottom:2rem;font-family:var(--font-serif);font-size:1.125rem;line-height:1.75;max-width:42rem;color:color-mix(in oklch, var(--foreground) 85%, transparent);"
+         data-en="Recent LinkedIn posts and reposts." data-es="Publicaciones y reposts recientes en LinkedIn.">
+        Recent LinkedIn posts and reposts.
+      </p>
+      <ul class="news-list" id="home-news"></ul>
+      <div class="view-all" style="margin-top:2rem;">
+        <a class="link-primary" href="https://www.linkedin.com/in/Iv%C3%A1nVillegasP%C3%A9rez/" target="_blank" rel="noreferrer"
+           data-en="View on LinkedIn →" data-es="Ver en LinkedIn →">View on LinkedIn →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section section-contact" id="contact">
+    <div class="container">
+      <div class="section-heading">
+        <h2 data-en="Get in touch" data-es="Contacto">Get in touch</h2>
+        <span class="section-kicker">§ III</span>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <p class="contact-blurb"
+             data-en="I'm always glad to hear from research groups, prospective advisors and collaborators working on dark matter, γ-ray astrophysics, cosmology, astrophysics, particle physics, CMB, AGNs, galaxy formation and evolution, black holes, gravitational lensing, large-scale structure, quasars, extragalactic surveys or Bayesian statistics in physics."
+             data-es="Siempre me alegra recibir mensajes de grupos de investigación, posibles directores de tesis y colaboradores que trabajen en materia oscura, astrofísica de rayos γ, cosmología, astrofísica, física de partículas, CMB, AGNs, formación y evolución de galaxias, agujeros negros, lentes gravitacionales, estructura a gran escala, cuásares, catálogos extragalácticos o estadística bayesiana en física.">
+            I'm always glad to hear from research groups, prospective advisors and collaborators working on dark matter, γ-ray astrophysics, cosmology, astrophysics, particle physics, CMB, AGNs, galaxy formation and evolution, black holes, gravitational lensing, large-scale structure, quasars, extragalactic surveys or Bayesian statistics in physics.
+          </p>
+          <p class="contact-note" data-en="The fastest way to reach me is by email." data-es="La forma más rápida de contactarme es por correo.">
+            The fastest way to reach me is by email.
+          </p>
+        </div>
+        <div>
+          <ul class="socials-list" id="socials-home"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p id="footer-copy-home">© 2025 Iván Villegas-Pérez. Set in Computer Modern.</p>
+      <p class="footer-updated" id="footer-date-home"></p>
+    </div>
+  </footer>
+</div>
+
+<!-- ===========================
+     PAGE: PROJECTS
+=========================== -->
+<div id="page-projects" class="page">
+  <section style="border-bottom:1px solid var(--border)">
+    <div class="container page-header">
+      <p class="kicker" data-en="§ Projects" data-es="§ Proyectos">§ Projects</p>
+      <h1 class="page-h1">
+        <span data-en="Main" data-es="Principales">Main</span>
+        <em> <span data-en="scientific projects" data-es="proyectos científicos">scientific projects</span></em>.
+      </h1>
+      <p class="page-lede"
+         data-en="Thesis work, course projects and research internships across astroparticle physics, cosmology, exoplanet science and quantum mechanics. Each title opens the full report — with figures — and a PDF download."
+         data-es="Trabajos de tesis, proyectos de asignatura y prácticas de investigación en física de astropartículas, cosmología, ciencia de exoplanetas y mecánica cuántica. Cada título abre el informe completo — con figuras — y permite descargar el PDF.">
+        Thesis work, course projects and research internships across astroparticle physics, cosmology, exoplanet science and quantum mechanics. Each title opens the full report — with figures — and a PDF download.
+      </p>
+    </div>
+  </section>
+  <div class="container" style="padding-top:5rem;padding-bottom:5rem;">
+    <ol class="project-list" id="all-projects"></ol>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2025 Iván Villegas-Pérez. Set in Computer Modern.</p>
+      <p class="footer-updated" id="footer-date-projects"></p>
+    </div>
+  </footer>
+</div>
+
+<!-- ===========================
+     PAGE: EDUCATION
+=========================== -->
+<div id="page-education" class="page">
+  <section style="border-bottom:1px solid var(--border)">
+    <div class="container page-header">
+      <p class="kicker" data-en="§ Education" data-es="§ Formación">§ Education</p>
+      <h1 class="page-h1" data-en="Academic education" data-es="Formación académica">Academic education</h1>
+      <p class="page-lede"
+         data-en="M.Sc. and B.Sc. in Physics, focused on astroparticle physics, cosmology and general relativity."
+         data-es="M.Sc. y B.Sc. en Física, con foco en astropartículas, cosmología y relatividad general.">
+        M.Sc. and B.Sc. in Physics, focused on astroparticle physics, cosmology and general relativity.
+      </p>
+    </div>
+  </section>
+  <div class="container" style="padding-top:3rem;padding-bottom:4rem;">
+    <div id="education-content"></div>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2025 Iván Villegas-Pérez. Set in Computer Modern.</p>
+      <p class="footer-updated" id="footer-date-education"></p>
+    </div>
+  </footer>
+</div>
+
+<!-- ===========================
+     PAGE: CONFERENCES
+=========================== -->
+<div id="page-conferences" class="page">
+  <section style="border-bottom:1px solid var(--border)">
+    <div class="container page-header">
+      <p class="kicker" data-en="§ Conferences" data-es="§ Congresos">§ Conferences</p>
+      <h1 class="page-h1">
+        <span data-en="Talks &amp;" data-es="Charlas y">Talks &</span>
+        <em> <span data-en="conferences" data-es="congresos">conferences</span></em>.
+      </h1>
+      <p class="page-lede"
+         data-en="International conferences and collaboration meetings — contributed talks and attended events on dark matter, γ-ray astrophysics and particle physics."
+         data-es="Congresos internacionales y reuniones de colaboración — charlas presentadas y eventos a los que he asistido sobre materia oscura, astrofísica de rayos γ y física de partículas.">
+        International conferences and collaboration meetings — contributed talks and attended events on dark matter, γ-ray astrophysics and particle physics.
+      </p>
+    </div>
+  </section>
+  <div id="conferences-content"></div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2025 Iván Villegas-Pérez. Set in Computer Modern.</p>
+      <p class="footer-updated" id="footer-date-conferences"></p>
+    </div>
+  </footer>
+</div>
+
+<script>
+// ===========================
+// DATA
+// ===========================
+const PROJECTS = [
+  {
+    slug: "m15",
+    year: "2023 — 2025",
+    title: "Analysis of the dark matter density profile and J-factor of the globular cluster M15 for indirect dark matter searches with IACTs",
+    titleEs: "Análisis del perfil de densidad de materia oscura y del factor J del cúmulo globular M15 para búsquedas indirectas de materia oscura con IACTs",
+    nature: "Master's thesis",
+    natureEs: "Tesis de máster",
+    context: "M.Sc. in Physics · University of Oslo (UiO) · MAGIC Collaboration",
+    contextEs: "Máster en Física · Universidad de Oslo (UiO) · Colaboración MAGIC",
+    abstract: "Computation of the dark matter density profile and integrated J-factor of the globular cluster M15, intended as input for indirect dark matter searches with Imaging Atmospheric Cherenkov Telescopes (IACTs). The repository hosts the full simulation pipeline, intermediate results and figures produced during the thesis work.",
+    abstractEs: "Cálculo del perfil de densidad de materia oscura y del factor J integrado del cúmulo globular M15, pensado como entrada para búsquedas indirectas de materia oscura con telescopios Cherenkov atmosféricos de imagen (IACTs). El repositorio contiene toda la cadena de simulación, los resultados intermedios y las figuras producidas durante la tesis.",
+    collaborators: [
+      { name: "Prof. Heidi Sandaker", role: "University of Oslo (UiO)", roleEs: "Universidad de Oslo (UiO)" },
+      { name: "Dr. Giacomo D'Amico", role: "then University of Bergen (UiB) · now IFAE", roleEs: "entonces Universidad de Bergen (UiB) · ahora IFAE" },
+      { name: "Dr. Julia I. Djuvsland", role: "formerly University of Bergen (UiB) · since left academia", roleEs: "anteriormente en la Universidad de Bergen (UiB) · ha dejado la academia" },
+      { name: "Dr. Francesco G. Saturni", role: "INAF — Osservatorio Astronomico di Roma (OAR)", roleEs: "INAF — Observatorio Astronómico de Roma (OAR)" },
+    ],
+    peopleLabel: "Supervisors",
+    tags: ["Dark matter", "J-factor", "MAGIC", "Globular cluster"],
+    githubUrl: "https://github.com/ivanvillegas7/M15",
+    reportPdf: "https://hdl.handle.net/10852/120910",
+    institutions: ["uio", "magic"],
+  },
+  {
+    slug: "cmb-power-spectrum",
+    year: "2024",
+    title: "Computation of the CMB power spectrum",
+    titleEs: "Cálculo del espectro de potencias del fondo cósmico de microondas",
+    nature: "Course project",
+    natureEs: "Proyecto de asignatura",
+    context: "AST5220 — Cosmology II · University of Oslo (UiO)",
+    contextEs: "AST5220 — Cosmología II · Universidad de Oslo (UiO)",
+    abstract: "End-to-end implementation of the cosmic microwave background angular power spectrum, from background cosmology and recombination history through perturbation theory and line-of-sight integration. Written in C++ following the structure proposed in the AST5220 course at UiO.",
+    abstractEs: "Implementación de extremo a extremo del espectro angular de potencias del fondo cósmico de microondas, desde la cosmología de fondo y la historia de la recombinación hasta la teoría de perturbaciones y la integración a lo largo de la línea de visión. Escrito en C++ siguiendo la estructura propuesta en la asignatura AST5220 de la UiO.",
+    collaborators: [
+      { name: "Prof. David F. Mota", role: "University of Oslo (UiO)", roleEs: "Universidad de Oslo (UiO)" },
+      { name: "Dr. Hans A. Winther", role: "University of Oslo (UiO)", roleEs: "Universidad de Oslo (UiO)" },
+    ],
+    peopleLabel: "Supervisors",
+    tags: ["CMB", "Cosmology", "C++", "Perturbation theory"],
+    githubUrl: "https://github.com/ivanvillegas7/CMB_power_spectrum",
+    reportPdf: "public/reports/cmb-power-spectrum.pdf",
+    institutions: ["uio"],
+  },
+  {
+    slug: "kepler-exoplanet-transits",
+    year: "2022 — 2023",
+    title: "Simulación, detección y caracterización de tránsitos de exoplanetas con la misión espacial Kepler",
+    titleEs: "Simulación, detección y caracterización de tránsitos de exoplanetas con la misión espacial Kepler",
+    nature: "Bachelor's degree project",
+    natureEs: "Trabajo de fin de grado",
+    context: "B.Sc. in Physics (2019 — 2023) · Universidad de Cantabria (UC)",
+    contextEs: "Grado en Física (2019 — 2023) · Universidad de Cantabria (UC)",
+    abstract: "Final degree project on the simulation, detection and characterization of exoplanetary transits using public Kepler data. Includes a forward model of transit light curves, a detection pipeline based on box-least-squares search, and a characterization step yielding planetary radius, orbital period and impact parameter estimates.",
+    abstractEs: "Trabajo de fin de grado sobre la simulación, detección y caracterización de tránsitos de exoplanetas con datos públicos de Kepler. Incluye un modelo directo de curvas de luz de tránsito, una cadena de detección basada en búsqueda box-least-squares y una etapa de caracterización que proporciona estimaciones del radio planetario, el periodo orbital y el parámetro de impacto.",
+    collaborators: [
+      { name: "Prof. Diego Herranz Muñoz", role: "IFCA (CSIC — UC)", roleEs: "IFCA (CSIC — UC)" },
+      { name: "Dr. Rosa María Domínguez Quintero", role: "IFCA (CSIC — UC)", roleEs: "IFCA (CSIC — UC)" },
+    ],
+    peopleLabel: "Supervisors",
+    tags: ["Exoplanets", "Kepler", "Transit photometry", "Python"],
+    githubUrl: "https://github.com/ivanvillegas7/Simulation-detection-and-characterization-of-exoplanet-transits-with-Kepler-space-mission",
+    reportPdf: "https://hdl.handle.net/10902/30224",
+    institutions: ["ifca", "uc"],
+  },
+  {
+    slug: "calsat-cmb",
+    year: "2023",
+    title: "Calibration satellites for ground-based CMB experiments",
+    titleEs: "Satélites de calibración para experimentos de CMB desde tierra",
+    nature: "Research internship",
+    natureEs: "Prácticas de investigación",
+    context: "Instituto de Física de Cantabria (IFCA) · CSIC — UC",
+    contextEs: "Instituto de Física de Cantabria (IFCA) · CSIC — UC",
+    abstract: "Internship work at IFCA reviewing and extending the calibration calculations for a proposed calibration satellite (CalSat) targeting ground-based CMB polarization experiments. Contains the codes and plots produced while revisiting an earlier Master's thesis on the topic.",
+    abstractEs: "Trabajo de prácticas en el IFCA revisando y ampliando los cálculos de calibración de un satélite de calibración propuesto (CalSat) destinado a experimentos de polarización del CMB desde tierra. Contiene los códigos y figuras producidos al revisitar una tesis de máster previa sobre el tema.",
+    collaborators: [
+      { name: "Dr. Francisco Javier Casas Reinares", role: "Instituto de Física de Cantabria (IFCA)", roleEs: "Instituto de Física de Cantabria (IFCA)" },
+    ],
+    peopleLabel: "Supervisor",
+    tags: ["CMB", "Calibration", "Polarization", "Instrumentation"],
+    githubUrl: "https://github.com/ivanvillegas7/CalSat_for_Ground-based_CMB_experiments",
+    reportPdf: "public/reports/calsat-cmb.pdf",
+    institutions: ["ifca", "uc"],
+  },
+  {
+    slug: "schrodinger-equation",
+    year: "2021",
+    title: "Application of Schrödinger's equation in a box using a single, double and triple slit configuration",
+    titleEs: "Aplicación de la ecuación de Schrödinger en una caja con configuraciones de una, dos y tres rendijas",
+    nature: "Course project",
+    natureEs: "Proyecto de asignatura",
+    context: "ERASMUS exchange · University of Oslo (UiO)",
+    contextEs: "Intercambio ERASMUS · Universidad de Oslo (UiO)",
+    abstract: "Simulation of the 2D time-dependent Schrödinger equation in a box, applied to single-, double- and triple-slit configurations. The Crank–Nicolson algorithm was implemented in C++ to evolve a Gaussian wave packet through n-slit potentials, and Python was used to visualise the time evolution of the probability density and of the real and imaginary parts of the wave function.",
+    abstractEs: "Simulación de la ecuación de Schrödinger 2D dependiente del tiempo en una caja, aplicada a configuraciones de una, dos y tres rendijas. Se implementó el algoritmo de Crank–Nicolson en C++ para evolucionar un paquete de ondas gaussiano a través de potenciales de n rendijas, y se utilizó Python para visualizar la evolución temporal de la densidad de probabilidad y de las partes real e imaginaria de la función de onda.",
+    collaborators: [
+      { name: "Julián Guerrero Cánovas", role: "then ERASMUS student at UiO (home: Universidad de Murcia) · now at CIEMAT", roleEs: "entonces estudiante ERASMUS en la UiO (origen: Universidad de Murcia) · ahora en el CIEMAT" },
+      { name: "María Pérez Martínez", role: "then ERASMUS student at UiO (home: UC)", roleEs: "entonces estudiante ERASMUS en la UiO (origen: UC)" },
+      { name: "Elena Pujante Martínez", role: "then ERASMUS student at UiO (home: Universidad de Murcia)", roleEs: "entonces estudiante ERASMUS en la UiO (origen: Universidad de Murcia)" },
+      { name: "Iván Villegas-Pérez", role: "then ERASMUS student at UiO (home: UC)", roleEs: "entonces estudiante ERASMUS en la UiO (origen: UC)" },
+    ],
+    peopleLabel: "Co-authors",
+    tags: ["Quantum mechanics", "Crank–Nicolson", "Diffraction", "C++", "Python"],
+    githubUrl: "https://github.com/ivanvillegas7/Schrodinger_equation",
+    reportPdf: "public/reports/schrodinger-equation.pdf",
+    institutions: ["uio", "uc", "um"],
+  },
+];
+
+const CONFERENCES = [
+  {
+    slug: "magic-lst-f2f-garching-2025",
+    year: "2025",
+    name: "MAGIC + LST Face-to-Face (F2F) Science Meeting",
+    city: "Garching",
+    country: "Germany",
+    role: "talk",
+    contribution: "Analysis of the dark matter density profile of M15",
+    summary: "Joint science meeting bringing together the MAGIC and LST (CTAO) collaborations to coordinate ongoing analyses and joint observation programmes at the Roque de los Muchachos Observatory, with a strong focus on dark matter searches and multi-messenger follow-up.",
+    summaryEs: "Reunión científica conjunta de las colaboraciones MAGIC y LST (CTAO) para coordinar los análisis en curso y los programas de observación conjuntos en el Observatorio del Roque de los Muchachos, con especial énfasis en búsquedas de materia oscura y seguimiento multi-mensajero.",
+    slidesPdf: "public/presentations/m15-garching-2025.pdf",
+    institutions: ["uio", "magic"],
+  },
+  {
+    slug: "nordic-particle-physics-2025",
+    year: "2025",
+    name: "28th Nordic Particle Physics Meeting",
+    city: "Svingvoll",
+    country: "Norway",
+    role: "talk",
+    contribution: "Analysis of the dark matter density profile of M15",
+    summary: "Annual meeting of the Nordic particle physics community covering collider physics, neutrinos, astroparticle physics and dark matter, with contributed talks from PhD students and early-career researchers across the Nordic institutions.",
+    summaryEs: "Encuentro anual de la comunidad nórdica de física de partículas que reúne física de colisionadores, neutrinos, astropartículas y materia oscura, con contribuciones de estudiantes de doctorado e investigadores noveles de las instituciones nórdicas.",
+    slidesPdf: "public/presentations/m15-svingvoll-2025.pdf",
+    institutions: ["uio", "magic"],
+  },
+  {
+    slug: "magic-general-meeting-lodz-2024",
+    year: "2024",
+    name: "MAGIC General Meeting",
+    city: "Łódź",
+    country: "Poland",
+    role: "talk",
+    contribution: "Analysis of the dark matter density profile of M15",
+    summary: "Plenary meeting of the MAGIC Collaboration where working groups present analysis status, instrument performance and upcoming science strategy for the two 17-m Imaging Atmospheric Cherenkov Telescopes at La Palma.",
+    summaryEs: "Reunión plenaria de la colaboración MAGIC, en la que los grupos de trabajo presentan el estado de los análisis, el rendimiento del instrumento y la estrategia científica de los dos telescopios Cherenkov de 17 m de MAGIC en La Palma.",
+    slidesPdf: "public/presentations/m15-lodz-2024.pdf",
+    institutions: ["uio", "magic"],
+  },
+  {
+    slug: "msc-thesis-defense-2025",
+    year: "2025",
+    name: "M.Sc. thesis defense",
+    city: "Oslo",
+    country: "Norway",
+    role: "defense",
+    contribution: "Analysis of the dark matter density profile and J-factor of the globular cluster M15 for indirect dark matter searches with IACTs",
+    summary: "Public defense of my M.Sc. thesis at the University of Oslo, presenting the Bayesian Jeans analysis of M15 with CLUMPY and the resulting J-factor estimates for indirect dark matter searches with IACTs.",
+    summaryEs: "Defensa pública de mi tesis de máster en la Universidad de Oslo, presentando el análisis bayesiano de Jeans de M15 con CLUMPY y las correspondientes estimaciones del factor J para búsquedas indirectas de materia oscura con IACTs.",
+    slidesPdf: null,
+    institutions: ["uio", "magic"],
+  },
+  {
+    slug: "nordic-dm-bergen-2024",
+    year: "2024",
+    name: "Nordic Conference on Dark Matter Searches",
+    city: "Bergen",
+    country: "Norway",
+    role: "attendee",
+    summary: "Nordic-scale conference bringing together direct, indirect and collider dark matter searches, with a programme spanning theory, phenomenology and experimental status updates from leading international experiments.",
+    summaryEs: "Conferencia a escala nórdica que reúne búsquedas directas, indirectas y en colisionadores de materia oscura, con un programa que abarca teoría, fenomenología y actualizaciones experimentales de los principales experimentos internacionales.",
+  },
+  {
+    slug: "magic-f2f-padova-2024",
+    year: "2024",
+    name: "MAGIC Face-to-Face Meeting",
+    city: "Padova",
+    country: "Italy",
+    role: "attendee",
+    summary: "Working face-to-face meeting of the MAGIC Collaboration, dedicated to in-depth discussion of analysis pipelines, hardware status and joint efforts with the LST programme of CTAO.",
+    summaryEs: "Reunión presencial de trabajo de la colaboración MAGIC, dedicada a la discusión en profundidad de las cadenas de análisis, el estado del hardware y los esfuerzos conjuntos con el programa LST de CTAO.",
+  },
+];
+
+const EDUCATION = [
+  {
+    slug: "msc-oslo",
+    degree: "M.Sc. in Physics: Nuclear and Particle Physics",
+    degreeEs: "Máster en Física Nuclear y de Partículas",
+    institution: "University of Oslo (UiO)",
+    institutionEs: "Universidad de Oslo (UiO)",
+    institutionId: "uio",
+    period: "2023 — 2025",
+    totalEcts: 120,
+    specialisation: "Astroparticle physics / high-energy astrophysics",
+    specialisationEs: "Física de astropartículas / astrofísica de altas energías",
+    thesisTitle: "Analysis of the dark matter density profile and J-factor of the globular cluster M15 for indirect dark matter searches with IACTs",
+    thesisTitleEs: "Análisis del perfil de densidad de materia oscura y del factor J del cúmulo globular M15 para búsquedas indirectas de materia oscura con IACTs",
+    thesisHref: null,
+    courses: [
+      {
+        groupLabel: "Coursework", groupLabelEs: "Asignaturas",
+        items: [
+          { code: "FYS4170", title: "Relativistic Quantum Field Theory", titleEs: "Teoría Cuántica de Campos Relativista", ects: 10, year: "Autumn 2023" },
+          { code: "FYS4505", title: "Methods and Instrumentation for Nuclear and Particle Physics", titleEs: "Métodos e Instrumentación para Física Nuclear y de Partículas", ects: 10, year: "Autumn 2023" },
+          { code: "FYS4555", title: "Particle Physics", titleEs: "Física de Partículas", ects: 10, year: "Autumn 2023" },
+          { code: "AST5220", title: "Cosmology II", titleEs: "Cosmología II", ects: 10, year: "Spring 2024" },
+          { code: "FYSSP100", title: "Physics, Special Syllabus: Astroparticle Physics", titleEs: "Física, Temario Especial: Astropartículas", ects: 10, year: "Spring 2024" },
+          { code: "NORINT0114", title: "Norwegian Language Course", titleEs: "Curso de Lengua Noruega", ects: 0, year: "Spring 2024" },
+          { code: "AST5240", title: "Bayesian Cosmological Data Analysis", titleEs: "Análisis Bayesiano de Datos Cosmológicos", ects: 5, year: "Autumn 2024" },
+          { code: "FYSSP050", title: "Physics, Special Syllabus: MAGIC Shift", titleEs: "Física, Temario Especial: Turno en MAGIC", ects: 5, year: "Autumn 2024" },
+        ],
+      },
+      {
+        groupLabel: "Master's thesis", groupLabelEs: "Tesis de máster",
+        items: [
+          { code: "FYS5960", title: "Physics — Master Thesis", titleEs: "Física — Tesis de Máster", ects: 60, year: "Spring 2025" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "bsc-cantabria",
+    degree: "B.Sc. in Physics",
+    degreeEs: "Grado en Física",
+    institution: "Universidad de Cantabria (UC)",
+    institutionEs: "Universidad de Cantabria (UC)",
+    institutionId: "uc",
+    period: "2019 — 2023",
+    totalEcts: 240,
+    specialisation: "Fundamental Physics — focus on astrophysics, cosmology and general relativity",
+    specialisationEs: "Física Fundamental — con énfasis en astrofísica, cosmología y relatividad general",
+    notes: "Including an ERASMUS exchange at the University of Oslo (3rd year).",
+    notesEs: "Incluye un intercambio ERASMUS en la Universidad de Oslo (3.º curso).",
+    thesisTitle: "Simulation, detection and characterization of exoplanet's transits with the Kepler space mission",
+    thesisTitleEs: "Simulación, detección y caracterización de tránsitos de exoplanetas con la misión espacial Kepler",
+    thesisHref: null,
+    courses: [
+      { groupLabel: "First year", groupLabelEs: "Primer curso", items: [
+        { title: "Basic Experimental Physics I: Movement, Force, Astronomy", titleEs: "Física Experimental Básica I: Movimiento, Fuerza, Astronomía", ects: 6 },
+        { title: "Basic Experimental Physics II: Waves — Light and Sound", titleEs: "Física Experimental Básica II: Ondas — Luz y Sonido", ects: 6 },
+        { title: "Basic Experimental Physics III: Matter and its Properties", titleEs: "Física Experimental Básica III: La Materia y sus Propiedades", ects: 6 },
+        { title: "Basic Experimental Physics IV: Circuits and Electronics", titleEs: "Física Experimental Básica IV: Circuitos y Electrónica", ects: 6 },
+        { title: "Mathematics I: Linear Algebra and Geometry", titleEs: "Matemáticas I: Álgebra Lineal y Geometría", ects: 6 },
+        { title: "Mathematics II: Differential Calculus", titleEs: "Matemáticas II: Cálculo Diferencial", ects: 6 },
+        { title: "Mathematics III: Integral Calculus", titleEs: "Matemáticas III: Cálculo Integral", ects: 6 },
+        { title: "Computational Tools", titleEs: "Herramientas Computacionales", ects: 6 },
+        { title: "Multidisciplinary Laboratory", titleEs: "Laboratorio Multidisciplinar", ects: 6 },
+        { title: "Programming", titleEs: "Programación", ects: 6 },
+      ]},
+      { groupLabel: "Second year", groupLabelEs: "Segundo curso", items: [
+        { title: "English", titleEs: "Inglés", ects: 6 },
+        { title: "Cross-curricular Skills, Values and Competences", titleEs: "Competencias Transversales, Valores y Habilidades Personales", ects: 6 },
+        { title: "Electricity and Magnetism", titleEs: "Electricidad y Magnetismo", ects: 6 },
+        { title: "Quantum Physics I", titleEs: "Física Cuántica I", ects: 6 },
+        { title: "Physics Laboratory I", titleEs: "Laboratorio de Física I", ects: 6 },
+        { title: "Physics Laboratory II", titleEs: "Laboratorio de Física II", ects: 6 },
+        { title: "Classical Mechanics", titleEs: "Mecánica Clásica", ects: 6 },
+        { title: "Thermodynamics", titleEs: "Termodinámica", ects: 6 },
+        { title: "Mathematical Methods of Physics I", titleEs: "Métodos Matemáticos de la Física I", ects: 6 },
+        { title: "Mathematical Methods of Physics II", titleEs: "Métodos Matemáticos de la Física II", ects: 6 },
+      ]},
+      { groupLabel: "Third year — recognised through ERASMUS", groupLabelEs: "Tercer curso — convalidado por ERASMUS", hasStarred: true, items: [
+        { title: "Astronomy", titleEs: "Astronomía", ects: 6, starred: true },
+        { title: "Electromagnetism and Optics", titleEs: "Electromagnetismo y Óptica", ects: 6, starred: true },
+        { title: "Physics Laboratory III: Experimental Optics", titleEs: "Laboratorio de Física III: Óptica Experimental", ects: 6, starred: true },
+        { title: "Quantum Physics II", titleEs: "Física Cuántica II", ects: 6, starred: true },
+        { title: "Quantum Physics III", titleEs: "Física Cuántica III", ects: 6, starred: true },
+        { title: "Quantum Physics IV", titleEs: "Física Cuántica IV", ects: 6, starred: true },
+        { title: "Statistical Physics", titleEs: "Física Estadística", ects: 6, starred: true },
+        { title: "History and Panorama of Research and Applications in Physics", titleEs: "Historia y Panorama de la Investigación y Aplicaciones de la Física", ects: 6, starred: true },
+        { title: "Numerical Methods", titleEs: "Métodos Numéricos", ects: 6, starred: true },
+        { title: "Projects: Conception, Development and Tools", titleEs: "Proyectos: Concepción, Desarrollo y Herramientas", ects: 6, starred: true },
+      ]},
+      { groupLabel: "ERASMUS courses taken at University of Oslo", groupLabelEs: "Asignaturas cursadas en ERASMUS (Universidad de Oslo)", items: [
+        { title: "Space Physics and Technology", titleEs: "Física y Tecnología Espacial", ects: 6 },
+        { title: "Optics and Light", titleEs: "Óptica y Luz", ects: 6 },
+        { title: "Condensed Matter Physics", titleEs: "Física de la Materia Condensada", ects: 6 },
+        { title: "Introduction to Nuclear and Particle Physics", titleEs: "Introducción a la Física Nuclear y de Partículas", ects: 6 },
+        { title: "Statistical Mechanics", titleEs: "Mecánica Estadística", ects: 6 },
+        { title: "Computational Physics", titleEs: "Física Computacional", ects: 6 },
+      ]},
+      { groupLabel: "Fourth year — Mention in Fundamental Physics", groupLabelEs: "Cuarto curso — Mención en Física Fundamental", items: [
+        { title: "Physics Laboratory IV", titleEs: "Laboratorio de Física IV", ects: 6 },
+        { title: "Advanced Computation", titleEs: "Computación Avanzada", ects: 6 },
+        { title: "Astrophysics", titleEs: "Astrofísica", ects: 6 },
+        { title: "Quantum Mechanics", titleEs: "Mecánica Cuántica", ects: 6 },
+        { title: "General Relativity", titleEs: "Relatividad General", ects: 6 },
+        { title: "Elective recognised as German (B1)", titleEs: "Optativa convalidada por Alemán (B1)", ects: 6 },
+        { title: "External Internship at IFCA", titleEs: "Prácticas Externas en el IFCA", ects: 6 },
+        { title: "Bachelor Thesis", titleEs: "Trabajo Fin de Grado", ects: 12 },
+      ]},
+    ],
+  },
+];
+
+const NEWS = [
+  {
+    date: "2025-06-13",
+    title: "🎓 Master's degree: complete!",
+    titleEs: "🎓 Master: ¡completado!",
+    summary: "Completed Master's in Physics at University of Oslo, specializing in high-energy astrophysics with MAGIC Collaboration.",
+    summaryEs: "Completé mi Máster en Física en la Universidad de Oslo, especializándome en astrofísica de altas energías con la Colaboración MAGIC.",
+    url: "https://www.linkedin.com/feed/update/urn:li:activity:7341530506536050689/",
+    kind: "post",
+  },
+  {
+    date: "2025-06-11",
+    title: "🎓 Master's thesis: done!",
+    titleEs: "🎓 TFM: ¡terminado!",
+    summary: "Successfully defended Master's thesis on dark matter density profile of globular cluster M15 in high-energy astrophysics.",
+    summaryEs: "Defendí exitosamente mi tesis de Máster sobre el perfil de densidad de materia oscura del cúmulo globular M15 en astrofísica de altas energías.",
+    url: "https://www.linkedin.com/feed/update/urn:li:activity:7341529298362687488/",
+    kind: "post",
+  },
+  {
+    date: "2025-01-30",
+    title: "🌟 Exciting milestone alert! 🌟",
+    titleEs: "🌟 ¡Alerta de hito emocionante! 🌟",
+    summary: "Presented preliminary Master's thesis results on dark matter at Nordic Conference on Particle Physics and MAGIC+LST F2F meeting.",
+    summaryEs: "Presenté resultados preliminares de mi tesis de Máster sobre materia oscura en la Conferencia Nórdica de Física de Partículas y la reunión MAGIC+LST F2F.",
+    url: "https://www.linkedin.com/posts/iv%C3%A1nvillegasp%C3%A9rez_exciting-milestone-alert-this-month-ugcPost-7285603409972318208-Gw66/",
+    kind: "post",
+  },
+  {
+    date: "2024-07-21",
+    title: "My first scientific presentation!",
+    titleEs: "¡Mi primera presentación científica!",
+    summary: "Attended three major conferences in 2024 and presented Master's thesis preliminary results at MAGIC General Meeting in Łódź.",
+    summaryEs: "Asistí a tres conferencias importantes en 2024 y presenté resultados preliminares de mi tesis de Máster en la Reunión General MAGIC en Łódź.",
+    url: "https://www.linkedin.com/posts/iv%C3%A1nvillegasp%C3%A9rez_reflecting-on-an-exciting-year-in-2024-i-ugcPost-7264272979214131200-YrLs/",
+    kind: "post",
+  },
+];
+
+const INSTITUTIONS = {
+  uio: {
+    fullName: "University of Oslo",
+    href: "https://www.uio.no/english/",
+    light: "assets/institutions/UiO_pos.png",
+    dark: "assets/institutions/UiO_neg.png",
+  },
+  uc: {
+    fullName: "Universidad de Cantabria",
+    href: "https://web.unican.es/en",
+    light: "assets/institutions/UC.png",
+  },
+  um: {
+    fullName: "Universidad de Murcia",
+    href: "https://www.um.es/en",
+    light: "assets/institutions/SelloUMU-positivo.png",
+    dark: "assets/institutions/SelloUMU-negativo.png",
+  },
+  ifca: {
+    fullName: "Instituto de Física de Cantabria (CSIC — UC)",
+    href: "https://ifca.unican.es/en-us",
+    light: "assets/institutions/IFCA.png",
+  },
+  magic: {
+    fullName: "MAGIC Collaboration",
+    href: "https://magic.mpp.mpg.de/",
+    light: "assets/institutions/MAGIC_logo.jpg",
+  },
+};
+
+const SOCIALS = [
+  { label: "Email", href: "mailto:ivanvillegasperez@protonmail.com", handle: "ivanvillegasperez@protonmail.com" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/Iv%C3%A1nVillegasP%C3%A9rez/", handle: "/in/IvánVillegasPérez" },
+  { label: "GitHub", href: "https://github.com/ivanvillegas7", handle: "@ivanvillegas7" },
+  { label: "ORCID", href: "https://orcid.org/0009-0001-2300-603X", handle: "0009-0001-2300-603X" },
+  { label: "ResearchGate", href: "https://www.researchgate.net/profile/Ivan-Villegas-Perez", handle: "Ivan-Villegas-Perez" },
+];
+
+// ===========================
+// STATE
+// ===========================
+let lang = localStorage.getItem('lang') || 'en';
+let theme = localStorage.getItem('theme') || 'system';
+let currentPage = 'home';
+
+// ===========================
+// THEME
+// ===========================
+function applyTheme() {
+  const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  document.documentElement.classList.toggle('dark', isDark);
+  const btn = document.getElementById('theme-btn');
+  if (btn) btn.textContent = isDark ? '☽' : '☀';
+}
+function cycleTheme() {
+  const order = ['system', 'light', 'dark'];
+  theme = order[(order.indexOf(theme) + 1) % order.length];
+  localStorage.setItem('theme', theme);
+  applyTheme();
+}
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
+
+// ===========================
+// LANGUAGE
+// ===========================
+function setLang(l) {
+  lang = l;
+  localStorage.setItem('lang', l);
+  document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  document.getElementById('btn-es').classList.toggle('active', l === 'es');
+  // Update all data-en/data-es elements
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.textContent = l === 'es' ? (el.dataset.es || el.dataset.en) : el.dataset.en;
+  });
+  // Re-render dynamic content
+  renderAll();
+}
+
+// ===========================
+// NAVIGATION
+// ===========================
+function navigate(page) {
+  currentPage = page;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  // Update nav active states
+  ['home','projects','education','conferences'].forEach(p => {
+    const btn = document.getElementById('nav-' + p);
+    if (btn) btn.classList.toggle('active', p === page);
+  });
+  window.scrollTo(0, 0);
+  // Update URL hash
+  history.pushState({}, '', page === 'home' ? '#' : '#' + page);
+}
+
+window.addEventListener('popstate', () => {
+  const hash = location.hash.replace('#', '') || 'home';
+  if (['home','projects','education','conferences'].includes(hash)) navigate(hash);
+});
+
+// ===========================
+// HELPERS
+// ===========================
+function instBadges(ids) {
+  if (!ids || !ids.length) return '';
+  return '<span class="inst-badges">' + ids.map(id => {
+    const inst = INSTITUTIONS[id];
+    if (!inst) return '';
+    if (inst.dark) {
+      return `<a class="inst-badge" href="${inst.href}" target="_blank" rel="noreferrer" title="${inst.fullName}">
+        <img class="light-only" src="${inst.light}" alt="${inst.fullName}" />
+        <img class="dark-only" src="${inst.dark}" alt="${inst.fullName}" />
+      </a>`;
+    }
+    return `<a class="inst-badge" href="${inst.href}" target="_blank" rel="noreferrer" title="${inst.fullName}">
+      <img src="${inst.light}" alt="${inst.fullName}" />
+    </a>`;
+  }).join('') + '</span>';
+}
+
+function fmtDate(iso) {
+  return new Date(iso).toLocaleDateString(lang === 'es' ? 'es-ES' : 'en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+function esc(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function roleLabelConf(role) {
+  if (lang === 'es') {
+    if (role === 'talk') return 'Charla presentada';
+    if (role === 'defense') return 'Defensa de tesis';
+    return 'Asistente';
+  }
+  if (role === 'talk') return 'Contributed talk';
+  if (role === 'defense') return 'Thesis defense';
+  return 'Attendee';
+}
+
+// ===========================
+// RENDER: PROJECT ITEM
+// ===========================
+function renderProjectItem(p, linkToDetail) {
+  const title = lang === 'es' && p.titleEs ? p.titleEs : p.title;
+  const nature = lang === 'es' && p.natureEs ? p.natureEs : p.nature;
+  const context = lang === 'es' && p.contextEs ? p.contextEs : p.context;
+  const abstract = lang === 'es' && p.abstractEs ? p.abstractEs : p.abstract;
+  const pplLabel = p.peopleLabel === 'Co-authors' ? (lang === 'es' ? 'Coautores' : 'Co-authors') : (lang === 'es' ? 'Tutores' : 'Supervisors');
+  const readReport = lang === 'es' ? 'Leer informe →' : 'Read report →';
+  const github = 'GitHub ↗';
+
+  const people = p.collaborators.map((c, i) => {
+    const role = lang === 'es' && c.roleEs ? c.roleEs : c.role;
+    const sep = i < p.collaborators.length - 1 ? '; ' : '.';
+    return `<span class="collab-name">${esc(c.name)}</span>${role ? ` <span style="color:var(--muted-foreground)">(${esc(role)})</span>` : ''}${sep}`;
+  }).join('');
+
+  const pdfAction = p.reportPdf ? (p.reportPdf.startsWith('http')
+    ? `<a class="link-primary" href="${p.reportPdf}" target="_blank" rel="noreferrer">${readReport}</a>`
+    : `<a class="link-primary" href="${p.reportPdf}">${readReport}</a>`)
+    : '';
+
+  return `
+    <li class="project-item">
+      <div class="project-meta">
+        <div class="project-year">${esc(p.year)}</div>
+        <div class="project-nature">${esc(nature)}</div>
+      </div>
+      <div>
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:0.75rem 0.75rem;">
+          <h3 class="project-title">
+            <span class="project-title-link" style="cursor:default;">${esc(title)}</span>
+          </h3>
+          ${instBadges(p.institutions)}
+        </div>
+        <p class="project-context">${esc(context)}</p>
+        <p class="project-abstract">${esc(abstract)}</p>
+        ${p.collaborators.length ? `<p class="project-people"><em>${pplLabel} · </em>${people}</p>` : ''}
+        <div class="project-tags">
+          ${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}
+          <div class="project-links">
+            ${pdfAction}
+            <a class="link-muted" href="${p.githubUrl}" target="_blank" rel="noreferrer">${github}</a>
+          </div>
+        </div>
+      </div>
+    </li>`;
+}
+
+// ===========================
+// RENDER: HOME PROJECTS
+// ===========================
+function renderHomeProjects() {
+  const el = document.getElementById('home-projects');
+  if (!el) return;
+  el.innerHTML = PROJECTS.slice(0, 3).map(p => renderProjectItem(p, true)).join('');
+}
+
+// ===========================
+// RENDER: ALL PROJECTS
+// ===========================
+function renderAllProjects() {
+  const el = document.getElementById('all-projects');
+  if (!el) return;
+  el.innerHTML = PROJECTS.map(p => renderProjectItem(p, false)).join('');
+}
+
+// ===========================
+// RENDER: HOME TALKS
+// ===========================
+function renderHomeTalks() {
+  const el = document.getElementById('home-talks');
+  if (!el) return;
+  const talks = CONFERENCES.filter(c => c.role === 'talk').slice(0, 3);
+  el.innerHTML = talks.map(c => {
+    const summary = lang === 'es' ? c.summaryEs : c.summary;
+    const roleLabel = roleLabelConf(c.role);
+    return `
+      <li class="talk-item">
+        <div class="project-meta">
+          <div class="project-year">${esc(c.year)}</div>
+          <div class="project-nature">${esc(roleLabel)}</div>
+        </div>
+        <div>
+          <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:0.5rem;">
+            <p class="project-title">${esc(c.contribution || c.name)}</p>
+            ${instBadges(c.institutions)}
+          </div>
+          <p class="project-context">${esc(c.name)} · ${esc(c.city)}, ${esc(c.country)}</p>
+          <p class="project-abstract" style="margin-top:0.75rem;">${esc(summary)}</p>
+        </div>
+      </li>`;
+  }).join('');
+}
+
+// ===========================
+// RENDER: NEWS
+// ===========================
+function renderNews() {
+  const el = document.getElementById('home-news');
+  if (!el) return;
+  el.innerHTML = NEWS.slice(0, 5).map(n => {
+    const title = lang === 'es' && n.titleEs ? n.titleEs : n.title;
+    const summary = lang === 'es' && n.summaryEs ? n.summaryEs : n.summary;
+    const kindLabel = n.kind === 'repost' ? (lang === 'es' ? 'Repost' : 'Repost') : (lang === 'es' ? 'Publicación' : 'Post');
+    return `
+      <li class="news-item">
+        <div>
+          <div class="news-date">${fmtDate(n.date)}</div>
+          <div class="news-kind">${kindLabel}</div>
+        </div>
+        <div>
+          <a class="news-title" href="${n.url}" target="_blank" rel="noreferrer">${esc(title)}</a>
+          <p class="news-summary">${esc(summary)}</p>
+        </div>
+      </li>`;
+  }).join('');
+}
+
+// ===========================
+// RENDER: SOCIALS
+// ===========================
+function renderSocials(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = SOCIALS.map(s => `
+    <li class="social-item">
+      <span class="social-label">${esc(s.label)}</span>
+      <a class="social-handle" href="${s.href}" target="_blank" rel="noreferrer">${esc(s.handle)} ↗</a>
+    </li>`).join('');
+}
+
+// ===========================
+// RENDER: EDUCATION
+// ===========================
+function renderEducation() {
+  const el = document.getElementById('education-content');
+  if (!el) return;
+  const es = lang === 'es';
+  el.innerHTML = EDUCATION.map((d, di) => {
+    const courses = d.courses.map(g => {
+      const hasStarred = g.items.some(c => c.starred);
+      return `
+        <div class="course-group">
+          <p class="course-group-label">${esc(es ? g.groupLabelEs : g.groupLabel)}</p>
+          <ul class="course-list">
+            ${g.items.map(c => `
+              <li class="course-item">
+                <span class="course-name">
+                  ${c.code ? `<span class="course-code">${esc(c.code)}</span>` : ''}
+                  ${esc(es ? c.titleEs : c.title)}
+                  ${c.starred ? '<span style="margin-left:0.25rem;color:color-mix(in oklch, var(--foreground) 70%, transparent)">★</span>' : ''}
+                  ${c.year ? `<span class="course-year">(${esc(c.year)})</span>` : ''}
+                </span>
+                <span class="course-ects">${c.ects > 0 ? c.ects + ' ECTS' : '—'}</span>
+              </li>`).join('')}
+          </ul>
+          ${hasStarred ? `<p class="starred-note">${es ? '★ Asignaturas convalidadas por las cursadas durante el ERASMUS.' : '★ Courses recognised through the ERASMUS exchange.'}</p>` : ''}
+        </div>`;
+    }).join('');
+
+    return `
+      <article class="degree-block" ${di === 0 ? 'style="border-top:none;padding-top:1rem;"' : ''}>
+        <header>
+          <div style="display:flex;align-items:center;gap:0.75rem;">
+            ${instBadges([d.institutionId])}
+            <span class="degree-meta">${esc(d.period)} · ${d.totalEcts} ECTS</span>
+          </div>
+          <h2 class="degree-h2">${esc(es ? d.degreeEs : d.degree)}</h2>
+          <p class="degree-institution">${esc(es ? d.institutionEs : d.institution)}</p>
+          <p class="degree-spec">
+            <strong style="font-weight:600;">${es ? 'Especialización:' : 'Specialisation:'}</strong>
+            ${esc(es ? d.specialisationEs : d.specialisation)}.
+          </p>
+          ${d.notes ? `<p style="margin-top:0.5rem;font-size:0.9rem;color:var(--muted-foreground);">${esc(es ? (d.notesEs || d.notes) : d.notes)}</p>` : ''}
+          ${d.thesisTitle ? `<p class="degree-thesis">
+            <span style="font-family:var(--font-mono);font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--muted-foreground);">${es ? 'Tesis · ' : 'Thesis · '}</span>
+            <em>${esc(es ? (d.thesisTitleEs || d.thesisTitle) : d.thesisTitle)}</em>
+          </p>` : ''}
+        </header>
+        <div style="margin-top:2rem;">${courses}</div>
+      </article>`;
+  }).join('');
+}
+
+// ===========================
+// RENDER: CONFERENCES
+// ===========================
+function renderConferences() {
+  const el = document.getElementById('conferences-content');
+  if (!el) return;
+  const es = lang === 'es';
+  const talks = CONFERENCES.filter(c => c.role === 'talk');
+  const defenses = CONFERENCES.filter(c => c.role === 'defense');
+  const attended = CONFERENCES.filter(c => c.role === 'attendee');
+
+  function confCard(c) {
+    const summary = es ? c.summaryEs : c.summary;
+    const roleLabel = roleLabelConf(c.role);
+    const slidesLabel = es ? 'Diapositivas ↓' : 'Slides ↓';
+    const viewSlidesLabel = es ? 'Ver diapositivas →' : 'View slides →';
+    const noSlidesLabel = es ? 'Diapositivas próximamente' : 'Slides coming soon';
+    return `
+      <li class="conf-item">
+        <div class="project-meta">
+          <div class="project-year">${esc(c.year)}</div>
+          <div class="project-nature">${esc(roleLabel)}</div>
+        </div>
+        <div>
+          <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:0.5rem;">
+            <h3 class="conf-name">${esc(c.name)}</h3>
+            ${instBadges(c.institutions)}
+          </div>
+          <p class="conf-location">${esc(c.city)}, ${esc(c.country)}</p>
+          ${c.contribution ? `<p class="conf-contribution">
+            <span style="font-family:var(--font-mono);font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--muted-foreground);">${esc(roleLabel)} · </span>
+            <em>${esc(c.contribution)}</em>
+          </p>` : ''}
+          <p class="conf-summary">${esc(summary)}</p>
+          ${(c.role === 'talk' || c.role === 'defense') ? `<div class="conf-actions">
+            ${c.slidesPdf
+              ? `<a class="link-primary" href="${c.slidesPdf}" target="_blank">${viewSlidesLabel}</a>
+                 <a class="link-muted" href="${c.slidesPdf}" download>${slidesLabel}</a>`
+              : `<span style="font-style:italic;color:var(--muted-foreground);">${noSlidesLabel}</span>`}
+          </div>` : ''}
+        </div>
+      </li>`;
+  }
+
+  const talkSection = talks.length ? `
+    <section class="conf-section container">
+      <h2 class="conf-h2">${es ? 'Charlas presentadas' : 'Contributed talks'}</h2>
+      <ul class="conf-list">${talks.map(confCard).join('')}</ul>
+    </section>` : '';
+
+  const defenseSection = defenses.length ? `
+    <section class="conf-section container">
+      <h2 class="conf-h2">${es ? 'Defensa de tesis' : 'Thesis defense'}</h2>
+      <ul class="conf-list">${defenses.map(confCard).join('')}</ul>
+    </section>` : '';
+
+  const attendedSection = attended.length ? `
+    <section class="conf-section container">
+      <h2 class="conf-h2">${es ? 'Otros congresos asistidos' : 'Other conferences attended'}</h2>
+      <ul class="conf-list">${attended.map(confCard).join('')}</ul>
+    </section>` : '';
+
+  el.innerHTML = talkSection + defenseSection + attendedSection;
+}
+
+// ===========================
+// RENDER: FOOTERS
+// ===========================
+function renderFooters() {
+  const year = new Date().getFullYear();
+  const updated = new Date().toLocaleDateString(lang === 'es' ? 'es-ES' : 'en-GB', { month: 'long', year: 'numeric' });
+  const set = lang === 'es' ? 'Compuesto en Computer Modern.' : 'Set in Computer Modern.';
+  const lastUpdated = lang === 'es' ? 'Última actualización' : 'Last updated';
+  document.querySelectorAll('[id^="footer-copy"]').forEach(el => {
+    el.textContent = `© ${year} Iván Villegas-Pérez. ${set}`;
+  });
+  document.querySelectorAll('[id^="footer-date"]').forEach(el => {
+    el.textContent = `${lastUpdated} · ${updated}`;
+  });
+}
+
+// ===========================
+// RENDER ALL
+// ===========================
+function renderAll() {
+  // Update static data-en/data-es
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.textContent = lang === 'es' ? (el.dataset.es || el.dataset.en) : el.dataset.en;
+  });
+  renderHomeProjects();
+  renderAllProjects();
+  renderHomeTalks();
+  renderNews();
+  renderSocials('socials-home');
+  renderEducation();
+  renderConferences();
+  renderFooters();
+}
+
+// ===========================
+// INIT
+// ===========================
+applyTheme();
+
+// Restore language UI state
+document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+
+// Route from hash
+const initialHash = location.hash.replace('#', '') || 'home';
+if (['home','projects','education','conferences'].includes(initialHash)) {
+  navigate(initialHash);
+}
+
+renderAll();
+</script>
+</body>
+</html>
