@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <link rel="icon" href="public/favicon.ico" type="image/x-icon"/>
+  <link rel="icon" href="public/favicon.png" type="image/png"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{{delimiters:[{{left:'$$',right:'$$',display:true}},{{left:'$',right:'$',display:false}}],throwOnError:false}})"></script>
+  <script src="shared.js"></script>
+  <title>Education — Iván Villegas-Pérez</title>
+</head>
+<body>
+<header class="site-nav">
+<div class="nav-inner">
+  <a class="nav-brand" href="index.html"><em>Iván</em> Villegas-Pérez</a>
+  <nav class="nav-links">
+    <a class="nav-link" href="index.html" id="nav-home" data-en="About" data-es="Sobre mí">About</a>
+    <a class="nav-link" href="projects.html" id="nav-projects" data-en="Projects" data-es="Proyectos">Projects</a>
+    <a class="nav-link" href="education.html" id="nav-education" data-en="Education" data-es="Formación">Education</a>
+    <a class="nav-link" href="conferences.html" id="nav-conferences" data-en="Conferences" data-es="Congresos">Conferences</a>
+    <a class="nav-link" href="index.html#news" data-en="News" data-es="Noticias">News</a>
+    <a class="nav-link" href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a>
+    <div style="display:flex;gap:.5rem">
+      <a class="nav-btn" href="public/cv.pdf" target="_blank" rel="noopener">CV ↗</a>
+      <a class="nav-btn" href="public/cva.pdf" target="_blank" rel="noopener">CVA ↗</a>
+    </div>
+    <div class="lang-sw">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+    </div>
+    <button class="theme-btn" onclick="cycleTheme()">
+      <span id="theme-icon">⊙</span>
+      <span class="theme-tip" id="theme-tooltip">Sistema</span>
+    </button>
+  </nav>
+</div>
+</header>
+
+<section style="border-bottom:1px solid var(--border)">
+  <div class="container page-header">
+    <p class="page-kicker" data-en="&sect; Education" data-es="&sect; Formación">&sect; Education</p>
+    <h1 class="page-h1" data-en="Academic education" data-es="Formación académica">Academic education</h1>
+    <p class="page-lede" data-en="M.Sc. and B.Sc. in Physics, focused on astroparticle physics, cosmology and general relativity." data-es="Máster y Grado en Física, con foco en astropartículas, cosmología y relatividad general.">M.Sc. and B.Sc. in Physics.</p>
+  </div>
+</section>
+
+<div class="container" style="padding-top:3rem;padding-bottom:5rem">
+  <div id="education-content"></div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p id="footer-copy"></p>
+    <p class="footer-updated" id="footer-date"></p>
+  </div>
+</footer>
+
+<script>
+function renderPage(){
+  renderStaticText();
+  const el=document.getElementById('education-content');if(!el)return;
+  const es=lang==='es';
+  el.innerHTML=EDUCATION.map((d,di)=>{
+    const courses=d.courses.map(g=>{
+      const hasStarred=g.items.some(c=>c.starred);
+      return `<div class="course-group">
+        <p class="course-group-label">${esc(es?g.groupLabelEs:g.groupLabel)}</p>
+        <ul class="course-list">${g.items.map(c=>`<li class="course-item">
+          <span class="course-name">
+            ${c.code?`<span class="course-code">${esc(c.code)}</span>`:''}${esc(es&&c.titleEs?c.titleEs:c.title)}${c.starred?'<span style="margin-left:.25rem;color:color-mix(in oklch,var(--fg) 60%,transparent)">★</span>':''}${c.year?`<span class="course-yr">(${esc(c.year)})</span>`:''}
+          </span>
+          <span class="course-ects">${c.ects>0?c.ects+' ECTS':'—'}</span>
+        </li>`).join('')}</ul>
+        ${hasStarred?`<p class="starred-note">${es?'★ Asignaturas convalidadas por las cursadas durante el ERASMUS.':'★ Courses recognised through the ERASMUS exchange.'}</p>`:''}
+      </div>`;
+    }).join('');
+    const thesisTitle=es&&d.thesisTitleEs?d.thesisTitleEs:d.thesisTitle;
+    const thesisLink=d.thesisSlug?`href="projects.html#${d.thesisSlug}"`:' href="#"';
+    return `<article class="degree-block"${di===0?' style="border-top:none;padding-top:1rem;"':''}>
+      <header>
+        <div style="display:flex;align-items:center;gap:.75rem">
+          ${instBadges([d.institutionId])}
+          <span class="degree-meta">${esc(d.period)} &middot; ${d.totalEcts} ECTS</span>
+        </div>
+        <h2 class="degree-h2">${esc(es?d.degreeEs:d.degree)}</h2>
+        <p class="degree-institution">${esc(es?d.institutionEs:d.institution)}</p>
+        <p class="degree-spec"><strong style="font-weight:600">${es?'Especialización:':'Specialisation:'}</strong> ${esc(es?d.specialisationEs:d.specialisation)}.</p>
+        ${d.notes?`<p style="margin-top:.5rem;font-size:.9rem;color:var(--muted)">${esc(es?d.notesEs||d.notes:d.notes)}</p>`:''}
+        <p class="degree-thesis">
+          <span style="font-family:var(--mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted)">${es?'Tesis &middot; ':'Thesis &middot; '}</span>
+          <a class="degree-thesis-link" ${thesisLink}><em>${esc(thesisTitle)}</em></a>
+        </p>
+      </header>
+      <div style="margin-top:2rem">${courses}</div>
+    </article>`;
+  }).join('');
+  renderFooter();
+  renderKatex();
+}
+
+setNavActive('education');
+applyTheme();
+document.getElementById('btn-en').classList.toggle('active',lang==='en');
+document.getElementById('btn-es').classList.toggle('active',lang==='es');
+document.documentElement.lang=lang==='es'?'es':'en';
+renderPage();
+</script>
+</body>
+</html>

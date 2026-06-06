@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <link rel="icon" href="public/favicon.ico" type="image/x-icon"/>
+  <link rel="icon" href="public/favicon.png" type="image/png"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{{delimiters:[{{left:'$$',right:'$$',display:true}},{{left:'$',right:'$',display:false}}],throwOnError:false}})"></script>
+  <script src="shared.js"></script>
+  <title>Projects — Iván Villegas-Pérez</title>
+</head>
+<body>
+<header class="site-nav">
+<div class="nav-inner">
+  <a class="nav-brand" href="index.html"><em>Iván</em> Villegas-Pérez</a>
+  <nav class="nav-links">
+    <a class="nav-link" href="index.html" id="nav-home" data-en="About" data-es="Sobre mí">About</a>
+    <a class="nav-link" href="projects.html" id="nav-projects" data-en="Projects" data-es="Proyectos">Projects</a>
+    <a class="nav-link" href="education.html" id="nav-education" data-en="Education" data-es="Formación">Education</a>
+    <a class="nav-link" href="conferences.html" id="nav-conferences" data-en="Conferences" data-es="Congresos">Conferences</a>
+    <a class="nav-link" href="index.html#news" data-en="News" data-es="Noticias">News</a>
+    <a class="nav-link" href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a>
+    <div style="display:flex;gap:.5rem">
+      <a class="nav-btn" href="public/cv.pdf" target="_blank" rel="noopener">CV ↗</a>
+      <a class="nav-btn" href="public/cva.pdf" target="_blank" rel="noopener">CVA ↗</a>
+    </div>
+    <div class="lang-sw">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+    </div>
+    <button class="theme-btn" onclick="cycleTheme()">
+      <span id="theme-icon">⊙</span>
+      <span class="theme-tip" id="theme-tooltip">Sistema</span>
+    </button>
+  </nav>
+</div>
+</header>
+
+<section style="border-bottom:1px solid var(--border)">
+  <div class="container page-header">
+    <p class="page-kicker" data-en="&sect; Projects" data-es="&sect; Proyectos">&sect; Projects</p>
+    <h1 class="page-h1"><span data-en="Main" data-es="Principales">Main</span> <em><span data-en="scientific projects" data-es="proyectos científicos">scientific projects</span></em>.</h1>
+    <p class="page-lede" data-en="Thesis work, course projects and research internships. Click a title to expand the full report with figures." data-es="Trabajos de tesis, proyectos de asignatura y prácticas de investigación. Pulsa un título para expandir el informe completo con figuras.">Thesis work, course projects and research internships. Click a title to expand.</p>
+  </div>
+</section>
+
+<div class="container" style="padding-top:3rem;padding-bottom:5rem">
+  <ol class="proj-list" id="proj-list"></ol>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p id="footer-copy"></p>
+    <p class="footer-updated" id="footer-date"></p>
+  </div>
+</footer>
+
+<script>
+function renderPage(){
+  renderStaticText();
+  const el=document.getElementById('proj-list');if(!el)return;
+  const es=lang==='es';
+  el.innerHTML=PROJECTS.map(p=>{
+    const title=es&&p.titleEs?p.titleEs:p.title;
+    const nature=es&&p.natureEs?p.natureEs:p.nature;
+    const context=es&&p.contextEs?p.contextEs:p.context;
+    const abstract=es&&p.abstractEs?p.abstractEs:p.abstract;
+    const pplLabel=p.peopleLabel==='Co-authors'?(es?'Coautores':'Co-authors'):(es?'Tutores':'Supervisors');
+    const people=p.collaborators.map(c=>`${esc(c.name)} <span style="color:var(--muted)">(${esc(es&&c.roleEs?c.roleEs:c.role)})</span>`).join('; ');
+    const readLabel=es?'Leer informe ↗':'Read report ↗';
+    const expandLabel=es?'Ver informe completo':'View full report';
+    const collapseLabel=es?'Ocultar informe':'Hide report';
+    return `<li class="proj-entry" id="entry-${p.slug}">
+      <div class="proj-meta">
+        <div class="proj-year">${esc(p.year)}</div>
+        <div class="proj-nature">${esc(nature)}</div>
+      </div>
+      <div>
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:.75rem">
+          <button class="proj-title-btn" onclick="toggleDetail('${p.slug}')">${esc(title)}</button>
+          ${instBadges(p.institutions)}
+        </div>
+        <p class="proj-context">${esc(context)}</p>
+        <p class="proj-abstract">${esc(abstract)}</p>
+        <p class="proj-people"><em>${pplLabel} &middot; </em>${people}</p>
+        <div class="proj-tags">
+          ${p.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}
+          <div class="proj-links">
+            ${p.reportPdf?`<a class="link-primary" href="${p.reportPdf}" target="_blank" rel="noopener">${readLabel}</a>`:''}
+            <a class="link-muted" href="${p.githubUrl}" target="_blank" rel="noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+        <button class="expand-btn" id="btn-${p.slug}" onclick="toggleDetail('${p.slug}')">${expandLabel} ▾</button>
+      </div>
+    </li>
+    <li class="proj-detail" id="detail-${p.slug}">
+      <div class="container ft-inner">
+        ${renderFullText(p)}
+      </div>
+    </li>`;
+  }).join('');
+  renderFooter();
+  renderKatex();
+  // Open from hash
+  const hash=location.hash.replace('#','');
+  if(hash) setTimeout(()=>openDetail(hash),100);
+}
+
+function toggleDetail(slug){
+  const det=document.getElementById('detail-'+slug);
+  const btn=document.getElementById('btn-'+slug);
+  const es=lang==='es';
+  const openLabel=es?'Ver informe completo':'View full report';
+  const closeLabel=es?'Ocultar informe':'Hide report';
+  if(!det)return;
+  const isOpen=det.classList.contains('open');
+  det.classList.toggle('open',!isOpen);
+  if(btn){btn.textContent=(isOpen?openLabel:closeLabel)+' '+(isOpen?'▾':'▴');btn.classList.toggle('open',!isOpen);}
+  if(!isOpen){history.replaceState(null,'','#'+slug);setTimeout(()=>det.scrollIntoView({behavior:'smooth',block:'start'}),50);renderKatex();}
+  else history.replaceState(null,'','projects.html');
+}
+function openDetail(slug){
+  const det=document.getElementById('detail-'+slug);
+  const btn=document.getElementById('btn-'+slug);
+  const es=lang==='es';
+  if(det&&!det.classList.contains('open')){
+    det.classList.add('open');
+    if(btn){btn.textContent=(es?'Ocultar informe':'Hide report')+' ▴';btn.classList.add('open');}
+    setTimeout(()=>det.scrollIntoView({behavior:'smooth',block:'start'}),80);
+    renderKatex();
+  }
+}
+
+setNavActive('projects');
+applyTheme();
+document.getElementById('btn-en').classList.toggle('active',lang==='en');
+document.getElementById('btn-es').classList.toggle('active',lang==='es');
+document.documentElement.lang=lang==='es'?'es':'en';
+renderPage();
+</script>
+</body>
+</html>
