@@ -9,95 +9,41 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"/>
   <link rel="stylesheet" href="shared.css"/>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body,{{delimiters:[{{left:'$$',right:'$$',display:true}},{{left:'$',right:'$',display:false}}],throwOnError:false}})"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
   <script src="shared.js"></script>
-  <title>Conferences — Iván Villegas-Pérez</title>
+  <title>Conferences &#8212; Iv&#225;n Villegas-P&#233;rez</title>
 </head>
 <body>
-<header class="site-nav">
-<div class="nav-inner">
-  <a class="nav-brand" href="index.html"><em>Iván</em> Villegas-Pérez</a>
-  <nav class="nav-links">
-    <a class="nav-link" href="index.html" id="nav-home" data-en="About" data-es="Sobre mí">About</a>
-    <a class="nav-link" href="projects.html" id="nav-projects" data-en="Projects" data-es="Proyectos">Projects</a>
-    <a class="nav-link" href="education.html" id="nav-education" data-en="Education" data-es="Formación">Education</a>
-    <a class="nav-link" href="conferences.html" id="nav-conferences" data-en="Conferences" data-es="Congresos">Conferences</a>
-    <a class="nav-link" href="index.html#news" data-en="News" data-es="Noticias">News</a>
-    <a class="nav-link" href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a>
-    <div style="display:flex;gap:.5rem">
-      <a class="nav-btn" href="public/cv.pdf" target="_blank" rel="noopener">CV ↗</a>
-      <a class="nav-btn" href="public/cva.pdf" target="_blank" rel="noopener">CVA ↗</a>
-    </div>
-    <div class="lang-sw">
-      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
-    </div>
-    <button class="theme-btn" onclick="cycleTheme()">
-      <span id="theme-icon">⊙</span>
-      <span class="theme-tip" id="theme-tooltip">Sistema</span>
-    </button>
-  </nav>
-</div>
-</header>
-
+<header class="site-nav"><div class="nav-inner"><a class="nav-brand" href="index.html">Iván Villegas-Pérez</a><nav class="nav-links"><a class="nav-link" href="index.html" id="nav-home" data-en="About" data-es="Sobre mí">About</a><a class="nav-link" href="projects.html" id="nav-projects" data-en="Projects" data-es="Proyectos">Projects</a><a class="nav-link" href="education.html" id="nav-education" data-en="Education" data-es="Formación">Education</a><a class="nav-link" href="conferences.html" id="nav-conferences" data-en="Conferences" data-es="Congresos">Conferences</a><a class="nav-link" href="index.html#news" data-en="News" data-es="Noticias">News</a><a class="nav-link" href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a><div style="display:flex;gap:.5rem"><a class="nav-btn" href="public/cv.pdf" target="_blank" rel="noopener">CV &#8599;</a><a class="nav-btn" href="public/cva.pdf" target="_blank" rel="noopener">CVA &#8599;</a></div><div class="lang-sw"><button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button><button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button></div><button class="theme-btn" onclick="cycleTheme()"><span id="theme-icon">&#8857;</span><span class="theme-tip" id="theme-tooltip">Sistema</span></button></nav></div></header>
 <section style="border-bottom:1px solid var(--border)">
   <div class="container page-header">
-    <p class="page-kicker" data-en="&sect; Conferences" data-es="&sect; Congresos">&sect; Conferences</p>
-    <h1 class="page-h1"><span data-en="Talks &amp;" data-es="Charlas y">Talks &amp;</span> <em><span data-en="conferences" data-es="congresos">conferences</span></em>.</h1>
-    <p class="page-lede" data-en="International conferences and collaboration meetings &mdash; contributed talks and attended events." data-es="Congresos internacionales y reuniones de colaboración &mdash; charlas presentadas y eventos asistidos.">International conferences and collaboration meetings.</p>
+    <p class="page-kicker" data-en="Conferences" data-es="Congresos">Conferences</p>
+    <h1 class="page-h1" data-en="Talks and conferences" data-es="Charlas y congresos">Talks and conferences</h1>
+    <p class="page-lede" data-en="International conferences and collaboration meetings &#8212; contributed talks and attended events." data-es="Congresos internacionales y reuniones de colaboraci&#243;n &#8212; charlas presentadas y eventos asistidos.">International conferences and collaboration meetings.</p>
   </div>
 </section>
-
 <div id="conf-content"></div>
-
-<footer class="site-footer">
-  <div class="footer-inner">
-    <p id="footer-copy"></p>
-    <p class="footer-updated" id="footer-date"></p>
-  </div>
-</footer>
-
+<footer class="site-footer"><div class="footer-inner"><p id="footer-copy"></p><p class="footer-updated" id="footer-date"></p></div></footer>
 <script>
 function renderPage(){
   renderStaticText();
-  const el=document.getElementById('conf-content');if(!el)return;
-  const es=lang==='es';
-
+  var el=document.getElementById('conf-content');if(!el)return;
+  var es=lang==='es';
   function confCard(c){
-    const isTD=c.role==='talk'||c.role==='defense';
-    const slideBlock=isTD?slidesWidget(c):'';
-    return `<li class="conf-item">
-      <div>
-        <div class="conf-year">${esc(c.year)}</div>
-        <div class="conf-role">${esc(roleLabelConf(c.role))}</div>
-      </div>
-      <div>
-        <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:.5rem">
-          <h3 class="conf-name">${esc(c.name)}</h3>${instBadges(c.institutions)}
-        </div>
-        <p class="conf-loc">${esc(c.city)}, ${esc(c.country)}</p>
-        ${c.contribution?`<p class="conf-contrib"><span style="font-family:var(--mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted)">${esc(roleLabelConf(c.role))} &middot; </span><em>${esc(c.contribution)}</em></p>`:''}
-        <p class="conf-summary">${esc(es?c.summaryEs:c.summary)}</p>
-        ${isTD?`<div style="margin-top:1.75rem">${slideBlock}</div>`:''}
-      </div>
-    </li>`;
+    var isTD=c.role==='talk'||c.role==='defense';
+    var sw=isTD?'<div style="margin-top:1.75rem">'+slidesWidget(c)+'</div>':'';
+    return '<li class="conf-item"><div><div class="conf-year">'+esc(c.year)+'</div><div class="conf-role">'+esc(roleLabelConf(c.role))+'</div></div><div><div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:.5rem"><h3 class="conf-name">'+esc(c.name)+'</h3>'+instBadges(c.institutions)+'</div><p class="conf-loc">'+esc(c.city)+', '+esc(c.country)+'</p>'+(c.contribution?'<p class="conf-contrib"><span style="font-family:var(--mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted)">'+esc(roleLabelConf(c.role))+' &middot; </span><em>'+esc(c.contribution)+'</em></p>':'')+'<p class="conf-summary">'+esc(es?c.summaryEs:c.summary)+'</p>'+sw+'</div></li>';
   }
-
-  const talks=CONFERENCES.filter(c=>c.role==='talk');
-  const defenses=CONFERENCES.filter(c=>c.role==='defense');
-  const attended=CONFERENCES.filter(c=>c.role==='attendee');
-
+  var talks=CONFERENCES.filter(function(c){return c.role==='talk';});
+  var defenses=CONFERENCES.filter(function(c){return c.role==='defense';});
+  var attended=CONFERENCES.filter(function(c){return c.role==='attendee';});
   el.innerHTML=
-    (talks.length?`<section class="conf-section container"><h2 class="conf-h2">${es?'Charlas presentadas':'Contributed talks'}</h2><ul class="conf-list">${talks.map(confCard).join('')}</ul></section>`:'')+
-    (defenses.length?`<section class="conf-section container"><h2 class="conf-h2">${es?'Defensa de tesis':'Thesis defense'}</h2><ul class="conf-list">${defenses.map(confCard).join('')}</ul></section>`:'')+
-    (attended.length?`<section class="conf-section container"><h2 class="conf-h2">${es?'Otros congresos asistidos':'Other conferences attended'}</h2><ul class="conf-list">${attended.map(confCard).join('')}</ul></section>`:'');
-
+    (talks.length?'<section class="conf-section container"><h2 class="conf-h2">'+(es?'Charlas presentadas':'Contributed talks')+'</h2><ul class="conf-list">'+talks.map(confCard).join('')+'</ul></section>':'')+
+    (defenses.length?'<section class="conf-section container"><h2 class="conf-h2">'+(es?'Defensa de tesis':'Thesis defense')+'</h2><ul class="conf-list">'+defenses.map(confCard).join('')+'</ul></section>':'')+
+    (attended.length?'<section class="conf-section container"><h2 class="conf-h2">'+(es?'Otros congresos asistidos':'Other conferences attended')+'</h2><ul class="conf-list">'+attended.map(confCard).join('')+'</ul></section>':'');
   renderFooter();
-  // init all slide viewers
-  CONFERENCES.filter(c=>c.slideImages&&c.slideImages.length>0).forEach(c=>initSlideViewer(c.slug,c.slideImages));
+  CONFERENCES.filter(function(c){return c.slideImages&&c.slideImages.length>0;}).forEach(function(c){initSlideViewer(c.slug);});
 }
-
 setNavActive('conferences');
 applyTheme();
 document.getElementById('btn-en').classList.toggle('active',lang==='en');
