@@ -22,6 +22,7 @@
     <h1 class="ft-title" id="ft-title">Simulation, detection and characterization of exoplanet transits with the Kepler space mission</h1>
     <p class="ft-byline" id="ft-byline">Iván Villegas-Pérez — Supervisors: Prof. Diego Herranz Muñoz & Dr. Rosa M. Domínguez Quintero (IFCA, CSIC—UC)</p>
     <div class="ft-sidebar"><a class="btn-outline" style="font-size:.8125rem;padding:.375rem .875rem" href="https://hdl.handle.net/10902/30224" target="_blank" rel="noopener"><span data-en="Read PDF &#8599;" data-es="Leer PDF &#8599;">Read PDF &#8599;</span></a><a class="btn-outline" style="font-size:.8125rem;padding:.375rem .875rem" href="https://github.com/ivanvillegas7/Simulation-detection-and-characterization-of-exoplanet-transits-with-Kepler-space-mission" target="_blank" rel="noopener">GitHub &#8599;</a><span id="ft-badges"></span></div>
+    <p id="ft-lang-note" style="margin-top:.75rem;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)"></p>
   </header>
   <div id="ft-body"></div>
 </article>
@@ -39,6 +40,8 @@ function renderPage(){
   document.getElementById('ft-title').textContent=es?_tES:_tEN;
   document.getElementById('ft-byline').textContent=es?_bES:_bEN;
   document.getElementById('ft-badges').innerHTML=instBadges(_inst);
+  var note=document.getElementById('ft-lang-note');
+  if(note) note.textContent=lang==='en'?'Note: the PDF report is in Spanish.':'';
   var html='';
   _secs.forEach(function(sec){
     html+='<section class="ft-section"><h2 class="ft-h2">'+esc(es?sec.h2es:sec.h2en)+'</h2>';

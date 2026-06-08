@@ -35,7 +35,7 @@ function renderPage(){
     var courses=d.courses.map(function(g){
       var hasStarred=g.items.some(function(c){return c.starred;});
       var items=g.items.map(function(c){
-        return '<li class="course-item"><span class="course-name">'+(c.code?'<span class="course-code">'+esc(c.code)+'</span> ':'')+esc(es&&c.titleEs?c.titleEs:c.title)+(c.starred?'<span style="margin-left:.25rem;color:color-mix(in oklch,var(--fg) 60%,transparent)">&#9733;</span>':'')+(c.year?'<span class="course-yr">('+esc(c.year)+')</span>':'')+'</span><span class="course-ects">'+(c.ects>0?c.ects+' ECTS':'&#8212;')+'</span></li>';
+        return '<li class="course-item"><span class="course-name">'+(c.code?'<span class="course-code">'+esc(c.code)+'</span> ':'')+esc(es&&c.titleEs?c.titleEs:c.title)+(c.starred?'<span style="margin-left:.25rem;color:color-mix(in oklch,var(--fg) 60%,transparent)">&#9733;</span>':'')+(c.year?'<span class="course-yr">('+esc(es&&c.yearEs?c.yearEs:c.year)+')</span>':'')+'</span><span class="course-ects">'+(c.ects>0?c.ects+' ECTS':'&#8212;')+'</span></li>';
       }).join('');
       return '<div class="course-group"><p class="course-group-label">'+esc(es?g.groupLabelEs:g.groupLabel)+'</p><ul class="course-list">'+items+'</ul>'+(hasStarred?'<p class="starred-note">'+(es?'&#9733; Asignaturas convalidadas por las cursadas durante el ERASMUS.':'&#9733; Courses recognised through the ERASMUS exchange.')+'</p>':'')+'</div>';
     }).join('');

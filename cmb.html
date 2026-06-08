@@ -39,6 +39,8 @@ function renderPage(){
   document.getElementById('ft-title').textContent=es?_tES:_tEN;
   document.getElementById('ft-byline').textContent=es?_bES:_bEN;
   document.getElementById('ft-badges').innerHTML=instBadges(_inst);
+  var note=document.getElementById('ft-lang-note');
+  if(note) note.textContent=lang==='es'?'Nota: el PDF está en inglés.':'';
   var html='';
   _secs.forEach(function(sec){
     html+='<section class="ft-section"><h2 class="ft-h2">'+esc(es?sec.h2es:sec.h2en)+'</h2>';
