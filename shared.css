@@ -187,3 +187,22 @@ button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
 .footer-updated{font-family:var(--mono);font-size:.75rem}
 
 .ft-table-wrap{overflow-x:auto;margin:1.5rem 0}.ft-table{width:100%;border-collapse:collapse;font-size:.875rem;font-family:var(--mono)}.ft-table th,.ft-table td{border:1px solid var(--border);padding:.4rem .75rem;text-align:left}.ft-table th{background:var(--sec);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em}.ft-table td{color:color-mix(in oklch,var(--fg) 88%,transparent)}
+
+/* Justified text for project pages */
+.ft-p, .ft-section p { text-align: justify; hyphens: auto; }
+/* Equation numbering */
+.ft-eq-wrap { display: flex; align-items: center; margin: 1.25rem 0; }
+.ft-eq-wrap .ft-math { flex: 1; margin: 0; }
+.ft-eq-num { flex-shrink: 0; font-family: var(--mono); font-size: .8rem; color: var(--muted); padding-left: 1rem; min-width: 3.5rem; text-align: right; }
+/* Bibliography list */
+.ft-bib { list-style: none; margin-top: .5rem; }
+.ft-bib li { font-size: .9rem; line-height: 1.7; margin-bottom: .6rem; text-align: justify; padding-left: 2rem; text-indent: -2rem; }
+/* Table caption */
+.ft-table-caption { font-size: .85rem; font-style: italic; color: var(--muted); margin-top: .5rem; margin-bottom: 1rem; text-align: justify; }
+/* In-text citation style */
+.ft-p a.ft-cite { color: var(--muted); text-decoration: none; }
+.ft-p a.ft-cite:hover { text-decoration: underline; }
+/* Algorithm block */
+.ft-algo { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin: 1.5rem 0; font-family: var(--mono); font-size: .85rem; background: color-mix(in oklch, var(--sec) 50%, transparent); }
+.ft-algo-title { font-weight: 600; margin-bottom: .5rem; }
+.ft-algo-line { padding-left: 1.5rem; line-height: 1.8; }

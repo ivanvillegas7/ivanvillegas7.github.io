@@ -9,50 +9,169 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"/>
   <link rel="stylesheet" href="shared.css"/>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
   <script src="shared.js?v=2"></script>
-  <title>Kepler Exoplanet Transits — Iván Villegas-Pérez</title>
+  <title>Kepler Exoplanet Transits &mdash; Iv&aacute;n Villegas-P&eacute;rez</title>
 </head>
 <body>
-<header class="site-nav"><div class="nav-inner"><a class="nav-brand" href="index.html">Iván Villegas-Pérez</a><nav class="nav-links"><a class="nav-link" href="index.html" id="nav-home" data-en="About" data-es="Sobre mí">About</a><a class="nav-link" href="projects.html" id="nav-projects" data-en="Projects" data-es="Proyectos">Projects</a><a class="nav-link" href="education.html" id="nav-education" data-en="Education" data-es="Formación">Education</a><a class="nav-link" href="conferences.html" id="nav-conferences" data-en="Conferences" data-es="Congresos">Conferences</a><a class="nav-link" href="index.html#news" data-en="News" data-es="Noticias">News</a><a class="nav-link" href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a><div style="display:flex;gap:.5rem"><a class="nav-btn" href="public/CV.pdf" target="_blank" rel="noopener">CV &#8599;</a><a class="nav-btn" href="public/CVA.pdf" target="_blank" rel="noopener">CVA &#8599;</a><a class="nav-btn" href="assets/qr-code.pdf" target="_blank" rel="noopener">QR &#8599;</a></div><div class="lang-sw"><button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button><button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button></div><button class="theme-btn" onclick="cycleTheme()"><span id="theme-icon">&#8857;</span><span class="theme-tip" id="theme-tooltip">Sistema</span></button></nav></div></header>
-<div class="container" style="padding-top:2.5rem;padding-bottom:1.5rem"><a class="link-muted" href="projects.html" style="font-family:var(--mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.1em">&#8592; <span data-en="All projects" data-es="Todos los proyectos">All projects</span></a></div>
+<header class="site-nav"><div class="nav-inner"><a class="nav-brand" href="index.html">Iv&aacute;n Villegas-P&eacute;rez</a><nav class="nav-links"><a class="nav-link" href="index.html" id="nav-home" data-en="About" data-es="Sobre m&iacute;">About</a><a class="nav-link" href="projects.html" id="nav-projects" data-en="Projects" data-es="Proyectos">Projects</a><a class="nav-link" href="education.html" id="nav-education" data-en="Education" data-es="Formaci&oacute;n">Education</a><a class="nav-link" href="conferences.html" id="nav-conferences" data-en="Conferences" data-es="Congresos">Conferences</a><a class="nav-link" href="index.html#news" data-en="News" data-es="Noticias">News</a><a class="nav-link" href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a><div style="display:flex;gap:.5rem"><a class="nav-btn" href="public/CV.pdf" target="_blank" rel="noopener">CV &#8599;</a><a class="nav-btn" href="public/CVA.pdf" target="_blank" rel="noopener">CVA &#8599;</a><a class="nav-btn" href="assets/qr-code.pdf" target="_blank" rel="noopener">QR &#8599;</a></div><div class="lang-sw"><button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button><button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button></div><button class="theme-btn" onclick="cycleTheme()"><span id="theme-icon">&#8857;</span><span class="theme-tip" id="theme-tooltip">Sistema</span></button></nav></div></header>
+
+<div class="container" style="padding-top:2.5rem;padding-bottom:1.5rem">
+  <a class="link-muted" href="projects.html" style="font-family:var(--mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.1em">&#8592; <span data-en="All projects" data-es="Todos los proyectos">All projects</span></a>
+</div>
+
 <article class="container" style="max-width:52rem;padding-bottom:6rem">
-<header class="ft-header"><p class="ft-kicker" id="ft-kicker">Bachelor's degree project (TFG) · Universidad de Cantabria · June 2023</p><h1 class="ft-title" id="ft-title">Simulation, detection and characterization of exoplanet transits with the Kepler space mission</h1><p class="ft-byline" id="ft-byline">Iván Villegas-Pérez — Supervisors: Prof. Diego Herranz Muñoz & Dr. Rosa M. Domínguez Quintero (IFCA, CSIC—UC)</p><div class="ft-sidebar"><a class="btn-outline" style="font-size:.8125rem;padding:.375rem .875rem" href="public/reports/kepler-exoplanet-transits.pdf" target="_blank" rel="noopener"><span data-en="Read PDF &#8599;" data-es="Leer PDF &#8599;">Read PDF &#8599;</span></a><a class="btn-outline" style="font-size:.8125rem;padding:.375rem .875rem" href="https://github.com/ivanvillegas7/Simulation-detection-and-characterization-of-exoplanet-transits-with-Kepler-space-mission" target="_blank" rel="noopener">GitHub &#8599;</a><span id="ft-badges"></span></div><p id="ft-lang-note" style="margin-top:.75rem;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)"></p></header>
-<div id="ft-body"></div>
+<header class="ft-header">
+  <p class="ft-kicker">Bachelor&rsquo;s degree project (TFG) &middot; Universidad de Cantabria &middot; June 2023</p>
+  <h1 class="ft-title">Simulation, detection and characterization of exoplanet transits with the Kepler space mission</h1>
+  <p class="ft-byline">Iv&aacute;n Villegas P&eacute;rez &mdash; <em>Director: Diego Herranz Mu&ntilde;oz &middot; Codirectora: Rosa Mar&iacute;a Dom&iacute;nguez Quintero</em></p>
+  <div class="ft-sidebar">
+    <a class="btn-outline" style="font-size:.8125rem;padding:.375rem .875rem" href="public/reports/kepler-exoplanet-transits.pdf" target="_blank" rel="noopener"><span data-en="Read PDF &#8599;" data-es="Leer PDF &#8599;">Read PDF &#8599;</span></a>
+    <a class="btn-outline" style="font-size:.8125rem;padding:.375rem .875rem" href="https://github.com/ivanvillegas7/Simulation-detection-and-characterization-of-exoplanet-transits-with-Kepler-space-mission" target="_blank" rel="noopener">GitHub &#8599;</a>
+    <span id="ft-badges"></span>
+  </div>
+  <p id="ft-lang-note" style="margin-top:.75rem;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)">Note: the PDF report is in Spanish.</p>
+</header>
+
+<div id="ft-body">
+
+<aside class="ft-note" style="margin-bottom:2rem">This page is an extended summary of the full 86-page Bachelor&rsquo;s thesis (in Spanish). The complete document &mdash; including all derivations, simulation benchmarks, the analyses of TrES-2b and Kepler-75b, and the full bibliography &mdash; is available via the PDF link above.</aside>
+
+<p class="ft-p" style="margin-bottom:1.5rem"><strong>Summary.</strong> In this Final Degree Project, exoplanet detection techniques and various data cleaning techniques obtained from the Kepler space telescope have been studied, going for the use of a median filter. Data from the Kepler satellite and its noise have been analyzed. Based on this information, a Python program has been developed to read and clean the data, enabling the characterization of the studied exoplanet as long as the mass, radius, and temperature of the star are known. To verify the functionality of the program, various simulations have been conducted. Once it has been confirmed that the developed program returns numerical values consistent with the input values, the effectiveness of this data cleaning method has been tested. The main advantage of this method is that, regardless of the amount of noise, it is capable of accurately obtaining the period of the planetary transit. However, it excessively relies on fitting the stellar variability to a sine function.</p>
+
+<section class="ft-section">
+<h2 class="ft-h2">1. Introduction</h2>
+<p class="ft-p">During the last decade, the discovery and characterization of exoplanets (planets orbiting stars other than the Sun) has had a great scientific relevance and social impact. To date, there are more than five thousand confirmed exoplanets in almost four thousand planetary systems, with almost ten thousand more possible candidates awaiting confirmation. Many of these discoveries are due to the Kepler space observatory, which collected data from thousands of stars between 2009 and 2018. Said data are publicly available and many of them have not yet been fully analyzed.</p>
+
+<h3 class="ft-h3">1.1. Exoplanets and detection methods</h3>
+<p class="ft-p">An exoplanet (or extrasolar planet) is one that orbits a star other than the Sun. As a general rule, planets reflect part of the light from their star. This reflection is usually very faint compared to the brightness of its star, making direct detection practically impossible (only 67 exoplanets have been detected this way). At present, there are several indirect methods for detecting exoplanets:</p>
+<p class="ft-p"><strong>Radial velocity method:</strong> based on the Doppler effect &mdash; the relationship between the emitted frequency and the received frequency. This method is only effective for very massive exoplanets very close to their orbiting star, and has confirmed more than a thousand exoplanets [1].</p>
+<p class="ft-p"><strong>Astrometry method:</strong> studies the movement of the star around the centre of mass of the star-planet system. To date, this method is incredibly difficult to carry out (only two exoplanets have been confirmed) [1].</p>
+<p class="ft-p"><strong>Gravitational microlensing:</strong> takes advantage of the deviations that light from a star suffers when a massive body is between a star and the observer. The star appears brighter than without this massive body [1].</p>
+<p class="ft-p"><strong>Transit method:</strong> consists of the study of periodic decreases in the intensity of a star&rsquo;s light. These decreases are caused by the passage of a body between the observed star and the observer. The depth and duration of the transits can provide a lot of information about the exoplanet that causes them [1]. This is the method adopted in this work &mdash; the most effective to date, with more than 4000 confirmed exoplanets.</p>
+
+<h3 class="ft-h3">1.2. Orbits and transits</h3>
+<p class="ft-p">The eccentricity of an orbit quantifies its deviation from a perfect circle:</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$e = \frac{r_a - r_p}{r_a + r_p} = 1 - \frac{r_a^2}{r_p+1},$$</div><span class="ft-eq-num">(1.1)</span></div>
+<p class="ft-p">where $r_a$ is the apoapsis radius and $r_p$ the periapsis radius. In this work, a parabolic transit model has been assumed. The light curve of a star with parabolic transits, $B(t,P,t_0,d,p)$, is defined by</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$B(t,P,t_0,d,p) = -\max\!\left(0,\;p\!\left[1-\frac{4}{d^2}\!\left(t-t_0-\left\lfloor\frac{t-t_0+P/2}{P}\right\rfloor P\right)^{\!2}\right]\right),$$</div><span class="ft-eq-num">(1.2)</span></div>
+<p class="ft-p">where $t$ is time, $P$ the orbital period, $t_0$ the centre of any transit, $d$ the transit duration and $p$ the depth.</p>
+
+<h3 class="ft-h3">1.3. Period determination via the FFT</h3>
+<p class="ft-p">The Fast Fourier Transform (FFT) is used to determine the orbital period from the transit light curve. The FFT is:</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$\tilde{F}_k = \sum_{n=0}^{N-1}F_n\,e^{-ikn(2\pi/N)},\qquad k=0,\ldots,N-1,$$</div><span class="ft-eq-num">(1.5)</span></div>
+<p class="ft-p">where $\tilde{F}$ is the discrete transform, $N$ the length of the signal and $F_n$ each data point. Each maximum in the power spectrum is a repetition frequency. The orbital period is the inverse of the dominant frequency $f_{\rm dom}$:</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$P = \frac{1}{f_{\rm dom}}.$$</div><span class="ft-eq-num">(1.6)</span></div>
+
+<h3 class="ft-h3">1.4. Noise in the signal</h3>
+<p class="ft-p">In 2020, Jakob Robnik and Uro&scaron; Seljak determined that the Kepler signal noise has a Gaussian component and another component due to non-Gaussian noise following a Non-Central $t$ distribution (NCT). The probability density function is [5][6]:</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$f_{\rm NCT}(x|\nu,\delta,\sigma) = \frac{\nu^{\nu/2}\,e^{-\nu\sigma^2/2}}{\Gamma(\nu/2)\sqrt{\pi}\,(\nu+x^2)^{(\nu+1)/2}}\sum_{r=0}^\infty\frac{(x\cdot\delta)^r}{r!}\sqrt{2}\,\Gamma\!\left(\frac{\nu+r+1}{2}\right),$$</div><span class="ft-eq-num">(1.7)</span></div>
+<p class="ft-p">where $\nu$ indicates the degrees of freedom, $\delta$ is the non-central parameter and $\sigma$ is the standard deviation.</p>
+
+<h3 class="ft-h3">1.5. The Kepler mission</h3>
+<p class="ft-p">The Kepler space mission collected data on stars in our region of the Milky Way, specifically in the region of the Lyra and Cygnus constellations, with the aim of detecting and characterizing exoplanets from their transits in the light curves of the stars. The photometer on board Kepler had an array of 42 CCDs in the focal plane, each with more than 2.5 million pixels. The CCDs were read every three seconds to avoid saturation. Only data from stars with a magnitude greater than 16 in the red wavelength ($\lambda_{\rm red}=674$ nm) were saved. The photometer was sensitive enough to detect Earth-sized planet transits orbiting a G2V star (similar mass and temperature to the Sun) with apparent visual magnitude 12.</p>
+<p class="ft-p">Due to the rotation of $90^\circ$ that the satellite undergoes every three months (to keep its solar panels facing the Sun), there are interruptions in the data from each star every 90 days. This causes changes in the systematic errors of the photometer, which must be taken into account when analyzing the data.</p>
+
+<h3 class="ft-h3">1.6. The median filter</h3>
+<p class="ft-p">To remove stellar variability from the Kepler light curves, a median filter has been used. The median filter replaces each point with the median of a window of points around it. Its main advantage is that, by using the median instead of the mean, it is not sensitive to extreme values (such as transits), making it a robust estimator of the stellar baseline. The filtered light curve is then the original curve divided by this baseline estimate.</p>
+</section>
+
+<section class="ft-section">
+<h2 class="ft-h2">2. Methodology</h2>
+
+<h3 class="ft-h3">2.1. Data simulation</h3>
+<p class="ft-p">To verify the program, synthetic Kepler light curves have been generated. These consist of: (1) a sinusoidal stellar variability component with amplitude $A_{\rm var}$, period $P_{\rm var}$ and phase $\phi_{\rm var}$, (2) a transit signal with the parabolic model of Equation 1.2, and (3) noise with a Gaussian component (standard deviation $\sigma$) and a NCT component. The program is then run on these synthetic curves and the recovered parameters are compared with the injected values.</p>
+
+<h3 class="ft-h3">2.2. Data cleaning</h3>
+<p class="ft-p"><strong>Signal noise:</strong> The NCT noise component of the Kepler signal has been modelled and subtracted. This component comes from systematic instrumental errors such as temperature changes in the aperture or the orbit that the satellite follows [5].</p>
+<p class="ft-p"><strong>Stellar variability:</strong> The long-term variability of the stellar light curve has been removed using the median filter. The window of the median filter must be chosen to be large enough to not distort the transit signal (much smaller than the transit duration) but large enough to smooth the stellar variability (much larger than the stellar variability period). The optimal window has been determined by testing different values and evaluating the relative error in the recovered period.</p>
+
+<h3 class="ft-h3">2.3. Effectiveness of the method</h3>
+<p class="ft-p">The dependence of the relative error in the recovered period has been obtained by varying different parameters: the noise amplitude $\sigma$, the transit depth $p$, the transit duration $d$, the transit period $P$, the stellar variability amplitude $A_{\rm var}$, the stellar variability period $P_{\rm var}$, the stellar variability phase $\phi_{\rm var}$, and the median filter window size. The highest dependence is found when altering the periods of the planetary transit and, to a greater extent, the period of stellar variability.</p>
+
+<h3 class="ft-h3">2.4. Exoplanet characterization</h3>
+<p class="ft-p">Once the transit period $P$ is determined from the FFT, the transit signal is extracted by phase-folding the light curve at the detected period. The following parameters are then fitted to the phase-folded transit:</p>
+<p class="ft-p">The transit depth $p$ gives the planet-to-star radius ratio:</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$\frac{R_p}{R_\star} = \sqrt{p}.$$</div><span class="ft-eq-num">(2.1)</span></div>
+<p class="ft-p">The transit duration $d$ combined with the orbital period $P$ and the stellar radius $R_\star$ gives the orbital semi-major axis $a$:</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$a = \frac{R_\star}{\sin(\pi d/P)}\sqrt{1-b^2},$$</div><span class="ft-eq-num">(2.2)</span></div>
+<p class="ft-p">where $b = a\cos i / R_\star$ is the impact parameter and $i$ is the orbital inclination. Combined with the stellar mass $M_\star$, Kepler&rsquo;s third law gives the orbital period as a consistency check:</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$P = 2\pi\sqrt{\frac{a^3}{GM_\star}}.$$</div><span class="ft-eq-num">(2.3)</span></div>
+<p class="ft-p">The planetary radius is then $R_p = (R_p/R_\star)\cdot R_\star$. The equilibrium temperature of the planet is estimated as:</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$T_p = T_\star\sqrt{\frac{R_\star}{2a}}\,(1-A_B)^{1/4},$$</div><span class="ft-eq-num">(2.4)</span></div>
+<p class="ft-p">where $T_\star$ is the stellar effective temperature and $A_B$ is the Bond albedo (assumed $A_B=0$ for a conservative estimate).</p>
+</section>
+
+<section class="ft-section">
+<h2 class="ft-h2">3. Results</h2>
+
+<h3 class="ft-h3">3.1. Simulation results</h3>
+<figure class="ft-figure">
+  <img src="public/figures/kepler/total_flux.png" alt="Fig. 3.1" loading="lazy">
+  <figcaption><strong>Fig. 3.1.</strong> Raw Kepler flux of Kepler-75. Long-term stellar variability dominates the transit signal.</figcaption>
+</figure>
+<figure class="ft-figure">
+  <img src="public/figures/kepler/simulated_transit.png" alt="Fig. 3.2" loading="lazy">
+  <figcaption><strong>Fig. 3.2.</strong> Example of a simulated Kepler light curve used to validate the pipeline, with the injected transit model overlaid.</figcaption>
+</figure>
+<p class="ft-p">The program was tested using synthetic data with controlled parameters. Once it has been confirmed that the developed program returns numerical values consistent with the input values, the dependence of the relative error has been studied. The main result is that the relative error in the period depends most strongly on the ratio between the transit period and the stellar variability period: when these are similar, the median filter cannot cleanly separate the two signals, leading to larger errors.</p>
+
+<h3 class="ft-h3">3.2. Application to real Kepler exoplanets</h3>
+
+<h4 style="font-size:1rem;margin:1.5rem 0 .5rem;font-family:var(--serif)">TrES-2b</h4>
+<p class="ft-p">TrES-2b is a hot Jupiter orbiting TrES-2, a G0V star. The pipeline was applied to the Kepler photometry of TrES-2 and the recovered parameters agree with the published values within errors.</p>
+
+<h4 style="font-size:1rem;margin:1.5rem 0 .5rem;font-family:var(--serif)">Kepler-75b</h4>
+<p class="ft-p">Kepler-75b is a hot Jupiter with an eccentric orbit. The pipeline was applied to the Kepler photometry of Kepler-75. The results are shown in Figures 3.3&ndash;3.5.</p>
+<figure class="ft-figure">
+  <img src="public/figures/kepler/filtered_flux.png" alt="Fig. 3.3" loading="lazy">
+  <figcaption><strong>Fig. 3.3.</strong> Light curve of Kepler-75 after median-filter detrending. Transit dips are clearly visible.</figcaption>
+</figure>
+<figure class="ft-figure">
+  <img src="public/figures/kepler/periodogram.png" alt="Fig. 3.4" loading="lazy">
+  <figcaption><strong>Fig. 3.4.</strong> Periodogram of Kepler-75. The dominant peak corresponds to the orbital period of Kepler-75b.</figcaption>
+</figure>
+<figure class="ft-figure">
+  <img src="public/figures/kepler/best_fit.png" alt="Fig. 3.5" loading="lazy">
+  <figcaption><strong>Fig. 3.5.</strong> Phase-folded transit of Kepler-75b and best-fit parabolic transit model, used to extract the planetary radius, orbital period and impact parameter.</figcaption>
+</figure>
+</section>
+
+<section class="ft-section">
+<h2 class="ft-h2">4. Conclusions</h2>
+<p class="ft-p">In this Final Degree Project, a Python pipeline has been developed to simulate, detect and characterize exoplanetary transits in Kepler photometry. The pipeline consists of: (1) reading and cleaning the Kepler data using a median filter, (2) determining the orbital period using the FFT, and (3) characterizing the exoplanet by fitting the parabolic transit model. The pipeline has been validated on synthetic light curves and applied to the real Kepler targets TrES-2b and Kepler-75b, recovering planetary parameters consistent with published values.</p>
+<p class="ft-p">The main advantage of this method is that, regardless of the amount of noise, it is capable of accurately obtaining the period of the planetary transit. The main limitation is its excessive reliance on fitting the stellar variability to a sine function. This leads to a significant error source, mainly because the variability of stars is often not described by such a curve, nor does it necessarily follow this type of oscillation. The highest dependence of the relative error comes from varying the periods of the planetary transit and, above all, the period of the stellar variability.</p>
+</section>
+
+<section class="ft-section">
+<h2 class="ft-h2">Bibliography</h2>
+<ul class="ft-bib">
+<li>[1] NASA Exoplanet Exploration. <em>5 ways to find a planet</em>. Available: https://exoplanets.nasa.gov/5-ways-to-find-a-planet/</li>
+<li>[2] Orfanidis, Sophocles J. <em>Introduction to signal processing</em>. Prentice Hall, 1995.</li>
+<li>[3] Proakis, John G. and Manolakis, Dimitri K. <em>Digital signal processing: principles, algorithms, and applications</em>. Prentice Hall, 1996.</li>
+<li>[4] Stoica, Petre and Moses, Randolph. <em>Spectral analysis of signals</em>. Prentice Hall, 2005.</li>
+<li>[5] Robnik, J. and Seljak, U. &ldquo;Kepler data analysis: Non-Gaussian noise and Fourier Gaussian process analysis of stellar light curves.&rdquo; <em>The Astronomical Journal</em>, 159(5), 224, 2020.</li>
+<li>[6] Aigrain, S. and Foreman-Mackey, D. &ldquo;Gaussian process regression for astronomical time series.&rdquo; <em>Annual Review of Astronomy and Astrophysics</em>, 61, 2023.</li>
+<li>[7] Johnson, N.L., Kotz, S. and Balakrishnan, N. <em>Continuous Univariate Distributions</em>, Vol. 2. John Wiley &amp; Sons, 1995.</li>
+<li>[8] Casella, G. and Berger, R.L. <em>Statistical Inference</em>. Duxbury Press, 2002.</li>
+<li>[9] Orosz, J.A. et al. &ldquo;Kepler-47: a transiting circumbinary multiplanet system.&rdquo; <em>Science</em>, 337(6101), 1511&ndash;1514, 2012.</li>
+</ul>
+</section>
+
+</div><!-- ft-body -->
 </article>
+
 <footer class="site-footer" style="margin-top:5rem"><div class="footer-inner"><p id="footer-copy"></p><p class="footer-updated" id="footer-date"></p></div></footer>
+
 <script>
-var _kEN="Bachelor's degree project (TFG) \u00b7 Universidad de Cantabria \u00b7 June 2023",_kES="Trabajo de fin de grado (TFG) \u00b7 Universidad de Cantabria \u00b7 junio de 2023";
-var _tEN="Simulation, detection and characterization of exoplanet transits with the Kepler space mission",_tES="Simulaci\u00f3n, detecci\u00f3n y caracterizaci\u00f3n de tr\u00e1nsitos de exoplanetas con la misi\u00f3n espacial Kepler";
-var _bEN="Iv\u00e1n Villegas-P\u00e9rez \u2014 Supervisors: Prof. Diego Herranz Mu\u00f1oz & Dr. Rosa M. Dom\u00ednguez Quintero (IFCA, CSIC\u2014UC)",_bES="Iv\u00e1n Villegas-P\u00e9rez \u2014 Tutores: Prof. Diego Herranz Mu\u00f1oz y Dra. Rosa M. Dom\u00ednguez Quintero (IFCA, CSIC\u2014UC)";
-var _inst=["ifca", "uc"];
-var _secs=[{"h2en": "Abstract", "h2es": "Resumen", "items": [{"t": "p", "en": "This Bachelor’s thesis studies exoplanet detection techniques and data-cleaning strategies for Kepler photometry, choosing a median filter as the optimal cleaning method. A Python pipeline is developed that reads and cleans Kepler light curves, detects transits via a Box-Least-Squares (BLS) periodogram, and characterizes the transiting planet by fitting a Mandel–Agol transit model. The pipeline is validated on synthetic light curves (recovering injected parameters to within numerical precision) and applied to real Kepler targets, recovering planetary parameters consistent with published values.", "es": "Este Trabajo de Fin de Grado estudia técnicas de detección de exoplanetas y estrategias de limpieza de datos para la fotometría de Kepler, seleccionando un filtro de mediana como método óptimo. Se desarrolla una cadena en Python que lee y limpia las curvas de luz de Kepler, detecta tránsitos mediante un periodograma BLS y caracteriza el planeta en tránsito ajustando un modelo de tránsito de Mandel–Agol. La cadena se valida sobre curvas de luz sintéticas y se aplica a objetivos reales de Kepler, recuperando parámetros planetarios consistentes con los valores publicados."}, {"t": "note", "en": "This page is a summary of the full 86-page thesis (in Spanish). The complete document is available via the PDF link above.", "es": "Esta página es un resumen de la tesis completa de 86 páginas. El documento completo está disponible en el enlace al PDF."}]}, {"h2en": "I. The transit method", "h2es": "I. El método del tránsito", "items": [{"t": "p", "en": "When a planet crosses in front of its host star (as seen from Earth), it blocks a fraction of the stellar light, producing a characteristic dip in the observed flux. The depth of the dip is related to the planet-to-star radius ratio:", "es": "Cuando un planeta pasa por delante de su estrella (visto desde la Tierra), bloquea una fracción de la luz estelar, produciendo una caída característica en el flujo observado. La profundidad de la caída está relacionada con el cociente de radios planeta–estrella:"}, {"t": "math", "tex": "\\delta = \\left(\\frac{R_p}{R_\\star}\\right)^2"}, {"t": "p", "en": "The transit duration $T_{14}$ (first to fourth contact), orbital period $P$ and impact parameter $b=a\\cos i/R_\\star$ can also be extracted from the light curve shape. Combined with stellar parameters ($R_\\star$, $M_\\star$, $T_{\\rm eff}$) obtained from spectroscopy or photometry, the full planetary characterization is possible. For Kepler-75b, with $R_\\star=1.91\\,R_\\odot$, the recovered parameters are $R_p/R_\\star\\approx0.090$, $P\\approx8.88\\,{\\rm d}$, $b\\approx0.24$.", "es": "La duración del tránsito $T_{14}$ (del primer al cuarto contacto), el período orbital $P$ y el parámetro de impacto $b=a\\cos i/R_\\star$ también se pueden extraer de la forma de la curva de luz. Combinados con los parámetros estelares ($R_\\star$, $M_\\star$, $T_{\\rm eff}$) obtenidos de espectroscopía o fotometría, es posible la caracterización completa del planeta. Para Kepler-75b, con $R_\\star=1.91\\,R_\\odot$, los parámetros recuperados son $R_p/R_\\star\\approx0.090$, $P\\approx8.88\\,{\\rm d}$, $b\\approx0.24$."}]}, {"h2en": "II. Data pipeline", "h2es": "II. Cadena de datos", "items": [{"t": "h3", "en": "Step 1 — Raw photometry", "es": "Paso 1 — Fotometría cruda"}, {"t": "p", "en": "Kepler long-cadence (29.4 min) light curves are downloaded from MAST for all available quarters. The raw flux shows long-term stellar variability on timescales of days to weeks that must be removed before transit detection.", "es": "Las curvas de luz de cadencia larga (29.4 min) de Kepler se descargan de MAST para todos los trimestres disponibles. El flujo crudo muestra variabilidad estelar a largo plazo en escalas de días a semanas que debe eliminarse antes de la detección de tránsitos."}, {"t": "fig", "src": "public/figures/kepler/total_flux.png", "cen": "Raw Kepler flux of Kepler-75 — long-term stellar variability dominates over the transit signal.", "ces": "Flujo crudo de Kepler-75 — la variabilidad estelar de largo periodo domina sobre la señal de tránsito."}, {"t": "h3", "en": "Step 2 — Median-filter detrending", "es": "Paso 2 — Limpieza con filtro de mediana"}, {"t": "p", "en": "A median filter with a window of $\\sim$2 days is applied to estimate the stellar baseline. Dividing the raw flux by this estimate yields the detrended light curve, in which transit dips are clearly visible. The median filter is preferred over polynomial or spline fits because it is robust to outliers and does not distort the transit shape when the window is large compared to the transit duration.", "es": "Se aplica un filtro de mediana con una ventana de $\\sim$2 días para estimar la línea base estelar. Dividir el flujo crudo por esta estimación produce la curva de luz limpia, en la que las caídas de tránsito son claramente visibles. El filtro de mediana se prefiere sobre ajustes polinomiales o splines porque es robusto frente a valores atípicos y no distorsiona la forma del tránsito cuando la ventana es grande en comparación con la duración del tránsito."}, {"t": "fig", "src": "public/figures/kepler/filtered_flux.png", "cen": "Light curve after median-filter detrending. Transit dips are now clearly visible.", "ces": "Curva de luz tras la limpieza con filtro de mediana. Las caídas de tránsito son ahora claramente visibles."}, {"t": "h3", "en": "Step 3 — Period search with BLS", "es": "Paso 3 — Búsqueda de período con BLS"}, {"t": "p", "en": "The Box-Least-Squares (BLS) algorithm searches for a periodic box-shaped dip in the detrended light curve by computing, for each trial period $P$ and phase $t_0$, the signal-to-noise ratio of the best-fitting box. The peak of the BLS periodogram at the true period is sharp and stands well above the noise.", "es": "El algoritmo Box-Least-Squares (BLS) busca una caída periódica en forma de caja en la curva de luz limpia calculando, para cada período de prueba $P$ y fase $t_0$, la relación señal-ruido de la caja que mejor ajusta. El pico del periodograma BLS en el período real es agudo y se eleva claramente sobre el ruido."}, {"t": "fig", "src": "public/figures/kepler/periodogram.png", "cen": "BLS periodogram of Kepler-75. The dominant peak at $P\\approx8.88$ d corresponds to Kepler-75b.", "ces": "Periodograma BLS de Kepler-75. El pico dominante en $P\\approx8.88$ d corresponde a Kepler-75b."}, {"t": "h3", "en": "Step 4 — Transit model fitting", "es": "Paso 4 — Ajuste del modelo de tránsito"}, {"t": "p", "en": "The detrended light curve is phase-folded at the detected period and a Mandel–Agol transit model is fitted using a Levenberg–Marquardt minimiser, with quadratic limb-darkening coefficients fixed from stellar models. Free parameters are $R_p/R_\\star$, $a/R_\\star$ and the impact parameter $b$.", "es": "La curva de luz limpia se pliega en fase al período detectado y se ajusta un modelo de tránsito de Mandel–Agol usando un minimizador de Levenberg–Marquardt, con coeficientes de oscurecimiento hacia el limbo fijados por modelos estelares. Los parámetros libres son $R_p/R_\\star$, $a/R_\\star$ y el parámetro de impacto $b$."}, {"t": "fig", "src": "public/figures/kepler/best_fit.png", "cen": "Phase-folded transit of Kepler-75b and best-fit Mandel–Agol transit model.", "ces": "Tránsito de Kepler-75b plegado en fase y modelo de tránsito de Mandel–Agol que mejor ajusta."}]}, {"h2en": "III. Validation on simulated transits", "h2es": "III. Validación con tránsitos simulados", "items": [{"t": "p", "en": "To quantify the performance of the pipeline, synthetic Kepler light curves are generated with known planetary parameters, stellar noise and long-term variability. The pipeline is run on these synthetic curves and the recovered parameters are compared with the injected values. The relative error in $P$ and $R_p/R_\\star$ is below 0.5% for all configurations tested, confirming that the pipeline is unbiased. The main systematic is the choice of median-filter window width relative to the transit period.", "es": "Para cuantificar el rendimiento de la cadena, se generan curvas de luz sintéticas de Kepler con parámetros planetarios conocidos, ruido estelar y variabilidad a largo plazo. Se ejecuta la cadena sobre estas curvas sintéticas y se comparan los parámetros recuperados con los valores inyectados. El error relativo en $P$ y $R_p/R_\\star$ es inferior al 0.5% para todas las configuraciones probadas, confirmando que la cadena no está sesgada. La principal sistemática es la elección de la anchura de la ventana del filtro de mediana relativa al período del tránsito."}, {"t": "fig", "src": "public/figures/kepler/simulated_transit.png", "cen": "Example of a simulated Kepler light curve used to validate the pipeline, with the injected transit model overlaid.", "ces": "Ejemplo de una curva de luz de Kepler simulada usada para validar la cadena, con el modelo de tránsito inyectado superpuesto."}]}, {"h2en": "IV. Conclusions", "h2es": "IV. Conclusiones", "items": [{"t": "p", "en": "A complete Python pipeline for the simulation, detection and characterization of exoplanetary transits in Kepler photometry has been built and validated. The median-filter + BLS + Mandel–Agol fitting combination successfully recovers known planetary parameters for both synthetic and real targets. The methodology is general and can be applied to any Kepler or K2 target given the stellar parameters.", "es": "Se ha construido y validado una cadena Python completa para la simulación, detección y caracterización de tránsitos exoplanetarios en fotometría de Kepler. La combinación filtro de mediana + BLS + ajuste de Mandel–Agol recupera con éxito los parámetros planetarios conocidos tanto para objetivos sintéticos como reales. La metodología es general y puede aplicarse a cualquier objetivo de Kepler o K2 dados los parámetros estelares."}]}];
-function _langNote(es){return lang==='en'?'Note: the PDF report is in Spanish.':'';}
-function renderPage(){
-  renderStaticText();var es=lang==='es';
-  document.getElementById('ft-kicker').textContent=es?_kES:_kEN;
-  document.getElementById('ft-title').textContent=es?_tES:_tEN;
-  document.getElementById('ft-byline').textContent=es?_bES:_bEN;
-  document.getElementById('ft-badges').innerHTML=instBadges(_inst);
-  var note=document.getElementById('ft-lang-note');if(note)note.textContent=_langNote(es);
-  var html='';
-  _secs.forEach(function(sec){
-    html+='<section class="ft-section"><h2 class="ft-h2">'+esc(es?sec.h2es:sec.h2en)+'</h2>';
-    sec.items.forEach(function(x){
-      if(x.t==='p')html+='<p class="ft-p">'+esc(es?x.es:x.en)+'</p>';
-      else if(x.t==='h3')html+='<h3 class="ft-h3">'+esc(es?x.es:x.en)+'</h3>';
-      else if(x.t==='math')html+='<div class="ft-math">$$'+x.tex+'$$</div>';
-      else if(x.t==='note')html+='<aside class="ft-note">'+esc(es?x.es:x.en)+'</aside>';
-      else if(x.t==='fig')html+='<figure class="ft-figure"><img src="'+x.src+'" alt="'+esc(es?x.ces:x.cen)+'" loading="lazy"><figcaption>'+esc(es?x.ces:x.cen)+'</figcaption></figure>';
-      else if(x.t==='tab')html+='<div class="ft-table-wrap"><table class="ft-table"><thead><tr>'+x.headers.map(function(h){return'<th>'+esc(h)+'</th>';}).join('')+'</tr></thead><tbody>'+x.rows.map(function(r){return'<tr>'+r.map(function(c){return'<td>'+esc(c)+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table></div>';
-    });
-    html+='</section>';
-  });
-  document.getElementById('ft-body').innerHTML=html;
-  renderFooter();
-  if(window.renderMathInElement)setTimeout(function(){renderMathInElement(document.getElementById('ft-body'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});},100);
-}
-setNavActive('projects');applyTheme();document.getElementById('btn-en').classList.toggle('active',lang==='en');document.getElementById('btn-es').classList.toggle('active',lang==='es');document.documentElement.lang=lang==='es'?'es':'en';renderPage();
+document.getElementById('ft-badges').innerHTML = instBadges(['ifca','uc']);
+if (typeof renderFooter === 'function') renderFooter();
+setNavActive('projects');
+applyTheme();
+document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+document.documentElement.lang = lang === 'es' ? 'es' : 'en';
 </script>
 </body>
 </html>

@@ -9,52 +9,282 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"/>
   <link rel="stylesheet" href="shared.css"/>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
   <script src="shared.js?v=2"></script>
-  <title>CalSat CMB — Iván Villegas-Pérez</title>
+  <title>CalSat CMB &mdash; Iv&aacute;n Villegas-P&eacute;rez</title>
 </head>
 <body>
-<header class="site-nav"><div class="nav-inner"><a class="nav-brand" href="index.html">Iván Villegas-Pérez</a><nav class="nav-links"><a class="nav-link" href="index.html" id="nav-home" data-en="About" data-es="Sobre mí">About</a><a class="nav-link" href="projects.html" id="nav-projects" data-en="Projects" data-es="Proyectos">Projects</a><a class="nav-link" href="education.html" id="nav-education" data-en="Education" data-es="Formación">Education</a><a class="nav-link" href="conferences.html" id="nav-conferences" data-en="Conferences" data-es="Congresos">Conferences</a><a class="nav-link" href="index.html#news" data-en="News" data-es="Noticias">News</a><a class="nav-link" href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a><div style="display:flex;gap:.5rem"><a class="nav-btn" href="public/CV.pdf" target="_blank" rel="noopener">CV &#8599;</a><a class="nav-btn" href="public/CVA.pdf" target="_blank" rel="noopener">CVA &#8599;</a><a class="nav-btn" href="assets/qr-code.pdf" target="_blank" rel="noopener">QR &#8599;</a></div><div class="lang-sw"><button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button><button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button></div><button class="theme-btn" onclick="cycleTheme()"><span id="theme-icon">&#8857;</span><span class="theme-tip" id="theme-tooltip">Sistema</span></button></nav></div></header>
-<div class="container" style="padding-top:2.5rem;padding-bottom:1.5rem"><a class="link-muted" href="projects.html" style="font-family:var(--mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.1em">&#8592; <span data-en="All projects" data-es="Todos los proyectos">All projects</span></a></div>
+<header class="site-nav"><div class="nav-inner"><a class="nav-brand" href="index.html">Iv&aacute;n Villegas-P&eacute;rez</a><nav class="nav-links"><a class="nav-link" href="index.html" id="nav-home" data-en="About" data-es="Sobre m&iacute;">About</a><a class="nav-link" href="projects.html" id="nav-projects" data-en="Projects" data-es="Proyectos">Projects</a><a class="nav-link" href="education.html" id="nav-education" data-en="Education" data-es="Formaci&oacute;n">Education</a><a class="nav-link" href="conferences.html" id="nav-conferences" data-en="Conferences" data-es="Congresos">Conferences</a><a class="nav-link" href="index.html#news" data-en="News" data-es="Noticias">News</a><a class="nav-link" href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a><div style="display:flex;gap:.5rem"><a class="nav-btn" href="public/CV.pdf" target="_blank" rel="noopener">CV &#8599;</a><a class="nav-btn" href="public/CVA.pdf" target="_blank" rel="noopener">CVA &#8599;</a><a class="nav-btn" href="assets/qr-code.pdf" target="_blank" rel="noopener">QR &#8599;</a></div><div class="lang-sw"><button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button><button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button></div><button class="theme-btn" onclick="cycleTheme()"><span id="theme-icon">&#8857;</span><span class="theme-tip" id="theme-tooltip">Sistema</span></button></nav></div></header>
+
+<div class="container" style="padding-top:2.5rem;padding-bottom:1.5rem">
+  <a class="link-muted" href="projects.html" style="font-family:var(--mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.1em">&#8592; <span data-en="All projects" data-es="Todos los proyectos">All projects</span></a>
+</div>
+
 <article class="container" style="max-width:52rem;padding-bottom:6rem">
-  <header class="ft-header"><p class="ft-kicker" id="ft-kicker">Research internship report · IFCA · 23 November 2023</p><h1 class="ft-title" id="ft-title">A review of "Calibration Satellite for Ultra-sensitive CMB Polarization Ground-based Experiments"</h1><p class="ft-byline" id="ft-byline">Iván Villegas-Pérez · Supervisor: Dr. Francisco J. Casas Reinares (IFCA)</p><div class="ft-sidebar"><a class="btn-outline" style="font-size:.8125rem;padding:.375rem .875rem" href="public/reports/calsat-cmb.pdf" target="_blank" rel="noopener"><span data-en="Read PDF &#8599;" data-es="Leer PDF &#8599;">Read PDF &#8599;</span></a><a class="btn-outline" style="font-size:.8125rem;padding:.375rem .875rem" href="https://github.com/ivanvillegas7/CalSat_for_Ground-based_CMB_experiments" target="_blank" rel="noopener">GitHub &#8599;</a><span id="ft-badges"></span></div><p id="ft-lang-note" style="margin-top:.75rem;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)"></p></header>
-  <div id="ft-body"></div>
+<header class="ft-header">
+  <p class="ft-kicker">Research internship report &middot; IFCA &middot; 23 November 2023</p>
+  <h1 class="ft-title">A review of &ldquo;Calibration Satellite for Ultra-sensitive Cosmic Microwave Background Polarization Ground-based Experiments&rdquo; Master&rsquo;s Thesis</h1>
+  <p class="ft-byline">Iv&aacute;n Villegas P&eacute;rez &mdash; <em>Dated: November 23, 2023</em></p>
+  <div class="ft-sidebar">
+    <a class="btn-outline" style="font-size:.8125rem;padding:.375rem .875rem" href="public/reports/calsat-cmb.pdf" target="_blank" rel="noopener"><span data-en="Read PDF &#8599;" data-es="Leer PDF &#8599;">Read PDF &#8599;</span></a>
+    <a class="btn-outline" style="font-size:.8125rem;padding:.375rem .875rem" href="https://github.com/ivanvillegas7/CalSat_for_Ground-based_CMB_experiments" target="_blank" rel="noopener">GitHub &#8599;</a>
+    <span id="ft-badges"></span>
+  </div>
+  <p id="ft-lang-note" style="margin-top:.75rem;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)"></p>
+</header>
+
+<div id="ft-body">
+
+<p class="ft-p" style="margin-bottom:1.5rem"><strong>Abstract.</strong> A review has been conducted on the calculations performed by Luis Fernando Mej&iacute;a Jir&oacute;n in his Master&rsquo;s Thesis. The thesis addresses the implementation and utility of a calibration source capable of emitting a fully polarized signal in the microwave range, onboard a Low Earth Orbit (LEO) satellite. The purpose of this calibration satellite (CalSat) is to calibrate experiments that measure the polarization of the Cosmic Microwave Background (CMB) from ground-based observatories. The utility of CalSat has been studied by analyzing the number of times it enters the field of view of each experiment. Additionally, a thermal analysis has been conducted to ensure that the generated signal does not cause detector saturation due to the satellite&rsquo;s temperature, which is not the case in any scenario. Following the same procedures as Mej&iacute;a Jir&oacute;n, similar results have been obtained, with differences arising from the approximations used and the location of some experiments.</p>
+
+<section class="ft-section">
+<h2 class="ft-h2">I. Introduction</h2>
+<p class="ft-p">During the completion of these external internships, the implementation of a new calibration satellite (CalSat) designed for calibrating ground-based experiments dedicated to measuring the polarization of the Cosmic Microwave Background (CMB) has been studied. It is now well-established that thermal anisotropies in the CMB provide some of the best evidence for the early Universe, enabling the determination of significant cosmological constants. Important theoretical arguments predict the presence of fluctuations in the polarized component of the CMB, known as &ldquo;B-modes.&rdquo; According to the inflationary paradigm, which predicts an accelerated expansion of the Universe approximately $10^{-34}$ seconds after the Big Bang, these anisotropies would be a direct evidence of a stochastic background of tensor perturbations (gravitational waves) generated in the primordial Universe. However, these B-modes have not yet been detected as they are several orders of magnitude weaker than temperature fluctuations and are obscured by polarized signals from galactic contaminants.</p>
+<p class="ft-p">Multifrequency observations are required to isolate the extremely faint signal of the CMB from the diffuse signal emitted by radiative processes in our galaxy. Below 100 GHz, the polarized emission from the sky is mainly due to radiation produced by the movement of electrons in the galactic magnetic field (synchrotron radiation). Above 100 GHz, the major contaminant is the thermal emission from interstellar dust.</p>
+<p class="ft-p">Due to the faintness of the signal, measurement instruments must undergo extremely precise calibrations. For ground-based experiments, this could be achieved by using CalSat in a Low Earth Orbit (LEO) at an altitude of approximately 400 km. CalSat would emit a well-characterized, fully polarized signal in the microwave range, allowing for highly accurate calibration of the instruments.</p>
+
+<h3 class="ft-h3">A. CalSat in a Sun-Synchronous Orbit</h3>
+<p class="ft-p">The proposed calibration source is expected to be deployed on a CubeSat satellite, as described in references [1] and [2]. A CubeSat is a satellite consisting of multiple cubic units measuring 10 cm &times; 10 cm &times; 10 cm arranged in a row. The calibration system is expected to meet the needs of all the studied experiments, allowing for polarization angle calibration, far-field measurements of telescope beam patterns, and intensity response calibration. From CalSat, a linearly polarized signal will be emitted at different wavelengths using microwave sources to cover as much of the frequency band of the experiments to be calibrated as possible.</p>
+<p class="ft-p">This satellite will follow a Sun-Synchronous Orbit (SSO), which means it will follow a specific orbit in such a way that it always receives the same amount of sunlight (excluding variations from the Sun). This type of orbit is defined by Equation 1.</p>
+
+<div class="ft-eq-wrap">
+  <div class="ft-math">$$\dot{\Omega} = -\frac{3\sqrt{\mu}\,J_2\,R^2}{2(1-e^2)^2\,a^{7/2}}\cos(i),$$</div>
+  <span class="ft-eq-num">(1)</span>
+</div>
+
+<p class="ft-p">where $R$ is the radius of the Earth ($R = R_\oplus = 6371$ km), $\mu$ is the gravitational parameter ($\mu = 398600.440$ km$^3$/s$^2$ for Earth), $a$ and $e$ are the semi-major axis and eccentricity of the orbit, respectively, $i$ is the inclination angle, $J_2$ is the second zonal harmonic coefficient related to the Earth&rsquo;s flattening ($J_2 = 1.08263 \cdot 10^{-3}$ for Earth), and $\dot{\Omega}$ is the rate of change of the longitude of the ascending node with time. Since the satellite is expected to always receive the same amount of sunlight, meaning it moves in sync with the Earth, the value of $\dot{\Omega}$ is defined [3][4]:</p>
+
+<div class="ft-eq-wrap">
+  <div class="ft-math">$$\dot{\Omega} = \frac{360^\circ}{365.26\;\text{days}} = 0.9856^\circ\;\text{per day}.$$</div>
+  <span class="ft-eq-num"></span>
+</div>
+
+<p class="ft-p">By using Equation 1 and assuming a circular orbit ($e \approx 0$), we can find a direct relationship between the inclination angle and the altitude ($h = a - R_\oplus$), as shown in Equation 2.</p>
+
+<div class="ft-eq-wrap">
+  <div class="ft-math">$$\cos(i) = \frac{-2\dot{\Omega}}{3J_2 R_\oplus^2 \sqrt{\mu}} \cdot (h+R_\oplus)^{7/2}.$$</div>
+  <span class="ft-eq-num">(2)</span>
+</div>
+
+<p class="ft-p">The orbital period can be calculated using Equation 3, so with the specific data known, we can determine that the orbital period ($T$) of CalSat is 1.54 hours. In other words, CalSat completes a total of 15.6 orbits around the Earth per day.</p>
+
+<div class="ft-eq-wrap">
+  <div class="ft-math">$$T = 2\pi\sqrt{\frac{a^3}{\mu}}.$$</div>
+  <span class="ft-eq-num">(3)</span>
+</div>
+
+<h3 class="ft-h3">B. Experiments</h3>
+<p class="ft-p">Information has been compiled on five ground-based experiments: Q-U-I-JOint TEnerife (QUIJOTE) [5], Cosmology Large Angular Scale Surveyor (CLASS) [6], Atacama Cosmology Telescope (ACT) [4], Large Scale Polarization Explorer (LSPE-STRIP) [4], and POLARization of the Background Radiation (POLARBEAR-2) [7][8]. The basic characteristics of each experiment can be seen in Table I. More detailed information about each experiment can be found in Tables II, III, IV, V and VI. The QUIJOTE and LSPE-STRIP experiments are located on the island of Tenerife, Spain, while the CLASS, ACT and POLARBEAR-2 experiments are located in the Atacama Desert in Chile. Initially, the SPTpol experiment was also going to be studied, but it was excluded due to its location (at the geographic South Pole) [9] and the low elevation angle from which it would be observed by CalSat (see Section III).</p>
+
+<p class="ft-table-caption"><strong>Table I.</strong> Basic information of longitude (Long), latitude (Lat), field of view (FoV), and telescope aperture (A<sub>t</sub>) for each of the studied experiments.</p>
+<div class="ft-table-wrap"><table class="ft-table">
+<thead><tr><th>Experiment</th><th>Long</th><th>Lat</th><th>FoV [&deg;]</th><th>A<sub>t</sub> [m]</th></tr></thead>
+<tbody>
+<tr><td>QUIJOTE</td><td>&minus;16.506</td><td>28.300</td><td>8</td><td>2.25</td></tr>
+<tr><td>CLASS</td><td>&minus;67.7833</td><td>&minus;22.967</td><td>16</td><td>0.46</td></tr>
+<tr><td>ACT</td><td>&minus;67.7875</td><td>&minus;22.959</td><td>1</td><td>6.00</td></tr>
+<tr><td>LSPE-STRIP</td><td>&minus;16.5106</td><td>28.301</td><td>5</td><td>1.50</td></tr>
+<tr><td>POLARBEAR-2</td><td>&minus;67.786</td><td>&minus;22.958</td><td>4.8</td><td>3.50</td></tr>
+</tbody>
+</table></div>
+
+<p class="ft-table-caption"><strong>Table II.</strong> Characteristic information (central frequency and bandwidth) of the QUIJOTE experiment [4][5].</p>
+<div class="ft-table-wrap"><table class="ft-table">
+<thead><tr><th>&nu;<sub>0</sub> [GHz]</th><th>11</th><th>13</th><th>17</th><th>19</th><th>31</th><th>41</th></tr></thead>
+<tbody><tr><td>&Delta;&nu;<sub>0</sub> [GHz]</td><td>2</td><td>2</td><td>2</td><td>2</td><td>10</td><td>12</td></tr></tbody>
+</table></div>
+
+<p class="ft-table-caption"><strong>Table III.</strong> Characteristic information (central frequency and bandwidth) of the CLASS experiment [4][6].</p>
+<div class="ft-table-wrap"><table class="ft-table">
+<thead><tr><th>&nu;<sub>0</sub> [GHz]</th><th>40</th><th>90</th><th>150</th><th>220</th></tr></thead>
+<tbody><tr><td>&Delta;&nu;<sub>0</sub> [GHz]</td><td>10</td><td>31</td><td>36</td><td>34</td></tr></tbody>
+</table></div>
+
+<p class="ft-table-caption"><strong>Table IV.</strong> Characteristic information (central frequency and bandwidth) of the ACT experiment [4].</p>
+<div class="ft-table-wrap"><table class="ft-table">
+<thead><tr><th>&nu;<sub>0</sub> [GHz]</th><th>28</th><th>41</th><th>90</th><th>150</th><th>230</th></tr></thead>
+<tbody><tr><td>&Delta;&nu;<sub>0</sub> [GHz]</td><td>6</td><td>19</td><td>39</td><td>41</td><td>100</td></tr></tbody>
+</table></div>
+
+<p class="ft-table-caption"><strong>Table V.</strong> Characteristic information (central frequency and bandwidth) of the LSPE-STRIP experiment [4].</p>
+<div class="ft-table-wrap"><table class="ft-table">
+<thead><tr><th>&nu;<sub>0</sub> [GHz]</th><th>43</th><th>95</th></tr></thead>
+<tbody><tr><td>&Delta;&nu;<sub>0</sub> [GHz]</td><td>7.31</td><td>7.6</td></tr></tbody>
+</table></div>
+
+<p class="ft-table-caption"><strong>Table VI.</strong> Characteristic information (central frequency and bandwidth) of the POLARBEAR-2 experiment [7][8].</p>
+<div class="ft-table-wrap"><table class="ft-table">
+<thead><tr><th>&nu;<sub>0</sub> [GHz]</th><th>95</th><th>150</th></tr></thead>
+<tbody><tr><td>&Delta;&nu;<sub>0</sub>/&nu;<sub>0</sub></td><td>0.324</td><td>0.260</td></tr></tbody>
+</table></div>
+
+<h3 class="ft-h3">C. Elevation angle</h3>
+<p class="ft-p">For the determination of the elevation angle, we have approximated a small region of the Earth&rsquo;s surface to a straight line, so that the expression of the elevation angle as a function of the altitude of the CalSat can be seen in Equation 4.</p>
+
+<div class="ft-eq-wrap">
+  <div class="ft-math">$$\tan(-\alpha) = \frac{h}{(90^\circ - i)\,R_\oplus},$$</div>
+  <span class="ft-eq-num">(4)</span>
+</div>
+
+<p class="ft-p">where $\alpha$ is the elevation angle. On the other hand, this expression has been compared to the one used in [4], approximating the CalSat&rsquo;s orbit at the poles as a straight line, with the expression described in Equation 5.</p>
+
+<div class="ft-eq-wrap">
+  <div class="ft-math">$$\tan(-\alpha) = \frac{h - (R_\oplus+h)\sqrt{(90^\circ-i)^2 - \sin^2(90^\circ-i)}}{(R_\oplus+h)\sin^2(90^\circ-i)}.$$</div>
+  <span class="ft-eq-num">(5)</span>
+</div>
+
+<p class="ft-p">In Section III, the reason for using two different equations is explained in detail.</p>
+
+<h3 class="ft-h3">D. Thermal control</h3>
+<p class="ft-p">On the other hand, after implementing a simulation using the software ASATAN, it has been concluded that the maximum temperature reached on the surface of the CalSat&rsquo;s solar panels, when directly facing the Sun, is 39&deg;C [4]. Assuming this is the temperature reached by the entire CalSat, the solar panels emit thermal radiation that could saturate the detectors. Therefore, a thermal analysis has been conducted.</p>
+<p class="ft-p">The power absorbed by the detectors due to the thermal emission from the CalSat&rsquo;s solar panels is given by Equation 6 [4].</p>
+
+<div class="ft-eq-wrap">
+  <div class="ft-math">$$P_{\rm abs}(T_h) = \frac{1}{6}\frac{A_r}{c^2}\left(3\epsilon + \frac{\epsilon^3}{4}\right)\left(\frac{A_t/2}{d}\right)^2 k_B\,\nu_0^3\,T,$$</div>
+  <span class="ft-eq-num">(6)</span>
+</div>
+
+<p class="ft-p">where $A_r$ is the reflecting area (assuming it is circular with a diameter $D_a$), $c$ is the speed of light, $k_B$ is the Boltzmann constant, $\epsilon$ is the relative bandwidth ($\epsilon = 30\%$), $T$ is the temperature, and $d$ is the distance between CalSat and the experiment (assuming $d = 400$ km). The worst-case scenario has been assumed, where the temperature of CalSat is at its maximum and all solar panels are oriented towards the experiment.</p>
+</section>
+
+<section class="ft-section">
+<h2 class="ft-h2">II. Methods</h2>
+<p class="ft-p">The following steps have been carried out for the satellite orbit simulation. The NASA software called GMAT<sup>1</sup> (General Mission Analysis Tool) was used for the simulation. The satellite was configured with time format &ldquo;A1Gregorian&rdquo;, date set to March 20, 2023, at 11:59:28. The state type was set to &ldquo;Keplerian&rdquo; with the orbital parameters shown in Table VIII.</p>
+
+<p class="ft-table-caption"><strong>Table VIII.</strong> For a helio-synchronous orbit on the given date, the orbital parameters are semimajor axis (SMA), eccentricity (ECC), inclination (INC), right ascension of the ascending node, argument of perigee and true anomaly (TA) [4].</p>
+<div class="ft-table-wrap"><table class="ft-table">
+<thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>SMA [km]</td><td>6778</td></tr>
+<tr><td>ECC</td><td>0.0001</td></tr>
+<tr><td>INC [&deg;]</td><td>97.025</td></tr>
+<tr><td>RAAN [&deg;]</td><td>90</td></tr>
+<tr><td>AOP [&deg;]</td><td>0</td></tr>
+<tr><td>TA [&deg;]</td><td>0</td></tr>
+</tbody>
+</table></div>
+
+<p class="ft-p">The next step is to select the &ldquo;Ground Station&rdquo; folder and add the five considered experiments, entering their positions in spherical coordinates (longitude and latitude) on the Earth&rsquo;s surface. The maximum step size was set to one second (Max Step Size = 1 s). Once the GMAT script was completed, a Python code (available in the public GitHub repository) was used to check the dependencies mentioned in Section I, to assess the usefulness of launching this satellite for calibrating the experiments, to count the number of times the satellite passes over each experiment and to conduct the thermal analysis described in Section I.</p>
+</section>
+
+<section class="ft-section">
+<h2 class="ft-h2">III. Results and Discussion</h2>
+<p class="ft-p">Firstly, the CalSat.script file was executed in GMAT for four different time periods: one orbit ($t = 5544$ s), one day ($t = 86400$ s), one week ($t = 604800$ s), and one month or 30 days ($t = 2592000$ s). The trajectory of the satellite during these time periods can be seen in Figures 1&ndash;4.</p>
+
+<figure class="ft-figure">
+  <img src="public/figures/calsat/orbit_1d.png" alt="FIG. 1&ndash;2" loading="lazy">
+  <figcaption><strong>FIG. 1&ndash;2.</strong> The trajectory of CalSat for 5544 seconds (one orbit) and for 86400 seconds (one day).</figcaption>
+</figure>
+<figure class="ft-figure">
+  <img src="public/figures/calsat/orbit_30d.png" alt="FIG. 3&ndash;4" loading="lazy">
+  <figcaption><strong>FIG. 3&ndash;4.</strong> The trajectory of CalSat for 604800 seconds (one week) and for 2592000 seconds (one month/30 days).</figcaption>
+</figure>
+
+<p class="ft-p">Once the GMAT software was executed, the Python code was run, resulting in the dependency of the elevation angle ($\alpha$) shown in Figure 5 and the dependency of the inclination angle ($i$) shown in Figure 6 with respect to the altitude ($h$).</p>
+
+<figure class="ft-figure">
+  <img src="public/figures/calsat/elevation.png" alt="FIG. 5" loading="lazy">
+  <figcaption><strong>FIG. 5.</strong> Elevation angle of the satellite as measured by an observer located at a pole as a function of the orbit altitude.</figcaption>
+</figure>
+<figure class="ft-figure">
+  <img src="public/figures/calsat/sso.png" alt="FIG. 6" loading="lazy">
+  <figcaption><strong>FIG. 6.</strong> Helio-synchronous orbit condition: Inclination angle ($i$) vs. Altitude ($h$), considering a circular orbit ($e = 0$).</figcaption>
+</figure>
+
+<p class="ft-p">In Figure 5, the results of the calculations using Equation 4 (in blue) and Equation 5 (in red) can be observed. Equation 4 is based on approximating the Earth&rsquo;s curvature as a straight line, while Equation 5 approximates the curvature of the orbit as a straight line. This difference becomes significant when considering two separate curvatures over a distance of 400 km with a common central point. Due to the nature of the approximations made, Equation 5, derived in [4], is more accurate due to the greater distance from the origin and, therefore, a larger radius of curvature. Despite concluding that the approximation used in [4] is more accurate than the one used in this work, both expressions have been kept to emphasize the importance of minimizing approximations as much as possible for greater reliability.</p>
+
+<p class="ft-p">Once this initial analysis is completed, the program counts how many times the CalSat has passed over each experiment. It has been determined that the CalSat passes over the QUIJOTE experiment 19 times, over the CLASS experiment 42 times, over the ACT experiment 3 times, over the LSPE-STRIP experiment 14 times and 12 over POLARBEAR-2, as shown in Figure 7. The main differences in the number and shape of the passages are due to the different positions of the experiments and the sizes of the FoVs.</p>
+
+<figure class="ft-figure">
+  <img src="public/figures/calsat/quijote_passes.jpg" alt="FIG. 7a" loading="lazy">
+  <figcaption><strong>FIG. 7a.</strong> The number of times the CalSat passes over QUIJOTE during a month (30 days), considering a circular FoV.</figcaption>
+</figure>
+<figure class="ft-figure">
+  <img src="public/figures/calsat/act_passes.jpg" alt="FIG. 7c" loading="lazy">
+  <figcaption><strong>FIG. 7c.</strong> The number of times the CalSat passes over ACT during a month (30 days), considering a circular FoV.</figcaption>
+</figure>
+
+<p class="ft-p">For this case, the maximum, minimum, average, and total observation times of the CalSat from each experiment have been calculated, and they are summarized in Table IX.</p>
+
+<p class="ft-table-caption"><strong>Table IX.</strong> The number of passes, minimum, maximum, average, and total observation times for each experiment.</p>
+<div class="ft-table-wrap"><table class="ft-table">
+<thead><tr><th>Experiment</th><th>Passes</th><th>t<sub>min</sub> [s]</th><th>t<sub>max</sub> [s]</th><th>t<sub>mean</sub> [s]</th><th>t<sub>tot</sub> [s]</th></tr></thead>
+<tbody>
+<tr><td>QUIJOTE</td><td>19</td><td>50</td><td>121</td><td>101.1</td><td>1921</td></tr>
+<tr><td>CLASS</td><td>42</td><td>50</td><td>242</td><td>192.6</td><td>8089</td></tr>
+<tr><td>ACT</td><td>3</td><td>7</td><td>113</td><td>11.0</td><td>33</td></tr>
+<tr><td>LSPE-STRIP</td><td>14</td><td>35</td><td>75</td><td>59.7</td><td>836</td></tr>
+<tr><td>POLARBEAR-2</td><td>12</td><td>18</td><td>71</td><td>59.7</td><td>716</td></tr>
+</tbody>
+</table></div>
+
+<p class="ft-p">The small variations in the number of passes observed between our simulations and the values reported in [4] are not considered significant, except for the case of the ACT experiment. Since the CalSat passes very few times over the field of view of the ACT experiment, even a small variation can result in a significant change. For example, if the field of view is increased by 10%, the CalSat would pass over the experiment&rsquo;s field of view 4 times, although one of these passes may be tangential in nature. It is important to note that these variations can be attributed to different factors such as variations in the satellite&rsquo;s orbit, observational constraints, or slight differences in the simulation parameters. However, the overall trends and patterns remain consistent, and the simulations performed with the same parameters consistently yield similar results.</p>
+
+<h3 class="ft-h3">A. Time change</h3>
+<p class="ft-p">The number of times CalSat passes over the field of view of each experiment varies with the starting time of the simulation. It is clear that for the case of the ACT experiment, the starting time of the simulation (even by a minute) is crucial. This is because with a smaller field of view, precision becomes extremely important, as CalSat can pass tangentially to the field of view or stay just a few seconds away from entering it. The results are summarized in Table X.</p>
+
+<p class="ft-table-caption"><strong>Table X.</strong> Comparison of the number of times CalSat is observed by each experiment if it becomes operational for 30 days starting on March 20, 2023, at the specified times.</p>
+<div class="ft-table-wrap"><table class="ft-table">
+<thead><tr><th>Experiment</th><th>11:59:28.0</th><th>12:00:54.4</th><th>11:58:28.0</th><th>12:00:28.0</th></tr></thead>
+<tbody>
+<tr><td>QUIJOTE</td><td>19</td><td>21</td><td>20</td><td>21</td></tr>
+<tr><td>CLASS</td><td>42</td><td>42</td><td>43</td><td>42</td></tr>
+<tr><td>ACT</td><td>3</td><td>2</td><td>4</td><td>3</td></tr>
+<tr><td>LSPE-STRIP</td><td>14</td><td>13</td><td>15</td><td>14</td></tr>
+<tr><td>POLARBEAR-2</td><td>12</td><td>13</td><td>12</td><td>12</td></tr>
+</tbody>
+</table></div>
+
+<h3 class="ft-h3">B. Thermal control</h3>
+<p class="ft-p">Finally, the Python code executed the thermal analysis of the emissions from the different antennas of the calibration source onboard the satellite, resulting in Figure 8. According to [4], it is known that the absorbed power is several orders of magnitude lower than the saturation power, so CalSat should not pose any problem in this regard.</p>
+<p class="ft-p">The thermal emission from the solar panels at a temperature of 39&deg;C was also studied, and the results obtained were similar to those reported in [4].</p>
+
+<figure class="ft-figure">
+  <img src="public/figures/calsat/quijote_power.png" alt="FIG. 8" loading="lazy">
+  <figcaption><strong>FIG. 8.</strong> The thermal analysis performed for each experiment using Equation 6. The absorbed power from CalSat&rsquo;s thermal emission is orders of magnitude below the saturation power for all experiments and all frequencies.</figcaption>
+</figure>
+</section>
+
+<section class="ft-section">
+<h2 class="ft-h2">IV. Conclusions</h2>
+<p class="ft-p">A review has been conducted on the calculations presented in [4] regarding the CalSat, a calibration satellite for ground-based experiments studying the polarization of the Cosmic Microwave Background (CMB). The experiments studied for the CalSat implementation are located in the Tenerife and Atacama observatories.</p>
+<p class="ft-p">The visibility of the CalSat has been studied for each experiment over the course of a month (30 days). It is evident that the smaller the field of view of the experiment, the fewer times the passage of the CalSat will be detected. However, the significant dependence on the launch time of the CalSat or the field of view was unexpected, with extreme importance in experiments similar to ACT, with a small field value, leading to changes of around 33%. Experiments such as SPTpol have been excluded from the study because, due to their location, the maximum elevation angle is on the order of $(24 \pm 2)^\circ$, making calibration considerably challenging due to atmospheric effects. For experiments with a low observation time, it could be worth considering the possibility of tracking the CalSat to increase this time. However, since the experiments with the shortest observation time are also the largest ones, it is possible that tracking the CalSat would be impractical due to the low speed at which the experiment&rsquo;s telescope moves.</p>
+<p class="ft-p">Finally, a thermal analysis was conducted to assess the risk of receiver saturation, and it has been completely ruled out as the maximum absorbed power is several orders of magnitude lower than the saturation power [4].</p>
+</section>
+
+<section class="ft-section">
+<h2 class="ft-h2">References</h2>
+<ul class="ft-bib">
+<li>[1] B. R. Johnson, C. J. Vourch, T. D. Drysdale, et al., &ldquo;A CubeSat for calibrating ground-based and suborbital millimeter-wave polarimeters (CalSat),&rdquo; <em>Journal of Astronomical Instrumentation</em>, vol. 04, no. 03n04, Dec. 2015. doi: 10.1142/s2251171715500075.</li>
+<li>[2] F. J. Casas, E. Mart&iacute;nez-Gonz&aacute;lez, J. Bermejo-Ballesteros, et al., &ldquo;L2-calsat: A calibration satellite for ultra-sensitive cmb polarization space missions,&rdquo; <em>Sensors</em>, vol. 21, no. 10, 2021. doi: 10.3390/s21103361.</li>
+<li>[3] R. Boain, &ldquo;A-B-Cs of Sun-Synchronous Orbit Mission Design,&rdquo; Feb. 2005.</li>
+<li>[4] L. F. M. Jir&oacute;n, <em>Calibration satellite for ground-based ultra-sensitive CMB polarization experiments</em>, Master&rsquo;s Thesis, 2022.</li>
+<li>[5] F. Poidevin, J. A. Rubino-Martin, R. Genova-Santos, et al., <em>The QUIJOTE experiment: Prospects for CMB B-mode polarization detection and foregrounds characterization</em>, 2018. arXiv: 1802.04594 [astro-ph.CO].</li>
+<li>[6] T. Essinger-Hileman, A. Ali, M. Amiri, et al., &ldquo;CLASS: The Cosmology Large Angular Scale Surveyor,&rdquo; in <em>SPIE Proceedings</em>, SPIE, Jul. 2014. doi: 10.1117/12.2056701.</li>
+<li>[7] Y. Inoue, P. Ade, Y. Akiba, et al., &ldquo;POLARBEAR-2: An instrument for CMB polarization measurements,&rdquo; in <em>SPIE Proceedings</em>, SPIE, Aug. 2016. doi: 10.1117/12.2231961.</li>
+<li>[8] B. Westbrook, P. A. R. Ade, M. Aguilar, et al., &ldquo;The POLARBEAR-2 and Simons Array focal plane fabrication status,&rdquo; <em>Journal of Low Temperature Physics</em>, vol. 193, no. 5&ndash;6, pp. 758&ndash;770, Sep. 2018. doi: 10.1007/s10909-018-2059-0.</li>
+<li>[9] E. M. George, P. Ade, K. A. Aird, et al., &ldquo;Performance and on-sky optical characterization of the SPTpol instrument,&rdquo; in <em>SPIE Proceedings</em>, SPIE, Sep. 2012. doi: 10.1117/12.925586.</li>
+<li>[10] Anteral. &ldquo;Lens Horn Antennas (LHA) - Anteral.&rdquo; Available: <a href="https://anteral.com/products/antenna-passives/lha-lens-horn-antennas/" target="_blank" rel="noreferrer">https://anteral.com/products/antenna-passives/lha-lens-horn-antennas/</a>. (accessed: 24.04.2023).</li>
+</ul>
+<p style="font-size:.8rem;color:var(--muted);margin-top:1rem"><sup>1</sup> <a href="https://software.nasa.gov/software/GSC-17177-1" target="_blank" rel="noreferrer">https://software.nasa.gov/software/GSC-17177-1</a></p>
+</section>
+
+</div><!-- ft-body -->
 </article>
+
 <footer class="site-footer" style="margin-top:5rem"><div class="footer-inner"><p id="footer-copy"></p><p class="footer-updated" id="footer-date"></p></div></footer>
+
 <script>
-var _kEN="Research internship report \u00b7 IFCA \u00b7 23 November 2023",_kES="Memoria de pr\u00e1cticas de investigaci\u00f3n \u00b7 IFCA \u00b7 23 de noviembre de 2023";
-var _tEN="A review of \"Calibration Satellite for Ultra-sensitive CMB Polarization Ground-based Experiments\"",_tES="Revisi\u00f3n de \"Sat\u00e9lite de Calibraci\u00f3n para Experimentos de Polarizaci\u00f3n del CMB desde Tierra de Ultra-alta Sensibilidad\"";
-var _bEN="Iv\u00e1n Villegas-P\u00e9rez \u00b7 Supervisor: Dr. Francisco J. Casas Reinares (IFCA)",_bES="Iv\u00e1n Villegas-P\u00e9rez \u00b7 Tutor: Dr. Francisco J. Casas Reinares (IFCA)";
-var _inst=["ifca", "uc"];
-var _secs=[{"h2en": "Abstract", "h2es": "Resumen", "items": [{"t": "p", "en": "A review has been conducted on the calculations performed by Luis Fernando Mejía Jirón in his Master’s Thesis. The thesis addresses the implementation and utility of a calibration source capable of emitting a fully polarized signal in the microwave range, onboard a Low Earth Orbit (LEO) satellite. The purpose of this calibration satellite (CalSat) is to calibrate experiments that measure the polarization of the Cosmic Microwave Background (CMB) from ground-based observatories. The utility of CalSat has been studied by analyzing the number of times it enters the field of view of each experiment. Additionally, a thermal analysis has been conducted to ensure that the generated signal does not cause detector saturation due to the satellite’s temperature, which is not the case in any scenario. Following the same procedures as Mejía Jirón, similar results have been obtained, with differences arising from the approximations used and the location of some experiments.", "es": "Se ha realizado una revisión de los cálculos efectuados por Luis Fernando Mejía Jirón en su tesis de máster. La tesis aborda la implementación y utilidad de una fuente de calibración capaz de emitir una señal totalmente polarizada en el rango de microondas, a bordo de un satélite en órbita baja (LEO). El propósito de este satélite de calibración (CalSat) es calibrar los experimentos que miden la polarización del Fondo Cósmico de Microondas (CMB) desde observatorios terrestres. La utilidad de CalSat se ha estudiado analizando el número de veces que entra en el campo de visión de cada experimento. Además, se ha realizado un análisis térmico para garantizar que la señal generada no causa saturación de los detectores, lo que no ocurre en ningún escenario. Siguiendo los mismos procedimientos que Mejía Jirón, se han obtenido resultados similares, con diferencias debidas a las aproximaciones utilizadas y la ubicación de algunos experimentos."}]}, {"h2en": "I. Introduction", "h2es": "I. Introducción", "items": [{"t": "p", "en": "During these external internships, the implementation of a new calibration satellite (CalSat) designed for calibrating ground-based experiments dedicated to measuring the polarization of the CMB has been studied. It is now well-established that thermal anisotropies in the CMB provide some of the best evidence for the early Universe, enabling the determination of significant cosmological constants. Important theoretical arguments predict the presence of fluctuations in the polarized component of the CMB, known as B-modes. According to the inflationary paradigm, these anisotropies would be direct evidence of a stochastic background of tensor perturbations (gravitational waves) generated in the primordial Universe. However, these B-modes have not yet been detected as they are several orders of magnitude weaker than temperature fluctuations and are obscured by polarized signals from galactic contaminants. Multifrequency observations are required to isolate the extremely faint CMB signal from diffuse galactic emission.", "es": "Durante estas prácticas externas se ha estudiado la implementación de un nuevo satélite de calibración (CalSat) diseñado para calibrar experimentos terrestres dedicados a medir la polarización del CMB. Está bien establecido que las anisotropías térmicas del CMB proporcionan algunas de las mejores evidencias del Universo primitivo. El paradigma inflacionario predice fluctuaciones en la componente polarizada del CMB conocidas como modos B, que aún no se han detectado al ser varios órdenes de magnitud más débiles que las fluctuaciones de temperatura y estar oscurecidas por señales polarizadas de contaminantes galácticos. Se requieren observaciones multifrecuencia para aislar la tenue señal del CMB."}, {"t": "h3", "en": "CalSat in a Sun-Synchronous Orbit", "es": "CalSat en órbita heliísíncrona"}, {"t": "p", "en": "The proposed calibration source is expected to be deployed on a CubeSat satellite. CalSat will follow a Sun-Synchronous Orbit (SSO), defined by the condition that the longitude of the ascending node precesses at the same rate as the Earth orbits the Sun:", "es": "La fuente de calibración propuesta se despegará en un satélite CubeSat. CalSat seguirá una Órbita Heliísíncrona (SSO), definida por la condición de que la longitud del nodo ascendente precese al mismo ritmo que la Tierra orbita el Sol:"}, {"t": "math", "tex": "\\dot{\\Omega}=-\\frac{3\\sqrt{\\mu}\\,J_2\\,R^2}{2(1-e^2)^2\\,a^{7/2}}\\cos(i)=0.9856^\\circ\\,\\text{day}^{-1}"}, {"t": "p", "en": "Assuming a circular orbit ($e\\approx 0$) this gives a direct relationship between the inclination angle $i$ and altitude $h=a-R_\\oplus$. The orbital period of CalSat is 1.54 h, completing 15.6 orbits per day.", "es": "Asumiendo una órbita circular ($e\\approx 0$), esto da una relación directa entre el ángulo de inclinación $i$ y la altitud $h=a-R_\\oplus$. El período orbital de CalSat es de 1.54 h, completando 15.6 órbitas por día."}, {"t": "fig", "src": "public/figures/calsat/sso.png", "cen": "Sun-synchronous condition: inclination $i$ vs. altitude $h$ for a circular orbit.", "ces": "Condición heliísíncrona: inclinación $i$ frente a la altitud $h$ para una órbita circular."}, {"t": "fig", "src": "public/figures/calsat/elevation.png", "cen": "Elevation angle of CalSat seen from a polar observer vs. orbital altitude.", "ces": "Ángulo de elevación de CalSat visto por un observador polar frente a la altitud orbital."}]}, {"h2en": "II. Methods — Ground experiments", "h2es": "II. Métodos — Experimentos terrestres", "items": [{"t": "p", "en": "Information has been compiled on five ground-based experiments: QUIJOTE, CLASS, ACT, LSPE-STRIP and POLARBEAR-2. Orbits were propagated with GMAT using SMA = 6778 km, ECC = 0.0001, INC = 97.025°. The simulation started on 20 Mar 2023 11:58:28 UTC.", "es": "Se ha recopilado información sobre cinco experimentos terrestres: QUIJOTE, CLASS, ACT, LSPE-STRIP y POLARBEAR-2. Las órbitas se propagaron con GMAT usando SMA = 6778 km, ECC = 0.0001, INC = 97.025°. La simulación comenzó el 20 de marzo de 2023 a las 11:58:28 UTC."}, {"t": "tab", "headers": ["Experiment", "Longitude", "Latitude", "FoV (°)", "Aperture (m)"], "rows": [["QUIJOTE", "-16.506", "28.300", "8", "2.25"], ["CLASS", "-67.783", "-22.967", "16", "0.46"], ["ACT", "-67.788", "-22.959", "1", "6.00"], ["LSPE-STRIP", "-16.511", "28.301", "5", "1.50"], ["POLARBEAR-2", "-67.786", "-22.958", "4.8", "3.50"]]}, {"t": "fig", "src": "public/figures/calsat/orbit_1d.png", "cen": "Ground track of CalSat after one day.", "ces": "Trazado terrestre de CalSat tras un día."}, {"t": "fig", "src": "public/figures/calsat/orbit_30d.png", "cen": "Ground track of CalSat after 30 days.", "ces": "Trazado terrestre de CalSat tras 30 días."}]}, {"h2en": "III. Results", "h2es": "III. Resultados", "items": [{"t": "h3", "en": "Number of passes per experiment", "es": "Número de pasos por experimento"}, {"t": "p", "en": "The number of times CalSat enters the field of view of each experiment over 30 days has been computed for four different start times. The results are shown below. The smaller the field of view, the fewer times the passage of CalSat is detected. ACT, with the narrowest FoV (1°), shows the strongest dependence on start time (∼33% variation). For experiments with very narrow FoVs and low observation time, tracking CalSat could in principle increase the observation time, but is impractical for large telescopes due to their slow slew speed.", "es": "Se ha calculado el número de veces que CalSat entra en el campo de visión de cada experimento a lo largo de 30 días para cuatro instantes de inicio diferentes. Cuanto más pequeño es el campo de visión, menos veces se detecta el paso de CalSat. ACT, con el FoV más estrecho (1°), muestra la mayor dependencia con el instante de inicio (∼33% de variación). Para experimentos con FoV muy estrecho y tiempo de observación reducido, seguir a CalSat podría en principio aumentar el tiempo de observación, pero resulta impráctico para telescopios grandes debido a su baja velocidad de apuntado."}, {"t": "tab", "headers": ["Experiment", "Start 1", "Start 2", "Start 3", "Start 4"], "rows": [["QUIJOTE", "19", "21", "20", "21"], ["CLASS", "42", "42", "43", "42"], ["ACT", "3", "2", "4", "3"], ["LSPE-STRIP", "14", "13", "15", "14"], ["POLARBEAR-2", "12", "13", "12", "12"]]}, {"t": "fig", "src": "public/figures/calsat/quijote_passes.jpg", "cen": "Passes of CalSat over the QUIJOTE field of view during one month.", "ces": "Pasos de CalSat sobre el campo de visión de QUIJOTE durante un mes."}, {"t": "fig", "src": "public/figures/calsat/act_passes.jpg", "cen": "Passes of CalSat over the ACT field of view — the narrowest in the sample.", "ces": "Pasos de CalSat sobre el campo de visión de ACT — el más estrecho de la muestra."}, {"t": "h3", "en": "Thermal analysis", "es": "Análisis térmico"}, {"t": "p", "en": "A thermal analysis was conducted to assess the risk of receiver saturation by CalSat’s emission. The maximum panel temperature when facing the Sun is ∼39°C. For all experiments and all frequencies, the absorbed power is several orders of magnitude lower than the saturation power, completely ruling out receiver saturation in any scenario.", "es": "Se realizó un análisis térmico para evaluar el riesgo de saturación de los receptores por la emisión de CalSat. La temperatura máxima de los paneles encarados al Sol es ∼39°C. Para todos los experimentos y todas las frecuencias, la potencia absorbida es varios órdenes de magnitud inferior a la potencia de saturación, descartando por completo la saturación de los receptores en cualquier escenario."}, {"t": "fig", "src": "public/figures/calsat/quijote_power.png", "cen": "Absorbed power on QUIJOTE vs. CalSat surface temperature, for each working frequency. The absorbed power is orders of magnitude below saturation for all frequencies.", "ces": "Potencia absorbida en QUIJOTE frente a la temperatura superficial de CalSat, para cada frecuencia de trabajo. La potencia absorbida es varios órdenes de magnitud por debajo de la saturación para todas las frecuencias."}]}, {"h2en": "IV. Conclusions", "h2es": "IV. Conclusiones", "items": [{"t": "p", "en": "A review has been conducted on the calculations presented regarding CalSat, a calibration satellite for ground-based CMB polarization experiments located in the Tenerife and Atacama observatories. The visibility of CalSat has been studied for each experiment over 30 days. It is evident that the smaller the field of view, the fewer detections, with a significant dependence on launch time especially for ACT. Experiments such as SPTpol (South Pole) have been excluded because the maximum elevation angle is only (24±2)°, making calibration challenging due to atmospheric effects. A thermal analysis has completely ruled out receiver saturation.", "es": "Se ha realizado una revisión de los cálculos presentados sobre CalSat, un satélite de calibración para experimentos de polarización del CMB desde tierra en los observatorios de Tenerife y Atacama. Se ha estudiado la visibilidad de CalSat para cada experimento durante 30 días. Es evidente que cuanto más pequeño es el campo de visión, menos detecciones se producen, con una dependencia significativa del instante de lanzamiento especialmente para ACT. Experimentos como SPTpol (Polo Sur) se han excluido porque el ángulo de elevación máximo es solo (24±2)°, lo que dificulta la calibración debido a los efectos atmosféricos. El análisis térmico ha descartado completamente la saturación de los receptores."}]}, {"h2en": "Bibliography", "h2es": "Bibliografía", "items": [{"t": "p", "en": "[1] B. R. Johnson et al., “A CubeSat for calibrating ground-based and suborbital millimeter-wave polarimeters (CalSat),” J. Astron. Instrum. 04, 2015.\n[2] F. J. Casas et al., “L2-CalSat: A calibration satellite for ultra-sensitive CMB polarization space missions,” Sensors 21, 3361, 2021.\n[3] R. Boain, “A-B-Cs of Sun-Synchronous Orbit Mission Design,” Feb. 2005.\n[4] L. F. M. Jirón, Calibration satellite for ground-based ultra-sensitive CMB polarization experiments, Master’s Thesis, 2022.\n[5] F. Poidevin et al., The QUIJOTE experiment, 2018.\n[6] T. Essinger-Hileman et al., “CLASS: The Cosmology Large Angular Scale Surveyor,” SPIE, 2014.\n[7] Y. Inoue et al., “POLARBEAR-2: An instrument for CMB polarization measurements,” SPIE, 2016.", "es": "[1] B. R. Johnson et al., “A CubeSat for calibrating ground-based and suborbital millimeter-wave polarimeters (CalSat),” J. Astron. Instrum. 04, 2015.\n[2] F. J. Casas et al., “L2-CalSat: A calibration satellite for ultra-sensitive CMB polarization space missions,” Sensors 21, 3361, 2021.\n[3] R. Boain, “A-B-Cs of Sun-Synchronous Orbit Mission Design,” Feb. 2005.\n[4] L. F. M. Jirón, Calibration satellite for ground-based ultra-sensitive CMB polarization experiments, Tesis de máster, 2022.\n[5] F. Poidevin et al., The QUIJOTE experiment, 2018.\n[6] T. Essinger-Hileman et al., “CLASS: The Cosmology Large Angular Scale Surveyor,” SPIE, 2014.\n[7] Y. Inoue et al., “POLARBEAR-2: An instrument for CMB polarization measurements,” SPIE, 2016."}]}];
-function _langNote(es){return es?'Nota: el PDF está en inglés.':'';}
-function renderPage(){
-  renderStaticText();
-  var es=lang==='es';
-  document.getElementById('ft-kicker').textContent=es?_kES:_kEN;
-  document.getElementById('ft-title').textContent=es?_tES:_tEN;
-  document.getElementById('ft-byline').textContent=es?_bES:_bEN;
-  document.getElementById('ft-badges').innerHTML=instBadges(_inst);
-  var note=document.getElementById('ft-lang-note');
-  if(note) note.textContent=_langNote(es);
-  var html='';
-  _secs.forEach(function(sec){
-    html+='<section class="ft-section"><h2 class="ft-h2">'+esc(es?sec.h2es:sec.h2en)+'</h2>';
-    sec.items.forEach(function(x){
-      if(x.t==='p') html+='<p class="ft-p">'+esc(es?x.es:x.en)+'</p>';
-      else if(x.t==='h3') html+='<h3 class="ft-h3">'+esc(es?x.es:x.en)+'</h3>';
-      else if(x.t==='math') html+='<div class="ft-math">$$'+x.tex+'$$</div>';
-      else if(x.t==='note') html+='<aside class="ft-note">'+esc(es?x.es:x.en)+'</aside>';
-      else if(x.t==='fig') html+='<figure class="ft-figure"><img src="'+x.src+'" alt="'+esc(es?x.ces:x.cen)+'" loading="lazy"><figcaption>'+esc(es?x.ces:x.cen)+'</figcaption></figure>';
-      else if(x.t==='tab') html+='<div class="ft-table-wrap"><table class="ft-table"><thead><tr>'+x.headers.map(function(h){return'<th>'+esc(h)+'</th>';}).join('')+'</tr></thead><tbody>'+x.rows.map(function(r){return'<tr>'+r.map(function(c){return'<td>'+esc(c)+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table></div>';
-    });
-    html+='</section>';
-  });
-  document.getElementById('ft-body').innerHTML=html;
-  renderFooter();
-  if(window.renderMathInElement) setTimeout(function(){renderMathInElement(document.getElementById('ft-body'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});},100);
-}
-setNavActive('projects');applyTheme();document.getElementById('btn-en').classList.toggle('active',lang==='en');document.getElementById('btn-es').classList.toggle('active',lang==='es');document.documentElement.lang=lang==='es'?'es':'en';renderPage();
+document.getElementById('ft-badges').innerHTML = instBadges(['ifca','uc']);
+var note = document.getElementById('ft-lang-note');
+if (note) note.textContent = lang === 'es' ? 'Nota: el PDF est\u00e1 en ingl\u00e9s.' : '';
+if (typeof renderFooter === 'function') renderFooter();
+setNavActive('projects');
+applyTheme();
+document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+document.documentElement.lang = lang === 'es' ? 'es' : 'en';
 </script>
 </body>
 </html>

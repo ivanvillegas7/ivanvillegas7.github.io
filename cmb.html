@@ -9,50 +9,269 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"/>
   <link rel="stylesheet" href="shared.css"/>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
   <script src="shared.js?v=2"></script>
-  <title>CMB Power Spectrum — Iván Villegas-Pérez</title>
+  <title>Computing the CMB power spectrum &mdash; Iv&aacute;n Villegas-P&eacute;rez</title>
 </head>
 <body>
-<header class="site-nav"><div class="nav-inner"><a class="nav-brand" href="index.html">Iván Villegas-Pérez</a><nav class="nav-links"><a class="nav-link" href="index.html" id="nav-home" data-en="About" data-es="Sobre mí">About</a><a class="nav-link" href="projects.html" id="nav-projects" data-en="Projects" data-es="Proyectos">Projects</a><a class="nav-link" href="education.html" id="nav-education" data-en="Education" data-es="Formación">Education</a><a class="nav-link" href="conferences.html" id="nav-conferences" data-en="Conferences" data-es="Congresos">Conferences</a><a class="nav-link" href="index.html#news" data-en="News" data-es="Noticias">News</a><a class="nav-link" href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a><div style="display:flex;gap:.5rem"><a class="nav-btn" href="public/CV.pdf" target="_blank" rel="noopener">CV &#8599;</a><a class="nav-btn" href="public/CVA.pdf" target="_blank" rel="noopener">CVA &#8599;</a><a class="nav-btn" href="assets/qr-code.pdf" target="_blank" rel="noopener">QR &#8599;</a></div><div class="lang-sw"><button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button><button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button></div><button class="theme-btn" onclick="cycleTheme()"><span id="theme-icon">&#8857;</span><span class="theme-tip" id="theme-tooltip">Sistema</span></button></nav></div></header>
-<div class="container" style="padding-top:2.5rem;padding-bottom:1.5rem"><a class="link-muted" href="projects.html" style="font-family:var(--mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.1em">&#8592; <span data-en="All projects" data-es="Todos los proyectos">All projects</span></a></div>
+<header class="site-nav"><div class="nav-inner"><a class="nav-brand" href="index.html">Iv&aacute;n Villegas-P&eacute;rez</a><nav class="nav-links"><a class="nav-link" href="index.html" id="nav-home" data-en="About" data-es="Sobre m&iacute;">About</a><a class="nav-link" href="projects.html" id="nav-projects" data-en="Projects" data-es="Proyectos">Projects</a><a class="nav-link" href="education.html" id="nav-education" data-en="Education" data-es="Formaci&oacute;n">Education</a><a class="nav-link" href="conferences.html" id="nav-conferences" data-en="Conferences" data-es="Congresos">Conferences</a><a class="nav-link" href="index.html#news" data-en="News" data-es="Noticias">News</a><a class="nav-link" href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a><div style="display:flex;gap:.5rem"><a class="nav-btn" href="public/CV.pdf" target="_blank" rel="noopener">CV &#8599;</a><a class="nav-btn" href="public/CVA.pdf" target="_blank" rel="noopener">CVA &#8599;</a><a class="nav-btn" href="assets/qr-code.pdf" target="_blank" rel="noopener">QR &#8599;</a></div><div class="lang-sw"><button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button><button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button></div><button class="theme-btn" onclick="cycleTheme()"><span id="theme-icon">&#8857;</span><span class="theme-tip" id="theme-tooltip">Sistema</span></button></nav></div></header>
+
+<div class="container" style="padding-top:2.5rem;padding-bottom:1.5rem">
+  <a class="link-muted" href="projects.html" style="font-family:var(--mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.1em">&#8592; <span data-en="All projects" data-es="Todos los proyectos">All projects</span></a>
+</div>
+
 <article class="container" style="max-width:52rem;padding-bottom:6rem">
-<header class="ft-header"><p class="ft-kicker" id="ft-kicker">Course project · AST5220 Cosmology II · UiO · June 2024</p><h1 class="ft-title" id="ft-title">Computing the CMB power spectrum</h1><p class="ft-byline" id="ft-byline">Iván Villegas-Pérez — Supervisors: Prof. David F. Mota & Dr. Hans A. Winther (UiO)</p><div class="ft-sidebar"><a class="btn-outline" style="font-size:.8125rem;padding:.375rem .875rem" href="public/reports/cmb-power-spectrum.pdf" target="_blank" rel="noopener"><span data-en="Read PDF &#8599;" data-es="Leer PDF &#8599;">Read PDF &#8599;</span></a><a class="btn-outline" style="font-size:.8125rem;padding:.375rem .875rem" href="https://github.com/ivanvillegas7/CMB_power_spectrum" target="_blank" rel="noopener">GitHub &#8599;</a><span id="ft-badges"></span></div><p id="ft-lang-note" style="margin-top:.75rem;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)"></p></header>
-<div id="ft-body"></div>
+<header class="ft-header">
+  <p class="ft-kicker">Course project &middot; AST5220 Cosmology II &middot; University of Oslo &middot; 5 June 2024</p>
+  <h1 class="ft-title">Computing the CMB power spectrum</h1>
+  <p class="ft-byline">Iv&aacute;n Villegas-P&eacute;rez &mdash; <em>Astronomy &amp; Astrophysics manuscript style &middot; June 5, 2024</em></p>
+  <div class="ft-sidebar">
+    <a class="btn-outline" style="font-size:.8125rem;padding:.375rem .875rem" href="public/reports/cmb-power-spectrum.pdf" target="_blank" rel="noopener"><span data-en="Read PDF &#8599;" data-es="Leer PDF &#8599;">Read PDF &#8599;</span></a>
+    <a class="btn-outline" style="font-size:.8125rem;padding:.375rem .875rem" href="https://github.com/ivanvillegas7/CMB_power_spectrum" target="_blank" rel="noopener">GitHub &#8599;</a>
+    <span id="ft-badges"></span>
+  </div>
+  <p id="ft-lang-note" style="margin-top:.75rem;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)"></p>
+</header>
+
+<div id="ft-body">
+
+<p class="ft-p" style="margin-bottom:.75rem"><strong>Context.</strong> The goal of this whole study is to be able to predict the CMB (and matter) fluctuations (described by the so-called power-spectrum) from first principles and learn about all the different physical processes that goes on to be able to explain the results.</p>
+<p class="ft-p" style="margin-bottom:.75rem"><strong>Aims.</strong> The goals in this work are to make a class/module that takes in the cosmological parameters and has functions for getting the Hubble parameter, conformal time and distance measures as function of scale factor and the variable $x = \ln a$, to make a class/module that takes in the abundance of Helium in the Universe and has functions for getting the free electron fraction, the optical depth (and its derivatives) and the visibility function (and its derivatives), to make a class/module that evolves the density, velocity, temperature, polarization and neutrinos perturbations from an early time until today, and to make a class/module that computes the CMB power-spectrum.</p>
+<p class="ft-p" style="margin-bottom:.75rem"><strong>Methods.</strong> Four codes have been developed, using the template given by Hans A. Winther. In the first code, several functions have been implemented to solve the background cosmology of the Universe and plot the results, identifying each epoch domination (either relativistic particles, non-relativistic matter or dark energy). In the second code, several functions have been implemented to solve the recombination history of the Universe and plot the results. In the third one, several functions have been implemented to evolve the perturbations and plot the results. Lastly, in the fourth code, several functions have been implemented to compute the CMB power-spectrum and plot the results.</p>
+<p class="ft-p" style="margin-bottom:.75rem"><strong>Results.</strong> Background cosmology of the Universe has been solved and each epoch has been determined, identifying in each of them the dominating substance. The age of the Universe has also been computed, being this $t_{\rm Universe} \approx 13.86$ Gyr. Recombination history of the Universe has been solved. The relevant times of the Universe&rsquo;s recombination history have been computed, as well as the sound horizon at decoupling, being this $r_s \approx 128.177$ Mpc. Evolution of the structure of the Universe has been solved. The density and velocity perturbations for CDM, baryonic matter and photon have been computed. The CMB power-spectrum has been computed, along with a CMB map.</p>
+<p class="ft-p" style="margin-bottom:1.5rem"><strong>Conclusions.</strong> The CMB power-spectrum has been computed with a high accuracy, considering the approximations made.</p>
+<p class="ft-p" style="margin-bottom:1.5rem"><em>Key words.</em> background cosmology &ndash; evolution of the Universe &ndash; epoch domination &ndash; recombination &ndash; structure evolution &ndash; perturbations &ndash; CMB power-spectrum &ndash; CMB map</p>
+
+<section class="ft-section">
+<h2 class="ft-h2">1. Introduction</h2>
+<p class="ft-p">The goals of this study have been to solve the evolution of the uniform background cosmology in the Universe, to solve its recombination history, to solve the evolution of structure in the Universe and to compute the CMB power-spectrum.<sup>1</sup></p>
+<p class="ft-p">For this first goal, a class/module has been implemented. This class takes the given cosmological parameters and (with the use of different functions) returns the Hubble parameter ($H$), conformal time ($\eta$) and distance measures as function of the scale factor ($a$) and the variable $x$ ($x = \ln a$), which will be the main time variable for this work.<sup>2</sup></p>
+<p class="ft-p">For the second goal, a different class/module has been implemented. The final goal of this part is to compute the optical depth ($\tau$) as a function of $x$ and its derivatives, and the visibility function, $\tilde{g}$, and its derivatives.<sup>3</sup></p>
+<p class="ft-p">For the third goal, a different class/module has been implemented. The final goal of this part is to construct two-dimensional functions (of time and Fourier scale, $x$ and $k$) for each of the main physical quantities of interest: $\Phi(x,k)$, $\Psi(x,k)$, $\delta_{\rm CDM}(x,k)$, $\delta_b(x,k)$, $v_{\rm CDM}(x,k)$, $v_B(x,k)$ and $\Theta_\ell(x,k)$.<sup>4</sup></p>
+<p class="ft-p">Finally, after spending a lot of time on understanding the evolution of the background properties of the universe, its ionization history, and the growth of structure in the universe, the key statistical observable in cosmology has been computed: the CMB and matter power spectrum!<sup>5</sup></p>
+<p class="ft-p">The fiducial cosmology used in this work is the best-fit cosmology found from fits to Planck 2018 data [Aghanim et al. (2020)] without neutrinos, Helium, reionization nor photon polarization:</p>
+<div style="margin:1.25rem 0 1.25rem 2rem;font-family:var(--mono);font-size:.875rem;line-height:2">
+  $h_0 = 0.67$,<br>
+  $T_{\rm CMB,0} = 2.7255$ K,<br>
+  $N_{\rm eff} = 3.046$,<br>
+  $\Omega_{B,0} = 0.05$,<br>
+  $\Omega_{\rm CDM,0} = 0.267$,<br>
+  $\Omega_{k,0} = -kc^2/H_0^2 = 0$,<br>
+  $\Omega_{\Lambda,0} = 1 - (\Omega_{B,0} + \Omega_{\rm CDM,0} + \Omega_{k,0} + \Omega_{\nu,0} + \Omega_{\gamma,0})$,<br>
+  $Y_p = 0$,<br>
+  $n_s = 0.965$,<br>
+  $A_s = 2.1 \cdot 10^{-9}$.
+</div>
+</section>
+
+<section class="ft-section">
+<h2 class="ft-h2">2. Basic cosmology</h2>
+<h3 class="ft-h3">2.1. Background Cosmology</h3>
+<p class="ft-p">Let&rsquo;s review the theory basics. The goal of this work has been computing the expansion history of the universe, and look at the uniform background densities of the various matter and energy components. Let&rsquo;s first define the Friedmann-Lema&icirc;tre-Robertson-Walker metric (here for a flat space where $k=0$),</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$ds^2 = -c^2 dt^2 + a^2(t)\!\left[dr^2 + r^2\!\left(d\theta^2 + \sin^2\theta\,d\phi^2\right)\right],$$</div><span class="ft-eq-num">(1)</span></div>
+<p class="ft-p">or in Cartesian coordinates</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$ds^2 = a^2(t)\!\left(d\eta^2 + dx^2 + dy^2 + dz^2\right),$$</div><span class="ft-eq-num">(2)</span></div>
+<p class="ft-p">where $a(t)$ is the scale factor, which measures the size of the universe relative to today ($a_0 = a_{\rm today} = 1$), and $\eta$ is called conformal time. As we will be looking at phenomena that varies strongly over a wide range of time scales, we will mostly be using the logarithm of the scale factor, $x \equiv \ln a$, as the main time variable. A fifth time variable is the redshift, $z$, which is defined as</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$1 + z = a_0/a(t).$$</div><span class="ft-eq-num">(3)</span></div>
+<p class="ft-p">The relevant equation for this work purposes is the Friedmann equation, which may be written (when $k=0$ is not assumed) on the following form</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$H = H_0\sqrt{\Omega_{M,0}\,a^{-3} + \Omega_{R,0}\,a^{-4} + \Omega_{k,0}\,a^{-2} + \Omega_{\Lambda,0}},$$</div><span class="ft-eq-num">(4)</span></div>
+<p class="ft-p">where $H \equiv \dot{a}/a$ is the Hubble parameter (dot denotes derivatives with respect to physical time, $\dot{\;}=d/dt$), and $\Omega_{B,0}$, $\Omega_{\rm CDM,0}$, $\Omega_{\gamma,0}$, $\Omega_{\nu,0}$, and $\Omega_{\Lambda,0}$ are the present day relative densities of baryonic (ordinary) matter, dark matter, radiation, neutrinos and dark energy, respectively. The terms $\Omega_{M,0}=\Omega_{B,0}+\Omega_{\rm CDM,0}$ and $\Omega_{R,0}=\Omega_{\nu,0}+\Omega_{\gamma,0}$ stand for cold (non-relativistic) matter and relativistic particles (neutrinos and photons). This gives us:</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$\rho_{\rm CDM} = \rho_{\rm CDM,0}\,a^{-3},\qquad \rho_B = \rho_{B,0}\,a^{-3},\qquad \rho_\gamma = \rho_{\gamma,0}\,a^{-4},\qquad \rho_\nu = \rho_{\nu,0}\,a^{-4},\qquad \rho_\Lambda = \rho_{\Lambda,0}.$$</div><span class="ft-eq-num">(5&ndash;10)</span></div>
+<p class="ft-p">Two of the density parameters above follow from the observed temperature of the CMB. We have that $\Omega_{\gamma,0}$ and $\Omega_{\nu,0}$ are given by</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$\Omega_{\gamma,0} = 2\cdot\frac{\pi^2 k_B T_{\rm CMB,0}}{30}\frac{1}{\hbar^3 c^5}\frac{8\pi G}{3H_0^2},$$</div><span class="ft-eq-num">(17)</span></div>
+<div class="ft-eq-wrap"><div class="ft-math">$$\Omega_{\nu,0} = N_{\rm eff}\cdot\left(\frac{7}{8}\frac{4}{11}\right)^{4/3}\Omega_{\gamma,0},$$</div><span class="ft-eq-num">(18)</span></div>
+<p class="ft-p">where $T_{\rm CMB,0}=2.7255$ K is the temperature of the CMB today and $N_{\rm eff}=3.046$ is the effective number of massless neutrinos. We define matter-radiation equality as the time when $\Omega_M = \Omega_R$ and the matter-dark energy transition as the time when $\Omega_M = \Omega_\Lambda$. The onset of acceleration is the time when $\ddot{a}=0$.</p>
+<p class="ft-p">To find a computable expression for $\eta$, note that $d\eta/dt = c/a$. This leads to the ODE</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$\frac{d\eta}{dx} = \frac{c}{\mathcal{H}},$$</div><span class="ft-eq-num">(22)</span></div>
+<p class="ft-p">where $\mathcal{H}=aH$ is the conformal Hubble parameter. The initial condition is $\eta(x_{\rm start}) = c/\mathcal{H}(x_{\rm start})$. For a flat Universe, all the standard distance measures follow from the conformal time. The angular diameter distance is $d_A = ar$, and the luminosity distance is $d_L = r/a^2$, where $r = \eta_0 - \eta$ for $\Omega_{k,0}=0$.</p>
+<p class="ft-p">The relation between cosmic time $t$ and $x$ follows from $dt/dx = 1/H(x)$. Evaluating this at $x=0$ gives the age of the Universe.</p>
+
+<h3 class="ft-h3">2.2. Recombination History</h3>
+<p class="ft-p">The problem of this work is to compute the optical depth, $\tau(x)$, and the so-called visibility function, $g(x)$, which is needed for integrating the Boltzmann-Einstein equations. Light that travels through a medium can be absorbed by the medium. The quantity $\tau$ is called the optical depth. The transition between the Universe being optically thick and optically thin happens around recombination. The optical depth is defined as</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$\tau(\eta) = \int_\eta^{\eta_0} n_e\,\sigma_T\,a\,d\eta',$$</div><span class="ft-eq-num">(32)</span></div>
+<p class="ft-p">which in differential form reads</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$\tau' = \frac{d\tau}{dx} = -\frac{c\,n_e\,\sigma_T}{\mathcal{H}}.$$</div><span class="ft-eq-num">(33)</span></div>
+<p class="ft-p">There are two different equations available for $X_e$ as a function of temperature and density, namely the so-called Saha and Peebles&rsquo; equations. If we ignore Helium then the Saha equation reads</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$\frac{X_e^2}{1-X_e} = \frac{1}{n_B}\left(\frac{m_e T_B}{2\pi}\right)^{3/2} e^{-\epsilon_0/T_B},$$</div><span class="ft-eq-num">(36)</span></div>
+<p class="ft-p">where $T_B$ is the baryon temperature and $\epsilon_0 = 13.6$ eV is the ionization energy of hydrogen. The Peebles&rsquo; equation reads</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$\frac{dX_e}{dx} = \frac{C_r(T_b)}{H}\!\left[\beta(T_b)(1-X_e) - n_H\,\alpha^{(2)}(T_b)\,X_e^2\right],$$</div><span class="ft-eq-num">(37)</span></div>
+<p class="ft-p">where the various coefficients $C_r$, $\Lambda_{2s\to 1s}$, $\Lambda_\alpha$, $\beta$, $\beta^{(2)}$, $\alpha^{(2)}$ and $\phi_2$ are given by Equations (38)&ndash;(46) of the report. When $X_e > 0.99$ the Saha equation is used; when $X_e < 0.99$ we switch to Peebles&rsquo;.</p>
+<p class="ft-p">The final item to compute is the so-called visibility function,</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$\tilde{g}(x) = -\tau'(x)\,e^{-\tau(x)},$$</div><span class="ft-eq-num">(47)</span></div>
+<p class="ft-p">which has the property that $\int_{-\infty}^0 \tilde{g}(x)\,dx = 1$ and is sharply peaked around $x=-7$, corresponding to redshifts $z \sim 1100$. The sound horizon at decoupling is</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$\frac{ds}{dx} = \frac{c_s}{\mathcal{H}},\qquad c_s = \frac{c}{\sqrt{3(1+R)}},\qquad R = \frac{4\Omega_{\gamma,0}}{3\Omega_{B,0}\,a},$$</div><span class="ft-eq-num">(48)</span></div>
+<p class="ft-p">and evaluating at $x=x_{\rm decoupling}$ gives $r_s \equiv s(x_{\rm decoupling})$.</p>
+
+<h3 class="ft-h3">2.3. Perturbations</h3>
+<p class="ft-p">During the lectures,<sup>9</sup> the linearized Einstein and Boltzmann equations for photons, baryons and dark matter, and their respective inflationary initial conditions have been derived. One of the goals of the current study is to solve these equations numerically.</p>
+<p class="ft-p">At early times the optical depth $\tau$ is very large (tight coupling), making the ODE system numerically unstable. The solution is to use a proper approximation in the tight coupling regime. At later times, the fluid becomes thinner and higher multipoles $\Theta_\ell$ become relevant. Fortunately, the line-of-sight integration approach of Zaldarriaga and Seljak [Seljak &amp; Zaldarriaga (1996)] means only a small number of these ($\ell_{\rm max}=8$ in the perturbation stage) need to be included.</p>
+
+<h4 style="font-size:1rem;margin:1.5rem 0 .5rem;font-family:var(--serif)">2.3.1. The full system</h4>
+<p class="ft-p">Photon temperature multipoles ($\Theta_\ell$), photon polarization multipoles ($\Theta^P_\ell$), neutrino multipoles ($N_\ell$), CDM and baryons, and metric perturbations are evolved according to Equations (49)&ndash;(65) of the report, which include:</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$\Theta_0' = -\frac{ck}{\mathcal{H}}\Theta_1 - \Phi',$$</div><span class="ft-eq-num">(49)</span></div>
+<div class="ft-eq-wrap"><div class="ft-math">$$\Theta_1' = \frac{ck}{3\mathcal{H}}\Theta_0 - \frac{2ck}{3\mathcal{H}}\Theta_2 + \frac{ck}{3\mathcal{H}}\Psi + \tau'\!\left(\Theta_1 + \frac{1}{3}v_b\right),$$</div><span class="ft-eq-num">(50)</span></div>
+<div class="ft-eq-wrap"><div class="ft-math">$$\delta_{\rm CDM}' = \frac{ck}{\mathcal{H}}v_{\rm CDM} - 3\Phi', \qquad v_{\rm CDM}' = -v_{\rm CDM} - \frac{ck}{\mathcal{H}}\Psi,$$</div><span class="ft-eq-num">(60&ndash;61)</span></div>
+<div class="ft-eq-wrap"><div class="ft-math">$$\Phi' = \frac{H_0^2}{2\mathcal{H}^2}\!\left[\frac{\Omega_{\rm CDM,0}}{a}\delta_{\rm CDM}+\frac{\Omega_{B,0}}{a}\delta_B+4\frac{\Omega_{\gamma,0}}{a^2}\Theta_0+4\frac{\Omega_{\nu,0}}{a^2}N_0\right]+\Psi-\frac{c^2k^2}{3\mathcal{H}^2}\Phi,$$</div><span class="ft-eq-num">(64)</span></div>
+<div class="ft-eq-wrap"><div class="ft-math">$$\Psi = -\Phi - \frac{12H_0^2}{c^2k^2a^2}\!\left[\Omega_{\gamma,0}\Theta_2+\Omega_{\nu,0}N_2\right].$$</div><span class="ft-eq-num">(65)</span></div>
+
+<h4 style="font-size:1rem;margin:1.5rem 0 .5rem;font-family:var(--serif)">2.3.2. The tight coupling regime</h4>
+<p class="ft-p">In the tight coupling regime, only $\Theta_0$ and $\Theta_1$ are evolved and the higher moments are given by the same relations as in the initial conditions. The expressions for $\Theta_1'$ and $v_B'$ become more involved (Equations 66&ndash;70) involving the quantity</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$q = -\frac{\text{Num.}}{\text{Den.}}$$</div><span class="ft-eq-num">(68)</span></div>
+<p class="ft-p">where Num. and Den. involve $\tau'$, $\tau''$, $\mathcal{H}$, $\mathcal{H}'$ and the perturbation variables (see Equations 66&ndash;67 of the report).</p>
+
+<h4 style="font-size:1rem;margin:1.5rem 0 .5rem;font-family:var(--serif)">2.3.3. Initial conditions</h4>
+<p class="ft-p">The initial conditions deep in the tight coupling regime are given by ($f_\nu = \Omega_{\nu,0}/(\Omega_{\gamma,0}+\Omega_{\nu,0})$):</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$\Psi = -\frac{1}{\tfrac{2}{3}+\tfrac{2}{5}f_\nu},\quad \Phi = -\left(1+\frac{2f_\nu}{5}\right)\Psi,\quad \delta_{\rm CDM}=\delta_B=-\frac{3}{2}\Psi,\quad v_{\rm CDM}=v_B=-\frac{ck}{2\mathcal{H}}\Psi,$$</div><span class="ft-eq-num">(77&ndash;80)</span></div>
+<div class="ft-eq-wrap"><div class="ft-math">$$\Theta_0=-\frac{1}{2}\Psi,\quad \Theta_1=\frac{ck}{6\mathcal{H}}\Psi,\quad N_0=-\frac{1}{2}\Psi,\quad N_1=\frac{ck}{6\mathcal{H}}\Psi.$$</div><span class="ft-eq-num">(81&ndash;82, 89&ndash;90)</span></div>
+
+<h3 class="ft-h3">2.4. CMB power-spectrum</h3>
+<p class="ft-p">Knowing the ionization history and the structure growth, the CMB power-spectrum can be computed. The CMB temperature field is expanded in spherical harmonics $T(\hat{n})=\sum_{\ell m} a_{\ell m}Y_{\ell m}(\hat{n})$, and the power spectrum is</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$C_\ell \equiv \langle|a_{\ell m}|^2\rangle = \langle a_{\ell m}a_{\ell m}^*\rangle.$$</div><span class="ft-eq-num">(94)</span></div>
+<p class="ft-p">Using the line-of-sight integration method [Seljak &amp; Zaldarriaga (1996)], the temperature transfer functions are computed as</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$\Theta_\ell(k,x=0) = \int_{-\infty}^0 \tilde{S}(k,x)\,j_\ell\!\left[k(\eta_0-\eta)\right]dx,$$</div><span class="ft-eq-num">(95)</span></div>
+<p class="ft-p">where the source function $\tilde{S}$ is</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$\tilde{S}(k,x) = \tilde{g}\!\left[\Theta_0+\Psi+\frac{1}{4}\Pi\right]+e^{-\tau}(\Psi'-\Phi')-\frac{1}{ck}\frac{d}{dx}(\mathcal{H}\tilde{g}v_b)+\frac{3}{4c^2k^2}\frac{d^2}{dx^2}\!\left[\mathcal{H}^2\tilde{g}\Pi\right].$$</div><span class="ft-eq-num">(96)</span></div>
+<p class="ft-p">The four terms in $\tilde{S}$ correspond to: (1) the monopole (Sachs-Wolfe), (2) the Integrated Sachs-Wolfe effect (changing gravitational potentials), (3) a Doppler term, and (4) a polarization/quadrupole correction. The CMB power spectrum then reads</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$C_\ell = 4\pi\int_0^\infty A_s\!\left(\frac{k}{k_{\rm pivot}}\right)^{n_s-1}\Theta_\ell^2(k)\,\frac{dk}{k}.$$</div><span class="ft-eq-num">(99)</span></div>
+<p class="ft-p">The matter power-spectrum is computed as</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$P(k,x) = |\Delta_M(k,x)|^2\,P_{\rm primordial}(k),\qquad \Delta_M(k,x)\equiv\frac{-3c^2k^2\Omega_{k,0}^{-1}\Phi(k,x)}{2a^2H_0^2\Omega_{M,0}}.$$</div><span class="ft-eq-num">(100)</span></div>
+</section>
+
+<section class="ft-section">
+<h2 class="ft-h2">3. Implementation method</h2>
+<p class="ft-p">Four C++ classes have been implemented (all code is publicly available on GitHub): <strong>BackgroundCosmology</strong>, <strong>RecombinationHistory</strong>, <strong>Perturbations</strong> and <strong>PowerSpectrum</strong>. The perturbations are integrated by switching from the tight coupling system (only $\Theta_0$, $\Theta_1$) to the full system (up to $\ell_{\rm max}=8$ for the perturbation stage, $\ell_{\rm max}=1200$ for the power spectrum) when $\tau' < 10|\tau''|/|\tau'|$ or $|\tau'| < 10$. The line-of-sight integration (Equation 95) uses Bessel functions from the ComplexBessel library. All intermediate quantities are splined using cubic splines for fast evaluation.</p>
+<p class="ft-p">The supernova fitting (Milestone I) uses a Metropolis MCMC with the chi-squared function</p>
+<div class="ft-eq-wrap"><div class="ft-math">$$\chi^2(h,\Omega_{M,0},\Omega_{k,0}) = \sum_{i=1}^N\frac{\left[d_L(z_i,h,\Omega_{M,0},\Omega_{k,0})-d_L^{\rm obs}(z_i)\right]^2}{\sigma_i^2},$$</div><span class="ft-eq-num">(104)</span></div>
+<p class="ft-p">using the supernova data from Betoule et al. (2014) ($N=31$ data points).</p>
+</section>
+
+<section class="ft-section">
+<h2 class="ft-h2">4. Results</h2>
+<h3 class="ft-h3">4.1. Solving the background cosmology of the Universe</h3>
+<p class="ft-p">The evolution of the relative energy densities of the Universe is presented in Figure 1. It can clearly be seen that there are three different regimes: radiation domination (early Universe), matter domination, and dark energy/$\Lambda$ domination (present era). From this data, the age of the Universe and the conformal time today can be computed: $t_{\rm Universe} = t(0) \approx 13.86$ Gyr and $\eta(0)/c \approx 46.52$ Gyr, respectively. The times of radiation-matter equality, matter-dark energy equality and the onset of accelerated expansion are summarized in Table 1.</p>
+
+<p class="ft-table-caption"><strong>Table 1.</strong> Times at which there was radiation-matter equality, matter-dark energy equality and the onset of accelerated expansion, expressed as $x=\ln a$, redshift $z$ and cosmological time $t$.</p>
+<div class="ft-table-wrap"><table class="ft-table">
+<thead><tr><th>Event</th><th>$x$</th><th>$z$</th><th>$t$ [Gyr]</th></tr></thead>
+<tbody>
+<tr><td>Radiation-matter equality</td><td>&minus;8.67</td><td>5803.51</td><td>$2.28\times10^{-5}$</td></tr>
+<tr><td>Matter-dark energy equality</td><td>&minus;0.26</td><td>0.29</td><td>10.35</td></tr>
+<tr><td>Accelerated expansion</td><td>&minus;0.42</td><td>0.53</td><td>8.42</td></tr>
+</tbody>
+</table></div>
+
+<figure class="ft-figure">
+  <img src="public/figures/cmb/omegas.png" alt="Fig. 1" loading="lazy">
+  <figcaption><strong>Fig. 1.</strong> Plot showing relative density parameters $\Omega_i(x)$ against the natural logarithm of the scale factor ($x=\ln a$). The early Universe was dominated by radiation (orange). Following is the matter dominated era (blue), where the combined density of dark matter and baryon components is indicated by the blue line. Lastly, the present era is dominated by dark energy (green).</figcaption>
+</figure>
+<figure class="ft-figure">
+  <img src="public/figures/cmb/eta_over_c.png" alt="Fig. 4b" loading="lazy">
+  <figcaption><strong>Fig. 4b.</strong> Conformal time $\eta(x)/c$ as a function of $x = \ln a$.</figcaption>
+</figure>
+
+<p class="ft-p">The MCMC fit to the Betoule et al. (2014) supernova data yields the best-fitting parameters shown in Table 2.</p>
+<p class="ft-table-caption"><strong>Table 2.</strong> Best fitting parameters from the supernova fitting via MCMC.</p>
+<div class="ft-table-wrap"><table class="ft-table">
+<thead><tr><th>$\chi^2$</th><th>$\Omega_M$</th><th>$\Omega_k$</th><th>$\Omega_\Lambda$</th><th>$H_0$</th></tr></thead>
+<tbody><tr><td>29.33</td><td>0.26</td><td>0.08</td><td>0.66</td><td>70.14</td></tr></tbody>
+</table></div>
+<p class="ft-p">The discrepancy in $H_0$ between the MCMC best-fit and the fiducial value ($H_0=67$ km/s/Mpc) is the Hubble tension, whose cause is not known. It arises when comparing the computed $H_0$ with &ldquo;early&rdquo; and &ldquo;late&rdquo; Universe observations.</p>
+
+<h3 class="ft-h3">4.2. Solving the recombination history of the Universe</h3>
+<p class="ft-p">The different times for decoupling, last scattering, half-way recombination and the recombination time have been computed, as summarized in Table 3.</p>
+<p class="ft-table-caption"><strong>Table 3.</strong> Summary of all the computed times in redshift ($z$) and cosmological time ($t$).</p>
+<div class="ft-table-wrap"><table class="ft-table">
+<thead><tr><th>Event</th><th>$x$</th><th>$z$</th><th>$t$ [Myr]</th></tr></thead>
+<tbody>
+<tr><td>Decoupling</td><td>&minus;7.370</td><td>1586.94</td><td>0.218</td></tr>
+<tr><td>Last scattering</td><td>&minus;6.987</td><td>1081.31</td><td>0.409</td></tr>
+<tr><td>Half-way recombination</td><td>&minus;7.164</td><td>1290.67</td><td>0.306</td></tr>
+<tr><td>Half-way rec. (Saha)</td><td>&minus;7.230</td><td>1379.48</td><td>0.275</td></tr>
+<tr><td>Recombination</td><td>&minus;6.989</td><td>1083.10</td><td>0.408</td></tr>
+</tbody>
+</table></div>
+
+<figure class="ft-figure">
+  <img src="public/figures/cmb/Xe.png" alt="Fig. 10" loading="lazy">
+  <figcaption><strong>Fig. 10.</strong> Plot showing the free electron fraction $X_e$. The solution obtained using only Saha&rsquo;s equation, which drops off exponentially to zero once the solution deviates from equilibrium, has been included.</figcaption>
+</figure>
+<figure class="ft-figure">
+  <img src="public/figures/cmb/tau.png" alt="Fig. 11" loading="lazy">
+  <figcaption><strong>Fig. 11.</strong> Plot showing the optical depth ($\tau$) and its two first derivatives. In the dense primordial Universe, the mean free path of photons was very low due to Thompson scattering on the abundant free electrons.</figcaption>
+</figure>
+
+<p class="ft-p">The sound horizon at decoupling has also been computed, being this $r_s \approx 128.177$ Mpc.</p>
+
+<h3 class="ft-h3">4.3. Solving the evolution of structure in the Universe</h3>
+<p class="ft-p">For all the main physical quantities in this subsection, four different scales (wave numbers) are presented: large scales ($k=0.001$ Mpc$^{-1}$ and $k=0.0001$ Mpc$^{-1}$), intermediate scales ($k=0.01$ Mpc$^{-1}$), and small scales ($k=0.1$ Mpc$^{-1}$).</p>
+
+<figure class="ft-figure">
+  <img src="public/figures/cmb/density.png" alt="Fig. 13" loading="lazy">
+  <figcaption><strong>Fig. 13.</strong> Density perturbations for baryonic matter ($\delta_B$), cold dark matter ($\delta_{\rm CDM}$) and photons ($\delta_\gamma$) over time ($x$). The baryonic perturbations entering before decoupling oscillate as a driven harmonic oscillator, due to the balance between gravity and radiation pressure. After decoupling, baryons fall into the dark matter potential wells.</figcaption>
+</figure>
+
+<h3 class="ft-h3">4.4. Computing the CMB power-spectrum</h3>
+
+<figure class="ft-figure">
+  <img src="public/figures/cmb/cmb_ps.png" alt="Fig. 20" loading="lazy">
+  <figcaption><strong>Fig. 20.</strong> CMB power-spectrum $D_\ell = \ell(\ell+1)C_\ell/2\pi$ (in $\mu$K$^2$) with the observational data (low TT and high TT Planck data). Reading from large to small scales: a Sachs-Wolfe plateau at $\ell\lesssim10$, a late ISW enhancement on the very largest scales, acoustic peaks (with the odd peaks enhanced by baryons), and Silk damping at $\ell\gtrsim500$.</figcaption>
+</figure>
+<figure class="ft-figure">
+  <img src="public/figures/cmb/matter_ps.png" alt="Fig. 19" loading="lazy">
+  <figcaption><strong>Fig. 19.</strong> The total matter power spectrum $P(k)$, with the equality scale $k_{\rm eq}$ marked as a vertical dotted line. For larger scales $P(k)\propto k^{n_s}$; for small scales the Meszaros effect suppresses power as $k^{n_s-4}$.</figcaption>
+</figure>
+<figure class="ft-figure">
+  <img src="public/figures/cmb/cmb_map.png" alt="Fig. 23" loading="lazy">
+  <figcaption><strong>Fig. 23.</strong> CMB map generated using Healpy from the theoretical $C_\ell$ spectrum.</figcaption>
+</figure>
+
+<p class="ft-p">The main result is shown in Figure 20. Reading the plot from large scales to small, we see the plateau on the largest scales, with the late ISW effect contributing to the increase on the very largest scales in $\ell\lesssim 10$. The first and third acoustic peaks are larger than the second and fourth, as the baryons with mass in a gravitational field enhance the compression modes (odd peaks) but not the rarefaction modes (even peaks). For higher number peaks, the exponential Silk damping suppression kicks in. The matter power spectrum (Figure 19) shows a turnover at the equality scale $k_{\rm eq}$.</p>
+</section>
+
+<section class="ft-section">
+<h2 class="ft-h2">5. Conclusions</h2>
+<p class="ft-p">Background cosmology of the Universe has been solved and each epoch has been determined, identifying in each of them the dominating substance. The age of the Universe has also been computed, being this $t_{\rm Universe} \approx 13.86$ Gyr.</p>
+<p class="ft-p">Recombination history of the Universe has been solved, computing different important times during recombination, summarized in Table 3. The sound horizon at decoupling has also been computed, being this $r_s \approx 128.177$ Mpc.</p>
+<p class="ft-p">The evolution of the structure in the Universe has been solved and the different kind of perturbations have been determined, showing that the metric in our Universe deviates from the Friedmann-Lema&icirc;tre-Robertson-Walker (FLWR), implying that our Universe is not homogeneous nor isotropic.</p>
+<p class="ft-p">The matter and CMB power-spectra have been computed with high accuracy, considering that neutrinos have been excluded, as well as Helium, reionization or photon polarization.</p>
+</section>
+
+<section class="ft-section">
+<h2 class="ft-h2">References</h2>
+<ul class="ft-bib">
+<li>Aghanim, N., Akrami, Y., Ashdown, M., et al. 2020, <em>Astronomy &amp; Astrophysics</em>, 641, A6.</li>
+<li>Baumann, D. 2018, TASI Lectures on Inflation, 009.</li>
+<li>Betoule, M., Kessler, R., Guy, J., et al. 2014, <em>Astronomy &amp; Astrophysics</em>, 568, A22.</li>
+<li>Callin, P. 2006, <em>How to calculate the CMB spectrum</em>. arXiv: astro-ph/0606683.</li>
+<li>Dodelson, S. 2003, <em>Modern Cosmology</em>. Academic Press, Elsevier Science.</li>
+<li>Seljak, U. &amp; Zaldarriaga, M. 1996, <em>The Astrophysical Journal</em>, 469, 437.</li>
+</ul>
+<p style="font-size:.8rem;color:var(--muted);margin-top:1rem">
+<sup>1</sup> Hans A. Winther, Cosmology II: A numerical project on the formation of the CMB and structures in the Universe: <a href="https://cmb.wintherscoming.no/index.php" target="_blank" rel="noreferrer">https://cmb.wintherscoming.no/index.php</a><br>
+<sup>2</sup> Milestone I: Background Cosmology.<br>
+<sup>3</sup> Milestone II: Recombination History.<br>
+<sup>4</sup> Milestone III: Evolution of structure in the Universe.<br>
+<sup>5</sup> Milestone IV: The CMB and matter power-spectra.<br>
+<sup>9</sup> AST5220 - Cosmology II at the University of Oslo (UiO).
+</p>
+</section>
+
+</div><!-- ft-body -->
 </article>
+
 <footer class="site-footer" style="margin-top:5rem"><div class="footer-inner"><p id="footer-copy"></p><p class="footer-updated" id="footer-date"></p></div></footer>
+
 <script>
-var _kEN="Course project \u00b7 AST5220 Cosmology II \u00b7 UiO \u00b7 June 2024",_kES="Proyecto de asignatura \u00b7 AST5220 Cosmolog\u00eda II \u00b7 UiO \u00b7 junio de 2024";
-var _tEN="Computing the CMB power spectrum",_tES="C\u00e1lculo del espectro de potencias del CMB";
-var _bEN="Iv\u00e1n Villegas-P\u00e9rez \u2014 Supervisors: Prof. David F. Mota & Dr. Hans A. Winther (UiO)",_bES="Iv\u00e1n Villegas-P\u00e9rez \u2014 Tutores: Prof. David F. Mota y Dr. Hans A. Winther (UiO)";
-var _inst=["uio"];
-var _secs=[{"h2en": "Abstract", "h2es": "Resumen", "items": [{"t": "p", "en": "In this project the angular power spectrum of the Cosmic Microwave Background (CMB) is computed from first principles using a C++ implementation following the AST5220 course framework. The pipeline is split into four milestones: (I) background cosmology, (II) recombination history, (III) linear perturbations and (IV) the CMB and matter power spectra. The ΛCDM Planck 2018 parameter set is used throughout. The final outputs are the CMB temperature power spectrum $D_\\ell$ and the total matter power spectrum $P(k)$, both in good agreement with the expected theoretical shapes.", "es": "En este proyecto se calcula el espectro angular de potencias del Fondo Cósmico de Microondas (CMB) a partir de primeros principios usando una implementación en C++ que sigue el marco del curso AST5220. La cadena se divide en cuatro hitos: (I) cosmología de fondo, (II) historia de la recombinación, (III) perturbaciones lineales y (IV) los espectros de potencias del CMB y de la materia. Se usa el conjunto de parámetros Planck 2018 de ΛCDM. Los resultados finales son el espectro de potencias de temperatura del CMB $D_\\ell$ y el espectro de potencias total de la materia $P(k)$, ambos en buen acuerdo con las formas teóricas esperadas."}]}, {"h2en": "I. Background cosmology", "h2es": "I. Cosmología de fondo", "items": [{"t": "p", "en": "Working in flat FLRW with $x=\\ln a$, the Hubble parameter is", "es": "Trabajando en FLRW plano con $x=\\ln a$, el parámetro de Hubble es"}, {"t": "math", "tex": "H(x)=H_0\\sqrt{(\\Omega_{B,0}+\\Omega_{\\rm CDM,0})e^{-3x}+\\Omega_{\\gamma,0}(1+\\frac{4}{11}N_{\\rm eff})^{4/3}e^{-4x}+\\Omega_{\\Lambda,0}}"}, {"t": "p", "en": "with the Planck 2018 baseline parameters: $h=0.67$, $T_{\\rm CMB,0}=2.7255\\,{\\rm K}$, $N_{\\rm eff}=3.046$, $\\Omega_{B,0}=0.05$, $\\Omega_{\\rm CDM,0}=0.267$, $\\Omega_{\\Lambda,0}=1-\\Omega_{B,0}-\\Omega_{\\rm CDM,0}-\\Omega_{\\gamma,0}-\\Omega_{\\nu,0}$, $n_s=0.965$, $A_s=2.1\\times10^{-9}$. The conformal time $\\eta(x)=\\int_{-\\infty}^x c/(aH)\\,dx'$ and the cosmic time $t(x)$ are integrated alongside.", "es": "con los parámetros base de Planck 2018: $h=0.67$, $T_{\\rm CMB,0}=2.7255\\,{\\rm K}$, $N_{\\rm eff}=3.046$, $\\Omega_{B,0}=0.05$, $\\Omega_{\\rm CDM,0}=0.267$, $\\Omega_{\\Lambda,0}=1-\\Omega_{B,0}-\\Omega_{\\rm CDM,0}-\\Omega_{\\gamma,0}-\\Omega_{\\nu,0}$, $n_s=0.965$, $A_s=2.1\\times10^{-9}$. El tiempo conforme $\\eta(x)$ y el tiempo cósmico $t(x)$ se integran simultáneamente."}, {"t": "fig", "src": "public/figures/cmb/omegas.png", "cen": "Density parameters $\\Omega_i(x)$ as a function of $x=\\ln a$, showing the three cosmological epochs (radiation, matter and $\\Lambda$ domination).", "ces": "Parámetros de densidad $\\Omega_i(x)$ en función de $x=\\ln a$, mostrando las tres épocas cosmológicas (dominación de radiación, materia y $\\Lambda$)."}, {"t": "fig", "src": "public/figures/cmb/eta_over_c.png", "cen": "Conformal time $\\eta(x)/c$ — the comoving horizon — as a function of $x=\\ln a$.", "ces": "Tiempo conforme $\\eta(x)/c$ — el horizonte comóvil — en función de $x=\\ln a$."}]}, {"h2en": "II. Recombination history", "h2es": "II. Historia de la recombinación", "items": [{"t": "p", "en": "The free-electron fraction $X_e(x)$ is computed using the Saha equation deep in equilibrium and the Peebles ODE around recombination. From $X_e$ we derive the optical depth", "es": "La fracción de electrones libres $X_e(x)$ se calcula usando la ecuación de Saha en equilibrio profundo y la EDO de Peebles en torno a la recombinación. A partir de $X_e$ derivamos la profundidad óptica"}, {"t": "math", "tex": "\\tau(x)=-\\int_x^0 n_e\\,\\sigma_T\\,c\\,\\frac{a}{H}\\,dx',\\qquad \\tilde{g}(x)=-\\dot\\tau\\,e^{-\\tau(x)}"}, {"t": "fig", "src": "public/figures/cmb/Xe.png", "cen": "Free-electron fraction $X_e(x)$: Saha early, Peebles through recombination. Last scattering occurs around $z\\simeq1090$.", "ces": "Fracción de electrones libres $X_e(x)$: Saha en fases tempranas, Peebles durante la recombinación. La última dispersión ocurre en torno a $z\\simeq1090$."}, {"t": "fig", "src": "public/figures/cmb/tau.png", "cen": "Optical depth $\\tau(x)$ and its first two derivatives. The visibility function $\\tilde{g}(x)$ peaks sharply at last scattering.", "ces": "Profundidad óptica $\\tau(x)$ y sus dos primeras derivadas. La función de visibilidad $\\tilde{g}(x)$ alcanza un máximo afilado en la última dispersión."}]}, {"h2en": "III. Linear perturbations", "h2es": "III. Perturbaciones lineales", "items": [{"t": "p", "en": "The Einstein–Boltzmann hierarchy is integrated for each comoving wavenumber $k$, starting from tight-coupling initial conditions. The metric potentials $\\Phi$, $\\Psi$ and the temperature multipoles $\\Theta_\\ell$ are obtained. In the tight-coupling regime only $\\Theta_0$, $\\Theta_1$ and $\\Theta_2$ are evolved; after decoupling the full hierarchy (up to $\\ell_{\\rm max}=8$) is integrated. The source function for the line-of-sight integral is", "es": "La jerarquía de Einstein-Boltzmann se integra para cada número de onda comóvil $k$, partiendo de condiciones iniciales de acoplamiento estrecho. Se obtienen los potenciales métricos $\\Phi$, $\\Psi$ y los multipolos de temperatura $\\Theta_\\ell$. En el régimen de acoplamiento estrecho solo se evolucionan $\\Theta_0$, $\\Theta_1$ y $\\Theta_2$; después del desacoplamiento se integra la jerarquía completa (hasta $\\ell_{\\rm max}=8$). La función fuente para la integral en la línea de visión es"}, {"t": "math", "tex": "\\tilde{S}(k,x)=\\tilde{g}\\!\\left(\\Theta_0+\\Psi+\\frac{1}{4}\\Pi\\right)+e^{-\\tau}(\\dot\\Psi-\\dot\\Phi)-\\frac{1}{ck}\\frac{d}{dx}(\\mathcal{H}\\tilde{g}v_b)+\\frac{3}{4c^2k^2}\\frac{d^2}{dx^2}(\\mathcal{H}^2\\tilde{g}\\Pi)"}, {"t": "fig", "src": "public/figures/cmb/density.png", "cen": "Density perturbations $\\delta$ for CDM, baryons and photons as a function of $x=\\ln a$, for several values of $k$.", "ces": "Perturbaciones de densidad $\\delta$ para CDM, bariones y fotones en función de $x=\\ln a$, para varios valores de $k$."}]}, {"h2en": "IV. CMB and matter power spectra", "h2es": "IV. Espectros de potencias del CMB y de la materia", "items": [{"t": "p", "en": "The line-of-sight integral gives the temperature transfer functions $\\Theta_\\ell(k,0)$ via", "es": "La integral en la línea de visión da las funciones de transferencia de temperatura $\\Theta_\\ell(k,0)$ mediante"}, {"t": "math", "tex": "\\Theta_\\ell(k,0)=\\int_{-\\infty}^0 \\tilde{S}(k,x)\\,j_\\ell\\!\\left[k(\\eta_0-\\eta)\\right]dx"}, {"t": "p", "en": "The angular power spectrum and matter power spectrum are then", "es": "El espectro angular de potencias y el espectro de potencias de la materia son entonces"}, {"t": "math", "tex": "C_\\ell=\\frac{2}{\\pi}\\int_0^\\infty k^2\\,P_{\\rm prim}(k)\\,|\\Theta_\\ell(k,0)|^2\\,dk,\\qquad P(k,x)=|\\Delta_M(k,x)|^2\\,P_{\\rm prim}(k)"}, {"t": "fig", "src": "public/figures/cmb/cmb_ps.png", "cen": "CMB temperature angular power spectrum $D_\\ell=\\ell(\\ell+1)C_\\ell/(2\\pi)$. The acoustic peaks and Silk damping tail are clearly visible.", "ces": "Espectro angular de potencias de temperatura del CMB $D_\\ell=\\ell(\\ell+1)C_\\ell/(2\\pi)$. Los picos acústicos y la cola de amortiguamiento de Silk son claramente visibles."}, {"t": "fig", "src": "public/figures/cmb/matter_ps.png", "cen": "Total matter power spectrum $P(k)$. The turnover corresponds to the scale entering the horizon at matter–radiation equality.", "ces": "Espectro de potencias total de la materia $P(k)$. El cambio de pendiente corresponde a la escala que entra en el horizonte en la igualdad materia–radiación."}, {"t": "fig", "src": "public/figures/cmb/cmb_map.png", "cen": "Full-sky CMB temperature map generated from the computed $C_\\ell$ using HEALPix.", "ces": "Mapa de cielo completo de temperatura del CMB generado a partir de los $C_\\ell$ calculados con HEALPix."}]}, {"h2en": "Bibliography", "h2es": "Bibliografía", "items": [{"t": "p", "en": "[1] Planck Collaboration, “Planck 2018 results. VI. Cosmological parameters,” A&A 641, A6, 2020.\n[2] H. A. Winther, AST5220 Cosmology II lecture notes, UiO, 2024.\n[3] C.-P. Ma & E. Bertschinger, “Cosmological perturbation theory in the synchronous and conformal Newtonian gauges,” ApJ 455, 7, 1995.\n[4] U. Seljak & M. Zaldarriaga, “A line-of-sight integration approach to CMB anisotropies,” ApJ 469, 437, 1996.\n[5] K. M. Górski et al., “HEALPix: A framework for high-resolution discretization and fast analysis of data distributed on the sphere,” ApJ 622, 759, 2005.", "es": "[1] Planck Collaboration, “Planck 2018 results. VI. Cosmological parameters,” A&A 641, A6, 2020.\n[2] H. A. Winther, notas del curso AST5220 Cosmología II, UiO, 2024.\n[3] C.-P. Ma y E. Bertschinger, “Cosmological perturbation theory in the synchronous and conformal Newtonian gauges,” ApJ 455, 7, 1995.\n[4] U. Seljak y M. Zaldarriaga, “A line-of-sight integration approach to CMB anisotropies,” ApJ 469, 437, 1996.\n[5] K. M. Górski et al., “HEALPix: A framework for high-resolution discretization and fast analysis of data distributed on the sphere,” ApJ 622, 759, 2005."}]}];
-function _langNote(es){return es?'Nota: el PDF está en inglés.':'';}
-function renderPage(){
-  renderStaticText();var es=lang==='es';
-  document.getElementById('ft-kicker').textContent=es?_kES:_kEN;
-  document.getElementById('ft-title').textContent=es?_tES:_tEN;
-  document.getElementById('ft-byline').textContent=es?_bES:_bEN;
-  document.getElementById('ft-badges').innerHTML=instBadges(_inst);
-  var note=document.getElementById('ft-lang-note');if(note)note.textContent=_langNote(es);
-  var html='';
-  _secs.forEach(function(sec){
-    html+='<section class="ft-section"><h2 class="ft-h2">'+esc(es?sec.h2es:sec.h2en)+'</h2>';
-    sec.items.forEach(function(x){
-      if(x.t==='p')html+='<p class="ft-p">'+esc(es?x.es:x.en)+'</p>';
-      else if(x.t==='h3')html+='<h3 class="ft-h3">'+esc(es?x.es:x.en)+'</h3>';
-      else if(x.t==='math')html+='<div class="ft-math">$$'+x.tex+'$$</div>';
-      else if(x.t==='note')html+='<aside class="ft-note">'+esc(es?x.es:x.en)+'</aside>';
-      else if(x.t==='fig')html+='<figure class="ft-figure"><img src="'+x.src+'" alt="'+esc(es?x.ces:x.cen)+'" loading="lazy"><figcaption>'+esc(es?x.ces:x.cen)+'</figcaption></figure>';
-      else if(x.t==='tab')html+='<div class="ft-table-wrap"><table class="ft-table"><thead><tr>'+x.headers.map(function(h){return'<th>'+esc(h)+'</th>';}).join('')+'</tr></thead><tbody>'+x.rows.map(function(r){return'<tr>'+r.map(function(c){return'<td>'+esc(c)+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table></div>';
-    });
-    html+='</section>';
-  });
-  document.getElementById('ft-body').innerHTML=html;
-  renderFooter();
-  if(window.renderMathInElement)setTimeout(function(){renderMathInElement(document.getElementById('ft-body'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});},100);
-}
-setNavActive('projects');applyTheme();document.getElementById('btn-en').classList.toggle('active',lang==='en');document.getElementById('btn-es').classList.toggle('active',lang==='es');document.documentElement.lang=lang==='es'?'es':'en';renderPage();
+document.getElementById('ft-badges').innerHTML = instBadges(['uio']);
+var note = document.getElementById('ft-lang-note');
+if (note) note.textContent = lang === 'es' ? 'Nota: el PDF est\u00e1 en ingl\u00e9s.' : '';
+if (typeof renderFooter === 'function') renderFooter();
+setNavActive('projects');
+applyTheme();
+document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+document.documentElement.lang = lang === 'es' ? 'es' : 'en';
 </script>
 </body>
 </html>
