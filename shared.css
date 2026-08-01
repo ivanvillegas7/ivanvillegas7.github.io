@@ -3,7 +3,7 @@
 .dark{--bg:oklch(0.165 0.008 85);--fg:oklch(0.94 0.012 85);--card:oklch(0.205 0.008 85);--sec:oklch(0.235 0.01 85);--muted:oklch(0.72 0.012 85);--border:oklch(0.94 0.012 85/.14)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--fg);font-family:var(--serif);-webkit-font-smoothing:antialiased;min-height:100vh;transition:background .2s,color .2s;text-align:justify;hyphens:auto}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);-webkit-font-smoothing:antialiased;min-height:100vh;transition:background .2s,color .2s}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.35;background-image:radial-gradient(oklch(0.18 0 0/.04) 1px,transparent 1px);background-size:3px 3px;mix-blend-mode:multiply}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;height:auto;display:block}
@@ -186,23 +186,18 @@ button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
 @media(min-width:768px){.footer-inner{flex-direction:row;align-items:center;justify-content:space-between;padding:2.5rem 2.5rem}}
 .footer-updated{font-family:var(--mono);font-size:.75rem}
 
-.ft-table-wrap{overflow-x:auto;margin:1.5rem 0}.ft-table{width:100%;border-collapse:collapse;font-size:.875rem;font-family:var(--mono)}.ft-table th,.ft-table td{border:1px solid var(--border);padding:.4rem .75rem;text-align:left}.ft-table th{background:var(--sec);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em}.ft-table td{color:color-mix(in oklch,var(--fg) 88%,transparent)}
-
-/* Justified text for project pages */
-.ft-p, .ft-section p { text-align: justify; hyphens: auto; }
-/* Equation numbering */
-.ft-eq-wrap { display: flex; align-items: center; margin: 1.25rem 0; }
-.ft-eq-wrap .ft-math { flex: 1; margin: 0; }
-.ft-eq-num { flex-shrink: 0; font-family: var(--mono); font-size: .8rem; color: var(--muted); padding-left: 1rem; min-width: 3.5rem; text-align: right; }
-/* Bibliography list */
-.ft-bib { list-style: none; margin-top: .5rem; }
-.ft-bib li { font-size: .9rem; line-height: 1.7; margin-bottom: .6rem; text-align: justify; padding-left: 2rem; text-indent: -2rem; }
-/* Table caption */
-.ft-table-caption { font-size: .85rem; font-style: italic; color: var(--muted); margin-top: .5rem; margin-bottom: 1rem; text-align: justify; }
-/* In-text citation style */
-.ft-p a.ft-cite { color: var(--muted); text-decoration: none; }
-.ft-p a.ft-cite:hover { text-decoration: underline; }
-/* Algorithm block */
-.ft-algo { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin: 1.5rem 0; font-family: var(--mono); font-size: .85rem; background: color-mix(in oklch, var(--sec) 50%, transparent); }
-.ft-algo-title { font-weight: 600; margin-bottom: .5rem; }
-.ft-algo-line { padding-left: 1.5rem; line-height: 1.8; }
+/* === Project page styles === */
+body { text-align: justify; hyphens: auto; }
+.ft-eq-wrap { display:flex; align-items:center; margin:1.25rem 0; }
+.ft-eq-wrap .ft-math { flex:1; margin:0; overflow-x:auto; }
+.ft-eq-num { flex-shrink:0; font-family:var(--mono); font-size:.8rem; color:var(--muted); padding-left:1rem; min-width:4rem; text-align:right; }
+.ft-table-wrap { overflow-x:auto; margin:1.5rem 0; }
+.ft-table { width:100%; border-collapse:collapse; font-size:.875rem; }
+.ft-table th, .ft-table td { border:1px solid var(--border); padding:.4rem .75rem; text-align:left; }
+.ft-table th { background:var(--sec); font-family:var(--mono); font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; }
+.ft-table-caption { font-size:.85rem; font-style:italic; color:var(--muted); margin-top:.5rem; margin-bottom:1rem; }
+.ft-bib { list-style:none; margin-top:.5rem; }
+.ft-bib li { font-size:.9rem; line-height:1.7; margin-bottom:.6rem; padding-left:2rem; text-indent:-2rem; }
+.ft-algo { border:1px solid var(--border); border-radius:var(--radius); padding:1rem 1.25rem; margin:1.5rem 0; font-family:var(--mono); font-size:.85rem; background:color-mix(in oklch,var(--sec) 50%,transparent); }
+.ft-algo-title { font-weight:600; margin-bottom:.5rem; }
+.ft-algo-line { padding-left:1.5rem; line-height:1.8; }
